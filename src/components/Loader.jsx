@@ -1,0 +1,41 @@
+import { useState, useEffect } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import LinearProgress from "@material-ui/core/LinearProgress";
+
+const useStyles = makeStyles({
+  root: {
+    width: "100%",
+  },
+});
+
+export default function LinearDeterminate() {
+  const classes = useStyles();
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setProgress((oldProgress) => {
+        if (oldProgress === 100) {
+          return 0;
+        }
+        const diff = Math.random() * 10;
+        return Math.min(oldProgress + diff, 100);
+      });
+    }, 500);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
+
+  return (
+    <div
+      className="d-flex align-items-center justify-content-center container"
+      style={{ height: "100vh", width: "100vw" }}
+    >
+      <div className={classes.root}>
+        <LinearProgress variant="determinate" value={progress} />
+      </div>
+    </div>
+  );
+}
