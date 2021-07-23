@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Problem from "../components/Problem";
 import { useHistory } from "react-router-dom";
-import { userToken, adminToken } from "../components/Storage";
 import FadeIn from "../components/FadeIn";
 import Logo from "../assets/images/logo1.png";
 import { endpoint } from "../components/Storage";
@@ -9,13 +8,6 @@ import { endpoint } from "../components/Storage";
 export default function LoginPage() {
   const [error, setError] = useState(false);
   const history = useHistory();
-
-  const token = window.localStorage.getItem("token");
-  if (token === userToken) {
-    history.push("/home");
-  } else if (token === adminToken) {
-    history.push("/grievancelist");
-  }
 
   function changePage() {
     const loginButton = document.getElementById("login_btn");
@@ -41,10 +33,10 @@ export default function LoginPage() {
         .json()
         .then((data) => {
           if (data.user === "user") {
-            window.localStorage.setItem("token", userToken);
+            window.localStorage.setItem("token", data.token);
             history.push("/home");
           } else if (data.user === "admin") {
-            window.localStorage.setItem("token", adminToken);
+            window.localStorage.setItem("token", data.token);
             history.push("/grievancelist");
           } else if (data.user === "false") {
             email.setAttribute("is-invalid", true);
