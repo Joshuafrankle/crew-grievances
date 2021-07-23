@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import Problem from "../components/Problem";
 import Loader from "../components/Loader";
+import { endpoint } from "../components/Storage";
 
 export default function HomeRoute(props) {
   const Component = props.component;
