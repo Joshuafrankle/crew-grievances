@@ -33,7 +33,7 @@ export default function HomeRoute(props) {
           setLoading(false);
         });
     });
-  }, []);
+  }, [token]);
 
   return (
     <>

@@ -37,7 +37,7 @@ export default function DisplayGrievances() {
           setLoading(false);
         });
     });
-  }, []);
+  }, [token]);
 
   return (
     <>
