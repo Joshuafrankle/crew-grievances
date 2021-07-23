@@ -1,34 +1,42 @@
-import React, { Component } from "react";
+import React from "react";
+import LinearProgress from "@material-ui/core/LinearProgress";
 import { withStyles } from "@material-ui/core/styles";
-import { LinearProgress } from "@material-ui/core";
 
-class ColoredLinearProgress extends Component {
-  render() {
-    const { classes } = this.props;
-    return (
-      <div
-        className="d-flex align-items-center justify-content-center container"
-        style={{ height: "100vh", width: "100vw" }}
-      >
-        <LinearProgress
-          {...this.props}
-          classes={{
-            colorPrimary: classes.colorPrimary,
-            barColorPrimary: classes.barColorPrimary,
-          }}
-        />{" "}
-      </div>
-    );
-  }
-}
-
-const styles = (props) => ({
+const BorderLinearProgress = withStyles((theme) => ({
+  root: {
+    height: 10,
+    borderRadius: 5,
+  },
   colorPrimary: {
-    backgroundColor: "#00695C",
+    backgroundColor: "red",
   },
-  barColorPrimary: {
-    backgroundColor: "#B2DFDB",
+  bar: {
+    borderRadius: 5,
+    backgroundColor: "green",
   },
-});
+}))(LinearProgress);
 
-export default withStyles(styles)(ColoredLinearProgress);
+export default function App() {
+  const [progress, setProgress] = React.useState(0);
+
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setProgress((oldProgress) => {
+        if (oldProgress === 100) {
+          return 0;
+        }
+        return Math.min(oldProgress + 15, 100);
+      });
+    }, 500);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
+
+  return (
+    <div>
+      <BorderLinearProgress variant="determinate" value={progress} />
+    </div>
+  );
+}
