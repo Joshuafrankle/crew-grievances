@@ -33,7 +33,7 @@ body {
     rgba(23, 25, 35, 0.3)
   );
   border-radius: 2rem;
-  z-index: 1;
+  z-index: 2;
   backdrop-filter: blur(2rem);
   padding: 50px;
 }
