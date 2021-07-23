@@ -12,7 +12,7 @@ export default function Home() {
   function getValues() {
     const HomeBtn = document.getElementById("home_btn");
     HomeBtn.setAttribute("disabled", "true");
-    HomeBtn.innerHTML = `<div className="spinner-border spinner-border-sm" role="status"><span class="sr-only">Loading...</span></div>`;
+    HomeBtn.innerHTML = `<div className="spinner-border spinner-border-sm" role="status"><span class="visually-hidden">Loading...</span></div>`;
 
     const errorText = document.getElementById("error_text");
     const committeeDropdown = document.getElementById("committee_dropdown");
@@ -103,7 +103,7 @@ export default function Home() {
                   <div className="" style={{ width: "50%" }}>
                     <p className="text-white mb-1">Committee</p>
                     <select
-                      className="form-control mb-4 mr-5"
+                      className="form-select mb-4 mr-5"
                       id="committee_dropdown"
                     >
                       <option value="None">None</option>
@@ -120,7 +120,7 @@ export default function Home() {
                     style={{ width: "50%", marginLeft: "15px" }}
                   >
                     <p className="mb-1 text-white">Projects</p>
-                    <select className="form-control mb-4" id="project_dropdown">
+                    <select className="form-select mb-4" id="project_dropdown">
                       <option value="None">None</option>
                       <option value="Project Cortex">Project Cortex</option>
                       <option value="Open Cloud">Open Cloud</option>
@@ -131,7 +131,7 @@ export default function Home() {
                   </div>
                 </div>
                 <textarea
-                  className="form-control font-weight-bold"
+                  className="form-control"
                   id="grievance_text"
                   placeholder="Your Grievances"
                 ></textarea>

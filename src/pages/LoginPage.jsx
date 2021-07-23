@@ -12,7 +12,7 @@ export default function LoginPage() {
   function changePage() {
     const loginButton = document.getElementById("login_btn");
     loginButton.setAttribute("disabled", "true");
-    loginButton.innerHTML = `<div className="spinner-border spinner-border-sm" role="status"><span class="sr-only">Loading...</span></div>`;
+    loginButton.innerHTML = `<div className="spinner-border spinner-border-sm" role="status"><span class="visually-hidden">Loading...</span></div>`;
 
     const invalidUser = document.getElementById("invalid_user");
     const email = document.getElementById("emailId");

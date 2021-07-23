@@ -106,6 +106,7 @@ body {
   font-weight: 900;
   font-size: 3rem;
 }
+
 .heading-choose {
   color: #ececec;
   font-family: "Raleway";
@@ -113,15 +114,14 @@ body {
   font-size: 2rem;
 }
 
-.form-control {
+.form-select,
+.form-control,
+option {
   color: #d6d6d6;
   background-color: #0f1118;
   border-color: #4e9992;
 }
-option {
-  background-color: #0f1118;
-  color: #d6d6d6;
-}
+
 .btn {
   color: black;
   background-color: #15e6ca;
