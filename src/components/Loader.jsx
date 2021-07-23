@@ -1,31 +1,33 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import { withStyles } from "@material-ui/core/styles";
 
-const BorderLinearProgress = withStyles((theme) => ({
+const BorderLinearProgress = withStyles(() => ({
   root: {
-    height: 10,
+    width: "100%",
+    height: 5,
     borderRadius: 5,
   },
   colorPrimary: {
-    backgroundColor: "red",
+    backgroundColor: "#2e2e2e",
   },
   bar: {
     borderRadius: 5,
-    backgroundColor: "green",
+    backgroundColor: "#15e6ca",
   },
 }))(LinearProgress);
 
-export default function App() {
-  const [progress, setProgress] = React.useState(0);
+export default function Loader() {
+  const [progress, setProgress] = useState(0);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const timer = setInterval(() => {
       setProgress((oldProgress) => {
         if (oldProgress === 100) {
           return 0;
         }
-        return Math.min(oldProgress + 15, 100);
+        const diff = Math.random() * 10;
+        return Math.min(oldProgress + diff, 100);
       });
     }, 500);
 
@@ -35,8 +37,13 @@ export default function App() {
   }, []);
 
   return (
-    <div>
-      <BorderLinearProgress variant="determinate" value={progress} />
-    </div>
+    <>
+      <div
+        className="d-flex align-items-center justify-content-center p-5"
+        style={{ height: "100vh" }}
+      >
+        <BorderLinearProgress variant="determinate" value={progress} />
+      </div>
+    </>
   );
 }
