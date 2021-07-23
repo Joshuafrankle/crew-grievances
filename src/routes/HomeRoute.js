@@ -5,45 +5,44 @@ import Loader from "../components/Loader";
 
 export default function HomeRoute(props) {
   const Component = props.component;
-  const [isLoading, setIsLoading] = useState(false);
+  const token = window.localStorage.getItem("token");
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const [user, setUser] = useState("");
 
   useEffect(() => {
-    fetch(`${endpoint}/api/submit`, {
+    fetch(`${endpoint}/api/check`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(submitData),
+      body: JSON.stringify(token),
     }).then((res) => {
       res
         .json()
         .then((data) => {
-          if (data.status === "success") {
-            history.push("/thankyou");
-          } else if (data.status === "failure") {
-            //console.log(data.reason);
-            setError(true);
+          if (data.user === "user") {
+            setUser("user");
+          } else if (data.user === "admin") {
+            setUser("admin");
+          } else if (data.user === "false") {
+            setUser("false");
           }
+          setLoading(false);
         })
         .catch(() => {
           setError(true);
+          setLoading(false);
         });
     });
-    const token = window.localStorage.getItem("token");
-    if (token === userToken) {
-      setUser("user");
-    } else if (token === adminToken) {
-      setUser("admin");
-    }
-    setLoading(false);
   }, []);
 
   return (
     <>
       {loading ? (
         <Loader />
+      ) : error ? (
+        <Problem />
       ) : user === "user" || user === "admin" ? (
         <Component />
       ) : (
