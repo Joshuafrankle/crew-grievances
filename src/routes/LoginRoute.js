@@ -6,12 +6,12 @@ import { endpoint } from "../components/Storage";
 
 export default function HomeRoute(props) {
   const Component = props.component;
-  const token = window.localStorage.getItem("token");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [user, setUser] = useState("");
 
   useEffect(() => {
+    const token = window.localStorage.getItem("token");
     fetch(`${endpoint}/api/check`, {
       method: "POST",
       headers: {
