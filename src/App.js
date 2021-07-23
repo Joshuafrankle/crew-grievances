@@ -4,8 +4,11 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+
 import AdminRoute from "./routes/AdminRoute";
 import HomeRoute from "./routes/HomeRoute";
+import LoginRoute from "./routes/LoginRoute";
+
 import LoginPage from "./pages/LoginPage";
 import Home from "./pages/Home";
 import ThankyouPage from "./pages/ThankyouPage";
@@ -16,7 +19,7 @@ export default function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" component={LoginPage} />
+        <LoginRoute exact path="/" component={LoginPage} />
         <HomeRoute exact path="/home" component={Home} />
         <HomeRoute exact path="/thankyou" component={ThankyouPage} />
         <AdminRoute exact path="/grievancelist" component={DisplayGrievances} />
