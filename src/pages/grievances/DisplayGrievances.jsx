@@ -5,12 +5,20 @@ import Problem from "../../components/Problem";
 import { endpoint } from "../../components/Storage";
 
 export default function DisplayGrievances() {
+  const token = window.localStorage.getItem("token");
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
   const [theData, setTheData] = useState({});
 
   useEffect(() => {
-    fetch(`${endpoint}/api/view`).then((res) => {
+    const tokenValue = { token };
+    fetch(`${endpoint}/api/view`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(tokenValue),
+    }).then((res) => {
       res
         .json()
         .then((data) => {
