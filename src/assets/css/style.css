@@ -26,7 +26,7 @@ body {
 
 .glass {
   background-color: #ffffff;
-  width: 100%;
+  min-width: 70%;
   background: linear-gradient(
     to right bottom,
     rgba(23, 25, 35, 0.7),
@@ -41,11 +41,7 @@ body {
 .login-circle1,
 .login-circle2,
 .home-circle1,
-.home-circle2,
-.thankyou-circle1,
-.thankyou-circle2,
-.error-circle1,
-.error-circle2 {
+.home-circle2 {
   background: #ffffff;
   background: linear-gradient(
     to right bottom,
@@ -60,7 +56,7 @@ body {
 
 /* Circles */
 .login-circle1 {
-  bottom: 2%;
+  bottom: 10%;
   left: 10%;
 }
 .login-circle2 {
@@ -74,22 +70,6 @@ body {
 .home-circle2 {
   top: 28%;
   right: 13%;
-}
-.thankyou-circle1 {
-  bottom: 30%;
-  left: 15%;
-}
-.thankyou-circle2 {
-  top: 30%;
-  right: 27%;
-}
-.error-circle1 {
-  bottom: 25%;
-  left: 25%;
-}
-.error-circle2 {
-  top: 30%;
-  right: 27%;
 }
 /* Circles */
 
@@ -163,5 +143,35 @@ img {
   }
   .pattarai-text {
     letter-spacing: 10px;
+  }
+  .login-circle1 {
+    bottom: 1%;
+    left: 5%;
+  }
+  .login-circle2 {
+    top: 50%;
+    right: 5%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .login-circle1 {
+    bottom: 5%;
+    left: 10%;
+  }
+  .login-circle2 {
+    top: 40%;
+    right: 10%;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .login-circle1 {
+    bottom: 15%;
+    left: 10%;
+  }
+  .login-circle2 {
+    top: 35%;
+    right: 10%;
   }
 }

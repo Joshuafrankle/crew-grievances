@@ -58,8 +58,8 @@ export default function LoginPage() {
         <Problem />
       ) : (
         <FadeIn>
-          <div className="login-circle1 d-none d-sm-block"></div>
-          <div className="login-circle2 d-none d-sm-block"></div>
+          <div className="login-circle1"></div>
+          <div className="login-circle2"></div>
           <div
             className="text-center"
             style={{
