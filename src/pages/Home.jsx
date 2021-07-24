@@ -1,13 +1,13 @@
 import { useState } from "react";
 import Problem from "../components/Problem";
-import { useHistory } from "react-router-dom";
 import Logo from "../assets/images/logo.png";
 import FadeIn from "../components/FadeIn";
 import { endpoint } from "../components/Storage";
+import ThankyouPage from "./ThankyouPage";
 
 export default function Home() {
   const [error, setError] = useState(false);
-  const history = useHistory();
+  const [thankyouPage, setThankyouPage] = useState(false);
 
   function getValues() {
     const HomeBtn = document.getElementById("home_btn");
@@ -39,7 +39,7 @@ export default function Home() {
           .json()
           .then((data) => {
             if (data.status === "success") {
-              history.push("/thankyou");
+              setThankyouPage(true);
             } else if (data.status === "failure") {
               //console.log(data.reason);
               setError(true);
@@ -61,6 +61,8 @@ export default function Home() {
     <>
       {error ? (
         <Problem />
+      ) : thankyouPage ? (
+        <ThankyouPage />
       ) : (
         <FadeIn>
           <div className="home-circle1"></div>
