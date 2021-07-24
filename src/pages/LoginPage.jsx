@@ -11,7 +11,7 @@ export default function LoginPage() {
 
   function changePage() {
     const loginButton = document.getElementById("login_btn");
-    loginButton.setAttribute("disabled", "true");
+    loginButton.setAttribute("disabled", true);
     loginButton.innerHTML = `<div className="spinner-border spinner-border-sm" role="status"><span class="visually-hidden">Loading...</span></div>`;
 
     const invalidUser = document.getElementById("invalid_user");
@@ -42,8 +42,8 @@ export default function LoginPage() {
             email.setAttribute("is-invalid", true);
             password.setAttribute("is-invalid", true);
             invalidUser.classList.remove("d-none");
-            loginButton.innerHTML = "Login";
-            loginButton.removeAttribute("disabled");
+            // loginButton.innerHTML = "Login";
+            // loginButton.removeAttribute("disabled");
           }
         })
         .catch(() => {
