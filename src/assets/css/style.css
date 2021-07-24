@@ -130,6 +130,11 @@ img {
   min-width: 80px;
 }
 
+.logout-img {
+  height: 20px;
+  min-width: 20px;
+}
+
 @media only screen and (max-width: 765px) {
   .login-text-main {
     font-size: 3rem;
