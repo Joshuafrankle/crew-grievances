@@ -42,6 +42,9 @@ export default function LoginPage() {
             email.setAttribute("is-invalid", true);
             password.setAttribute("is-invalid", true);
             invalidUser.classList.remove("d-none");
+            setTimeout(() => {
+              invalidUser.classList.add("d-none");
+            }, 3000);
             loginButton.innerHTML = "Login";
             loginButton.removeAttribute("disabled");
           }

@@ -52,6 +52,9 @@ export default function Home() {
     } else {
       grievanceText.setAttribute("is-invalid", true);
       errorText.classList.remove("d-none");
+      setTimeout(() => {
+        errorText.classList.add("d-none");
+      }, 3000);
       HomeBtn.innerHTML = "Submit";
       HomeBtn.removeAttribute("disabled");
     }
