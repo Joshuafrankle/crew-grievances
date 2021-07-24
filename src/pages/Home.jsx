@@ -12,7 +12,7 @@ export default function Home() {
   function getValues() {
     const HomeBtn = document.getElementById("home_btn");
     HomeBtn.setAttribute("disabled", "true");
-    HomeBtn.innerHTML = `<div className="spinner-border spinner-border-sm" role="status"><span class="visually-hidden">Loading...</span></div>`;
+    HomeBtn.innerHTML = `<div class="spinner-border spinner-border-sm" role="status" aria-hidden="true"><span class="visually-hidden">Loading...</span></div>`;
 
     const errorText = document.getElementById("error_text");
     const committeeDropdown = document.getElementById("committee_dropdown");

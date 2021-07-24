@@ -26,7 +26,6 @@ body {
 
 .glass {
   background-color: #ffffff;
-  min-width: 80%;
   background: linear-gradient(
     to right bottom,
     rgba(23, 25, 35, 0.7),
