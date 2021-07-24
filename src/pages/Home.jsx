@@ -10,9 +10,9 @@ export default function Home() {
   const [thankyouPage, setThankyouPage] = useState(false);
 
   function getValues() {
-    const HomeBtn = document.getElementById("home_btn");
-    HomeBtn.setAttribute("disabled", "true");
-    HomeBtn.innerHTML = `<div class="spinner-border spinner-border-sm" role="status" aria-hidden="true"><span class="visually-hidden">Loading...</span></div>`;
+    const homeBtn = document.getElementById("home_btn");
+    homeBtn.setAttribute("disabled", "true");
+    homeBtn.innerHTML = `<div class="spinner-border spinner-border-sm" role="status" aria-hidden="true"><span class="visually-hidden">Loading...</span></div>`;
 
     const errorText = document.getElementById("error_text");
     const committeeDropdown = document.getElementById("committee_dropdown");
@@ -55,8 +55,8 @@ export default function Home() {
       setTimeout(() => {
         errorText.classList.add("d-none");
       }, 3000);
-      HomeBtn.innerHTML = "Submit";
-      HomeBtn.removeAttribute("disabled");
+      homeBtn.innerHTML = "Submit";
+      homeBtn.removeAttribute("disabled");
     }
   }
 
