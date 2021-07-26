@@ -1,10 +1,26 @@
 import Logo from "../../assets/images/logo.png";
 import FadeIn from "../../components/FadeIn";
+import { useHistory } from "react-router-dom";
 
 export default function GrievanceList({ theData }) {
+  const history = useHistory();
   return (
     <>
       <FadeIn>
+        <div className="text-end logout-btn">
+          <button
+            id=""
+            type="button"
+            className="btn mt-4 home-logout"
+            style={{ position: "absolute" }}
+            onClick={() => {
+              window.localStorage.removeItem("token");
+              history.push("/");
+            }}
+          >
+            Logout
+          </button>
+        </div>
         <section className="main">
           <div className="" style={{ height: "100vh", width: "80%" }}>
             <div
