@@ -95,9 +95,11 @@ body {
 
 .form-select,
 .form-control,
-option {
-  color: #d6d6d6;
-  background-color: #0f1118;
+input,
+option,
+textarea {
+  color: #dfdfdf !important;
+  background-color: #0f1118 !important;
   border-color: #4e9992;
 }
 
