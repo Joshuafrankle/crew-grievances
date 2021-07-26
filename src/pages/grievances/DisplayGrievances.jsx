@@ -24,12 +24,11 @@ export default function DisplayGrievances() {
         .then((data) => {
           if (data.status === "success") {
             setTheData(data);
-            setLoading(false);
           } else if (data.status === "failure") {
             //console.log("DB query problem ", data.reason);
             setError(true);
-            setLoading(false);
           }
+          setLoading(false);
         })
         .catch(() => {
           //console.log("DB Down");
