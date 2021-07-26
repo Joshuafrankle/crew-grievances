@@ -137,6 +137,10 @@ img {
   min-width: 20px;
 }
 
+.logout-btn {
+  width: 90%;
+}
+
 @media only screen and (max-width: 765px) {
   .login-text-main {
     font-size: 3rem;
@@ -162,9 +166,15 @@ img {
     top: 35%;
     right: 13%;
   }
+  .logout-btn {
+    width: 85%;
+  }
+  .home-logout {
+    font-size: 10px;
+  }
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .login-circle1 {
     bottom: 5%;
     left: 10%;
@@ -172,6 +182,9 @@ img {
   .login-circle2 {
     top: 40%;
     right: 10%;
+  }
+  .home-logout {
+    font-size: 10px;
   }
 }
 

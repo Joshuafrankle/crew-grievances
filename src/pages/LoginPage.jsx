@@ -44,9 +44,9 @@ export default function LoginPage() {
             invalidUser.classList.remove("d-none");
             setTimeout(() => {
               invalidUser.classList.add("d-none");
+              loginButton.removeAttribute("disabled");
             }, 3000);
             loginButton.innerHTML = "Login";
-            loginButton.removeAttribute("disabled");
           }
         })
         .catch(() => {

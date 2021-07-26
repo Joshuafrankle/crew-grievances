@@ -4,8 +4,10 @@ import Logo from "../assets/images/logo.png";
 import FadeIn from "../components/FadeIn";
 import { endpoint } from "../components/Storage";
 import ThankyouPage from "./ThankyouPage";
+import { useHistory } from "react-router-dom";
 
 export default function Home() {
+  const history = useHistory();
   const [error, setError] = useState(false);
   const [thankyouPage, setThankyouPage] = useState(false);
 
@@ -54,9 +56,9 @@ export default function Home() {
       errorText.classList.remove("d-none");
       setTimeout(() => {
         errorText.classList.add("d-none");
+        homeBtn.removeAttribute("disabled");
       }, 3000);
       homeBtn.innerHTML = "Submit";
-      homeBtn.removeAttribute("disabled");
     }
   }
 
@@ -70,6 +72,20 @@ export default function Home() {
         <FadeIn>
           <div className="home-circle1"></div>
           <div className="home-circle2"></div>
+          <div className="text-end logout-btn">
+            <button
+              id=""
+              type="button"
+              className="btn mt-4 home-logout"
+              style={{ position: "absolute" }}
+              onClick={() => {
+                window.localStorage.removeItem("token");
+                history.push("/");
+              }}
+            >
+              Logout
+            </button>
+          </div>
           <section className="main">
             <div>
               <div
