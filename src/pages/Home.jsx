@@ -29,7 +29,6 @@ export default function Home() {
 
     if (grievanceValue.length >= 3) {
       const submitData = { committeeValue, projectValue, grievanceValue };
-
       fetch(`${endpoint}/api/submit`, {
         method: "POST",
         headers: {
