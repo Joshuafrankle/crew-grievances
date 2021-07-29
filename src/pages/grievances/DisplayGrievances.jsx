@@ -3,8 +3,10 @@ import Loader from "../../components/Loader";
 import GrievanceList from "./GrievanceList";
 import Problem from "../../components/Problem";
 import { endpoint } from "../../components/Storage";
+import { useHistory } from "react-router-dom";
 
 export default function DisplayGrievances() {
+  const history = useHistory();
   const token = window.localStorage.getItem("token");
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -22,16 +24,16 @@ export default function DisplayGrievances() {
       res
         .json()
         .then((data) => {
-          if (data.status === "success") {
-            setTheData(data);
-          } else if (data.status === "failure") {
-            //console.log("DB query problem ", data.reason);
+          if (data.status === "failure") {
             setError(true);
+          } else if (data.status === "false") {
+            history.push("/");
+          } else if (data.status === "success") {
+            setTheData(data.data);
           }
           setLoading(false);
         })
         .catch(() => {
-          //console.log("DB Down");
           setError(true);
           setLoading(false);
         });

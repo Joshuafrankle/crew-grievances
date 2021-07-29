@@ -23,8 +23,17 @@ export default function HomeRoute(props) {
       res
         .json()
         .then((data) => {
-          if (data.user === "admin") {
-            setIsAdmin(true);
+          if (data.status === "failure") {
+            setError(true);
+          } else if (data.status === "false") {
+            setUser("false");
+          } else if (data.status === "expired") {
+            window.localStorage.removeItem("token");
+            setUser("false");
+          } else if (data.status === "success") {
+            if (data.role === "admin") {
+              setIsAdmin(true);
+            }
           }
           setLoading(false);
         })

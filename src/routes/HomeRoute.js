@@ -23,12 +23,15 @@ export default function HomeRoute(props) {
       res
         .json()
         .then((data) => {
-          if (data.user === "user") {
-            setUser("user");
-          } else if (data.user === "admin") {
-            setUser("admin");
-          } else if (data.user === "false") {
+          if (data.status === "failure") {
+            setError(true);
+          } else if (data.status === "false") {
             setUser("false");
+          } else if (data.status === "expired") {
+            window.localStorage.removeItem("token");
+            setUser("false");
+          } else if (data.status === "success") {
+            setUser(`${data.role}`);
           }
           setLoading(false);
         })
@@ -45,7 +48,7 @@ export default function HomeRoute(props) {
         <Loader />
       ) : error ? (
         <Problem />
-      ) : user === "user" || user === "admin" ? (
+      ) : user === "crew" || user === "admin" ? (
         <Component />
       ) : (
         <Redirect to={{ pathname: "/" }} />
