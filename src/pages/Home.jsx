@@ -40,11 +40,10 @@ export default function Home() {
         res
           .json()
           .then((data) => {
-            if (data.status === "success") {
-              setThankyouPage(true);
-            } else if (data.status === "failure") {
-              //console.log(data.reason);
+            if (data.status === "failure") {
               setError(true);
+            } else if (data.status === "success") {
+              setThankyouPage(true);
             }
           })
           .catch(() => {
