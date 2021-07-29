@@ -61,6 +61,31 @@ export default function Home() {
     }
   }
 
+  function handleLogout() {
+    const token = window.localStorage.getItem("token");
+    const tokenValue = { token };
+    fetch(`${endpoint}/api/logout`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(tokenValue),
+    })
+      .then((res) => {
+        res.json().then((data) => {
+          if (data.status === "failure") {
+            setError(true);
+          } else if (data.status === "success") {
+            window.localStorage.removeItem("token");
+            history.push("/");
+          }
+        });
+      })
+      .catch(() => {
+        setError(true);
+      });
+  }
+
   return (
     <>
       {error ? (
@@ -77,10 +102,7 @@ export default function Home() {
               type="button"
               className="btn mt-4 home-logout"
               style={{ position: "absolute" }}
-              onClick={() => {
-                window.localStorage.removeItem("token");
-                history.push("/");
-              }}
+              onClick={handleLogout}
             >
               Logout
             </button>
