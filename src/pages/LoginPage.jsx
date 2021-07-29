@@ -22,7 +22,7 @@ export default function LoginPage() {
 
     const userData = { emailValue, passwordValue };
 
-    fetch(`${endpoint}/api/auth`, {
+    fetch(`${endpoint}/api/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -32,21 +32,22 @@ export default function LoginPage() {
       res
         .json()
         .then((data) => {
-          if (data.user === "user") {
-            window.localStorage.setItem("token", data.token);
-            history.push("/home");
-          } else if (data.user === "admin") {
-            window.localStorage.setItem("token", data.token);
-            history.push("/grievancelist");
-          } else if (data.user === "false") {
-            email.setAttribute("is-invalid", true);
-            password.setAttribute("is-invalid", true);
+          if (data.status === "failure") {
+            setError(true);
+          } else if (data.status === "false") {
             invalidUser.classList.remove("d-none");
             setTimeout(() => {
               invalidUser.classList.add("d-none");
               loginButton.removeAttribute("disabled");
             }, 3000);
             loginButton.innerHTML = "Login";
+          } else if (data.status === "success") {
+            window.localStorage.setItem("token", data.token);
+            if (data.role === "crew") {
+              history.push("/home");
+            } else if (data.role === "admin") {
+              history.push("/grievancelist");
+            }
           }
         })
         .catch(() => {
