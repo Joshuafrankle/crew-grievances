@@ -14,7 +14,7 @@ export default function Home() {
   function getValues() {
     const homeBtn = document.getElementById("home_btn");
     homeBtn.setAttribute("disabled", "true");
-    homeBtn.innerHTML = `<div class="spinner-border spinner-border-sm" role="status" aria-hidden="true"><span class="visually-hidden">Loading...</span></div>`;
+    homeBtn.innerHTML = `<div class="spinner-border p-2 spinner-border-sm" role="status" aria-hidden="true"><span class="visually-hidden">Loading...</span></div>`;
 
     const errorText = document.getElementById("error_text");
     const committeeDropdown = document.getElementById("committee_dropdown");

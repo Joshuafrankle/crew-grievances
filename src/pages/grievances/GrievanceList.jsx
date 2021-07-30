@@ -43,7 +43,7 @@ export default function GrievanceList({ theData }) {
                 <img className="" src={Logo} alt="Pattarai" />
               </div>
             </div>
-            {theData.dataList.map((grievance, id) => (
+            {theData.map((grievance, id) => (
               <FadeIn key={id}>
                 <div className="card mb-3">
                   <div className="card-body">
