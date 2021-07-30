@@ -10,6 +10,8 @@ export default function GrievanceList({ theData }) {
   const [error, setError] = useState(false);
 
   function handleLogout() {
+    const grievanceLogoutBtn = document.getElementById("grievance_logout_btn");
+    grievanceLogoutBtn.setAttribute("disabled", "true");
     const token = window.localStorage.getItem("token");
     const tokenValue = { token };
     fetch(`${endpoint}/api/logout`, {
@@ -41,6 +43,7 @@ export default function GrievanceList({ theData }) {
         <FadeIn>
           <div className="text-end logout-btn">
             <button
+              id="grievance_logout_btn"
               type="button"
               className="btn mt-4 home-logout"
               style={{ position: "absolute" }}

@@ -61,6 +61,8 @@ export default function Home() {
   }
 
   function handleLogout() {
+    const homeLogoutBtn = document.getElementById("home_logout_btn");
+    homeLogoutBtn.setAttribute("disabled", "true");
     const token = window.localStorage.getItem("token");
     const tokenValue = { token };
     fetch(`${endpoint}/api/logout`, {
@@ -97,7 +99,7 @@ export default function Home() {
           <div className="home-circle2"></div>
           <div className="text-end logout-btn">
             <button
-              id=""
+              id="home_logout_btn"
               type="button"
               className="btn mt-4 home-logout"
               style={{ position: "absolute" }}
