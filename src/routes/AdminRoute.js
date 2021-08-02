@@ -44,7 +44,8 @@ export default function HomeRoute(props) {
           setLoading(false);
         });
     });
-  }, [token]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>

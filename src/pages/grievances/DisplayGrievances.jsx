@@ -27,7 +27,6 @@ export default function DisplayGrievances() {
           if (data.status === "failure") {
             setError(true);
           } else if (data.status === "false") {
-            // eslint-disable-next-line
             history.push("/");
           } else if (data.status === "success") {
             setTheData(data.data);
@@ -39,7 +38,8 @@ export default function DisplayGrievances() {
           setLoading(false);
         });
     });
-  }, [token]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
