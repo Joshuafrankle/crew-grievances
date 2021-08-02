@@ -1,87 +1,82 @@
+.home-main {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .home-glass {
-  background-color: #ffffff;
   background: linear-gradient(
     to right bottom,
     rgba(23, 25, 35, 0.7),
     rgba(23, 25, 35, 0.3)
   );
-  border-radius: 2rem;
   z-index: 2;
+  border-radius: 2rem;
   backdrop-filter: blur(2rem);
   padding: 50px;
 }
-
-/* Circles */
-.home-circle1 {
-  bottom: 10%;
-  left: 13%;
-}
-.home-circle2 {
-  top: 28%;
-  right: 13%;
-}
-/* Circles */
-
-.home-text-main {
-  color: #fafafa;
-  font-family: "Montserrat";
-  font-weight: 900;
-  font-size: 3rem;
+.home-glass > * {
+  margin-top: 30px;
 }
 
-.heading-choose {
-  color: #ececec;
-  font-family: "Raleway";
-  font-weight: 700;
-  font-size: 2rem;
+.home-head {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
 }
 
-.pattarai-text {
-  color: #fafafa;
-  font-family: "Montserrat", sans-serif;
+.dropdown-section {
+  display: flex;
+  justify-content: space-between;
+}
+.dropdown1 {
+  width: 49%;
+}
+.dropdown2 {
+  width: 49%;
+}
+
+.home-pattarai-text {
+  font-family: Montserrat;
+  font-weight: 300;
   letter-spacing: 15px;
 }
 
+.home-grievance-text {
+  font-family: Montserrat;
+  font-weight: 800;
+  font-size: 3em;
+}
+
 .home-img {
-  height: 80px;
-  min-width: 80px;
+  height: 5rem;
+  width: 5rem;
 }
 
-.logout-btn {
-  width: 90%;
+.home-circle1 {
+  left: 13%;
+  bottom: 6%;
+}
+.home-circle2 {
+  right: 12%;
+  top: 25%;
 }
 
-@media only screen and (max-width: 765px) {
-  .home-text-main {
-    font-size: 2rem;
+@media (max-width: 640px) {
+  .home-head {
+    width: 100%;
   }
   .home-pattarai-text {
-    font-size: 10px;
-  }
-  .pattarai-text {
     letter-spacing: 10px;
-  }
-  .home-circle2 {
-    top: 35%;
-    right: 13%;
-  }
-  .logout-btn {
-    width: 85%;
-  }
-  .home-logout {
     font-size: 10px;
   }
-}
-
-@media (min-width: 768px) and (max-width: 1024px) {
-  .home-logout {
-    font-size: 10px;
+  .home-grievance-text {
+    font-size: 25px;
   }
-}
-
-@media (min-width: 1025px) and (max-width: 1440px) {
-  .home-circle1 {
-    top: 60%;
-    right: 13%;
+  .home-img {
+    height: 3rem;
+    width: 3rem;
   }
 }
