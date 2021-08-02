@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap");
+@import url("./landing-page.css");
+@import url("./home-page.css");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Custom Scrollbar */
+html::-webkit-scrollbar {
+  width: 10px;
+}
+html::-webkit-scrollbar-track {
+  background-color: #1b1b1b;
+}
+html::-webkit-scrollbar-thumb {
+  background-color: #fafafa;
+  border-radius: 10px;
+}
+/* Custom Scrollbar */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  color: #ffffff;
+}
+
+.invalid-user {
+  color: #ff5a3d;
+}
+
+body {
+  background-color: #0f1118;
+}
+
+.main {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-circle1,
+.login-circle2,
+.home-circle1,
+.home-circle2 {
+  background: #ffffff;
+  background: linear-gradient(
+    to right bottom,
+    rgba(21, 230, 202, 0.9),
+    rgba(21, 230, 202, 0.5)
+  );
+  height: 10rem;
+  width: 10rem;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.form-select,
+.form-control,
+input,
+option,
+textarea {
+  color: #f0f0f0 !important;
+  background-color: #0f1118 !important;
+  border-color: #4e9992;
+}
+
+.btn {
+  color: #000000;
+  background-color: #15e6ca;
+  font-family: "Poppins";
+  font-weight: 500;
+}
+
+.card {
+  color: #fafafa;
+  background-color: #181a22;
+  border-color: #4e9992;
+}
+
+.badge {
+  background-color: #25c0b1;
+  color: #000000;
+}

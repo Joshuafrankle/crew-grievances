@@ -1,0 +1,87 @@
+.home-glass {
+  background-color: #ffffff;
+  background: linear-gradient(
+    to right bottom,
+    rgba(23, 25, 35, 0.7),
+    rgba(23, 25, 35, 0.3)
+  );
+  border-radius: 2rem;
+  z-index: 2;
+  backdrop-filter: blur(2rem);
+  padding: 50px;
+}
+
+/* Circles */
+.home-circle1 {
+  bottom: 10%;
+  left: 13%;
+}
+.home-circle2 {
+  top: 28%;
+  right: 13%;
+}
+/* Circles */
+
+.home-text-main {
+  color: #fafafa;
+  font-family: "Montserrat";
+  font-weight: 900;
+  font-size: 3rem;
+}
+
+.heading-choose {
+  color: #ececec;
+  font-family: "Raleway";
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.pattarai-text {
+  color: #fafafa;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 15px;
+}
+
+.home-img {
+  height: 80px;
+  min-width: 80px;
+}
+
+.logout-btn {
+  width: 90%;
+}
+
+@media only screen and (max-width: 765px) {
+  .home-text-main {
+    font-size: 2rem;
+  }
+  .home-pattarai-text {
+    font-size: 10px;
+  }
+  .pattarai-text {
+    letter-spacing: 10px;
+  }
+  .home-circle2 {
+    top: 35%;
+    right: 13%;
+  }
+  .logout-btn {
+    width: 85%;
+  }
+  .home-logout {
+    font-size: 10px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .home-logout {
+    font-size: 10px;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .home-circle1 {
+    top: 60%;
+    right: 13%;
+  }
+}

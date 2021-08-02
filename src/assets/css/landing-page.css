@@ -1,0 +1,115 @@
+.glass {
+  display: flex;
+  min-height: 80vh;
+  width: 80vw;
+  background: linear-gradient(
+    to right bottom,
+    rgba(23, 25, 35, 0.7),
+    rgba(23, 25, 35, 0.3)
+  );
+  z-index: 2;
+  border-radius: 2rem;
+  backdrop-filter: blur(2rem);
+}
+
+.pattarai-text {
+  font-family: Montserrat;
+  font-weight: 300;
+  letter-spacing: 15px;
+}
+.grievance-text {
+  font-family: Montserrat;
+  font-weight: 800;
+  font-size: 4.5em;
+}
+
+.logo-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-section {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 2rem;
+}
+
+.text-title {
+  text-align: center;
+}
+
+.input-section {
+  text-align: center;
+  /* padding: 0 25% 0 25%; */
+}
+.input-section > button {
+  margin-top: 15%;
+}
+.input-section > * {
+  width: 100%;
+  margin-top: 5%;
+}
+
+login-img {
+  height: 30rem;
+  width: 30rem;
+}
+
+.login-circle1 {
+  left: 5%;
+  bottom: 5%;
+}
+.login-circle2 {
+  right: 5%;
+  top: 6%;
+}
+
+@media (max-width: 640px) {
+  .glass {
+    flex-direction: column;
+  }
+  .pattarai-text {
+    letter-spacing: 10px;
+    font-size: 10px;
+  }
+  .grievance-text {
+    font-size: 25px;
+  }
+  login-img {
+    height: 8rem;
+    width: 8rem;
+  }
+  .login-section > div {
+    margin-top: 10%;
+  }
+  .rights {
+    font-size: 90%;
+    margin-top: 30%;
+    margin-bottom: 5%;
+  }
+}
+
+@media (min-width: 641px) {
+  .input-section {
+    margin-bottom: 5.5%;
+  }
+  .text-title {
+    margin-top: 7%;
+  }
+  .login-section {
+    background: linear-gradient(
+      to right bottom,
+      rgba(23, 25, 35, 0.7),
+      rgba(23, 25, 35, 0.3)
+    );
+  }
+  .rights {
+    margin-bottom: 2%;
+  }
+}
