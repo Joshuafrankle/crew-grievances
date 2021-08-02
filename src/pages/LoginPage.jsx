@@ -6,6 +6,9 @@ import Logo from "../assets/images/logo1.png";
 import { endpoint } from "../components/Storage";
 
 export default function LoginPage() {
+  const date = new Date();
+  const current_year = date.getFullYear();
+
   const [error, setError] = useState(false);
   const history = useHistory();
 
@@ -64,61 +67,44 @@ export default function LoginPage() {
         <FadeIn>
           <div className="login-circle1"></div>
           <div className="login-circle2"></div>
-          <div
-            className="text-center"
-            style={{
-              paddingTop: "30px",
-            }}
-          >
-            <div className="login-logo">
-              <img className="" src={Logo} alt="Pattarai" />
-            </div>
-            <p className="pattarai-text login-text mb-0">PATTARAI's</p>
-            <p className="login-text-main">Grievance Portal</p>
-          </div>
           <section className="main">
-            <div style={{ width: "70%" }}>
-              <div
-                className="glass mt-3"
-                style={{
-                  paddingRight: "50px",
-                  paddingLeft: "50px",
-                }}
-              >
-                <h3 className="mb-4" style={{ color: "#fafafa" }}>
-                  Login
-                </h3>
-                <input
-                  type="email"
-                  className="form-control mb-3"
-                  id="emailId"
-                  placeholder="Email"
-                  required
-                ></input>
-                <input
-                  type="password"
-                  className="form-control"
-                  id="password"
-                  placeholder="Password"
-                  required
-                ></input>
-
-                <p
-                  id="invalid_user"
-                  className="d-none"
-                  style={{ marginTop: "15px", color: "#ff5a3d" }}
-                >
-                  Invalid Email or Password
+            <div className="glass">
+              <div className="logo-section">
+                <img src={Logo} className="login-img" alt="" />
+              </div>
+              <div className="login-section">
+                <div className="text-title">
+                  <p className="mb-0 pattarai-text">PATTARAI'S</p>
+                  <h1 className="grievance-text">Grievance portal</h1>
+                </div>
+                <div className="input-section">
+                  <input
+                    id="emailId"
+                    className="form-control"
+                    type="email"
+                    placeholder="Email"
+                  />
+                  <input
+                    id="password"
+                    className="form-control"
+                    type="password"
+                    placeholder="Password"
+                  />
+                  <button
+                    type="button"
+                    id="login_btn"
+                    className="btn"
+                    onClick={changePage}
+                  >
+                    Login
+                  </button>
+                  <p className="d-none pt-3 invalid-user" id="invalid_user">
+                    Invalid Email or Password
+                  </p>
+                </div>
+                <p className="text-muted rights">
+                  © {current_year} Pattarai | All Rights Reserved
                 </p>
-                <button
-                  type="button"
-                  className="btn"
-                  id="login_btn"
-                  onClick={changePage}
-                  style={{ marginTop: "15px" }}
-                >
-                  Submit
-                </button>
               </div>
             </div>
           </section>
