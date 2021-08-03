@@ -161,7 +161,7 @@ export default function Home() {
                   <button
                     id="home_logout_btn"
                     type="button"
-                    className="btn"
+                    className="btn home-logout-btn"
                     onClick={handleLogout}
                   >
                     Logout

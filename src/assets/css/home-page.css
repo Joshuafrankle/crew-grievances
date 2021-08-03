@@ -48,18 +48,22 @@
   justify-content: space-between;
 }
 
+.home-logout-btn {
+  background-color: #16cab5 !important;
+}
+
 .home-img {
   height: 5rem;
   width: 5rem;
 }
 
 .home-circle1 {
-  left: 13%;
-  bottom: 6%;
+  left: 14%;
+  bottom: 7%;
 }
 .home-circle2 {
   right: 15%;
-  top: 26%;
+  top: 29%;
 }
 
 @media (max-width: 640px) {
