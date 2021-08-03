@@ -5,8 +5,8 @@ export default function ThankyouPage() {
     <>
       <section className="main">
         <div>
-          <div className="glass text-center" style={{ marginTop: "200px" }}>
-            <img className="mb-4" src={Tick} alt="Done" />
+          <div className="error-glass text-center">
+            <img className="error-img mb-4" src={Tick} alt="Done" />
             <h3 className="text-white"> Application submitted!</h3>
             <h4 className="text-white mt-4">
               Thanks for submitting your application. Our team take prior action
