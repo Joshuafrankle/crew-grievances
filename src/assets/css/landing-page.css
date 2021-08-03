@@ -26,7 +26,6 @@
 .logo-section {
   flex: 1;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -45,8 +44,9 @@
 }
 
 .input-section {
+  width: 100%;
   text-align: center;
-  /* padding: 0 25% 0 25%; */
+  padding: 0 30% 0 30%;
 }
 .input-section > button {
   margin-top: 15%;
@@ -56,9 +56,9 @@
   margin-top: 5%;
 }
 
-login-img {
-  height: 30rem;
-  width: 30rem;
+.login-img {
+  height: 30em;
+  width: 30em;
 }
 
 .login-circle1 {
@@ -81,9 +81,9 @@ login-img {
   .grievance-text {
     font-size: 25px;
   }
-  login-img {
-    height: 8rem;
-    width: 8rem;
+  .login-img {
+    height: 8em;
+    width: 8em;
   }
   .login-section > div {
     margin-top: 10%;
