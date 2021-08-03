@@ -97,22 +97,12 @@ export default function Home() {
         <FadeIn>
           <div className="home-circle1"></div>
           <div className="home-circle2"></div>
-          <div className="text-end logout-btn">
-            <button
-              id="home_logout_btn"
-              type="button"
-              className="btn mt-4 home-logout"
-              style={{ position: "absolute" }}
-              onClick={handleLogout}
-            >
-              Logout
-            </button>
-          </div>
+          <div className="text-end logout-btn"></div>
           <section className="main">
             <div>
               <div className="home-head">
                 <div>
-                  <p className="home-pattarai-text pl-4 mb-0">PATTARAI'S</p>
+                  <p className="home-pattarai-text mb-0">PATTARAI'S</p>
                   <p className="home-grievance-text">Grievance Portal</p>
                 </div>
                 <div>
@@ -136,9 +126,8 @@ export default function Home() {
                       </option>
                     </select>
                   </div>
-
                   <div className="dropdown2">
-                    <p className="mb-2">Projects</p>
+                    <p className="mb-2">Project</p>
                     <select className="form-select" id="project_dropdown">
                       <option selected>None</option>
                       <option value="Project Cortex">Project Cortex</option>
@@ -160,14 +149,24 @@ export default function Home() {
                 >
                   Your text is too short
                 </p>
-                <button
-                  type="button"
-                  className="btn"
-                  id="home_btn"
-                  onClick={getValues}
-                >
-                  Submit
-                </button>
+                <div className="home-button">
+                  <button
+                    type="button"
+                    className="btn"
+                    id="home_btn"
+                    onClick={getValues}
+                  >
+                    Submit
+                  </button>
+                  <button
+                    id="home_logout_btn"
+                    type="button"
+                    className="btn"
+                    onClick={handleLogout}
+                  >
+                    Logout
+                  </button>
+                </div>
               </div>
             </div>
           </section>
