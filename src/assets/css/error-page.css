@@ -1,0 +1,16 @@
+.error-glass {
+  background: linear-gradient(
+    to right bottom,
+    rgba(23, 25, 35, 0.7),
+    rgba(23, 25, 35, 0.3)
+  );
+  z-index: 2;
+  border-radius: 2rem;
+  backdrop-filter: blur(2rem);
+  padding: 60px;
+}
+
+.error-img {
+  height: 10rem;
+  width: 10rem;
+}

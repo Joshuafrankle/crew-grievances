@@ -5,10 +5,10 @@ export default function Error404() {
     <>
       <section className="main">
         <div>
-          <div className="glass text-center" style={{ marginTop: "200px" }}>
-            <img className="pattarai-logo mb-4" src={Warning} alt="Done" />
+          <div className="error-glass text-center">
+            <img className="error-img mb-4" src={Warning} alt="Done" />
             <h3 className="text-white">Error 404</h3>
-            <h4 className="text-white  mt-4">
+            <h4 className="text-white mt-4">
               The Requested page doesn't exist
             </h4>
           </div>

@@ -5,8 +5,8 @@ export default function Problem() {
     <>
       <section className="main">
         <div>
-          <div className="glass text-center" style={{ marginTop: "200px" }}>
-            <img className="mb-4" src={Tick} alt="Done" />
+          <div className="error-glass text-center">
+            <img className="error-img mb-4" src={Tick} alt="Done" />
             <h3 className="text-white">Uh Oh!</h3>
             <h4 className="text-white mt-4">
               We are dealing with an Internal error. Try again sometime later
