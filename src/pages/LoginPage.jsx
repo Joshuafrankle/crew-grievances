@@ -98,7 +98,7 @@ export default function LoginPage() {
                   >
                     Login
                   </button>
-                  <p className="d-none pt-3 invalid-user" id="invalid_user">
+                  <p className="d-none pt-3 invalid-message" id="invalid_user">
                     Invalid Email or Password
                   </p>
                 </div>

@@ -108,62 +108,67 @@ export default function Home() {
               Logout
             </button>
           </div>
-          <section className="home-main">
-            <div className="home-head">
-              <div>
-                <p className="home-pattarai-text pl-4 mb-0">PATTARAI'S</p>
-                <p className="home-grievance-text">Grievance Portal</p>
-              </div>
-              <div>
-                <img className="home-img" src={Logo} alt="" />
-              </div>
-            </div>
-            <div className="home-glass">
-              <h2 className="mt-1">
-                Choose the Project/Committee that you have grievances on
-              </h2>
-              <div className="dropdown-section">
-                <div className="dropdown1">
-                  <p className="mb-2">Committee</p>
-                  <select className="form-select" id="committee_dropdown">
-                    <option selected>None</option>
-                    <option value="Human Resources">Human Resources</option>
-                    <option value="Business Dev">Business Dev</option>
-                    <option value="Events">Events</option>
-                    <option value="Innovation & Media">
-                      Innovation & Media
-                    </option>
-                  </select>
+          <section className="main">
+            <div>
+              <div className="home-head">
+                <div>
+                  <p className="home-pattarai-text pl-4 mb-0">PATTARAI'S</p>
+                  <p className="home-grievance-text">Grievance Portal</p>
                 </div>
+                <div>
+                  <img className="home-img" src={Logo} alt="" />
+                </div>
+              </div>
+              <div className="home-glass">
+                <h2 className="mt-1">
+                  Choose the Project/Committee that you have grievances on
+                </h2>
+                <div className="dropdown-section">
+                  <div className="dropdown1">
+                    <p className="mb-2">Committee</p>
+                    <select className="form-select" id="committee_dropdown">
+                      <option selected>None</option>
+                      <option value="Human Resources">Human Resources</option>
+                      <option value="Business Dev">Business Dev</option>
+                      <option value="Events">Events</option>
+                      <option value="Innovation & Media">
+                        Innovation & Media
+                      </option>
+                    </select>
+                  </div>
 
-                <div className="dropdown2">
-                  <p className="mb-2">Projects</p>
-                  <select className="form-select" id="project_dropdown">
-                    <option selected>None</option>
-                    <option value="Project Cortex">Project Cortex</option>
-                    <option value="Open Cloud">Open Cloud</option>
-                    <option value="Workshop Hub">Workshop Hub</option>
-                    <option value="Website Revamp">Website Revamp</option>
-                    <option value="Pager">Pager</option>
-                  </select>
+                  <div className="dropdown2">
+                    <p className="mb-2">Projects</p>
+                    <select className="form-select" id="project_dropdown">
+                      <option selected>None</option>
+                      <option value="Project Cortex">Project Cortex</option>
+                      <option value="Open Cloud">Open Cloud</option>
+                      <option value="Workshop Hub">Workshop Hub</option>
+                      <option value="Website Revamp">Website Revamp</option>
+                      <option value="Pager">Pager</option>
+                    </select>
+                  </div>
                 </div>
+                <textarea
+                  className="form-control"
+                  placeholder="Your Grievance"
+                  id="grievance_text"
+                ></textarea>
+                <p
+                  id="error_text"
+                  className="d-none mt-3 ml-1 mb-0 invalid-message"
+                >
+                  Your text is too short
+                </p>
+                <button
+                  type="button"
+                  className="btn"
+                  id="home_btn"
+                  onClick={getValues}
+                >
+                  Submit
+                </button>
               </div>
-              <textarea
-                className="form-control"
-                placeholder="Your Grievance"
-                id="grievance_text"
-              ></textarea>
-              <p id="error_text" className="d-none mt-3 ml-1 mb-0 invalid-user">
-                Your text is too short
-              </p>
-              <button
-                type="button"
-                className="btn"
-                id="home_btn"
-                onClick={getValues}
-              >
-                Submit
-              </button>
             </div>
           </section>
         </FadeIn>

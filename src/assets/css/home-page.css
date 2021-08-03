@@ -1,11 +1,3 @@
-.home-main {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 .home-glass {
   background: linear-gradient(
     to right bottom,
@@ -22,9 +14,9 @@
 }
 
 .home-head {
-  width: 60%;
   display: flex;
   justify-content: space-between;
+  padding: 0 30px 0 30px;
 }
 
 .dropdown-section {
@@ -65,9 +57,6 @@
 }
 
 @media (max-width: 640px) {
-  .home-head {
-    width: 100%;
-  }
   .home-pattarai-text {
     letter-spacing: 10px;
     font-size: 10px;
@@ -76,7 +65,7 @@
     font-size: 25px;
   }
   .home-img {
-    height: 3rem;
-    width: 3rem;
+    height: 4rem;
+    width: 4rem;
   }
 }
