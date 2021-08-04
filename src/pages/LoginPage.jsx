@@ -68,7 +68,7 @@ export default function LoginPage() {
           <div className="login-circle1"></div>
           <div className="login-circle2"></div>
           <section className="main">
-            <div className="glass">
+            <div className="glass m-2 m-md-5 m-lg-0">
               <div className="logo-section">
                 <img src={Logo} className="login-img" alt="" />
               </div>
@@ -80,13 +80,13 @@ export default function LoginPage() {
                 <div className="input-section">
                   <input
                     id="emailId"
-                    className="form-control"
+                    className="form-control py-2"
                     type="email"
                     placeholder="Email"
                   />
                   <input
                     id="password"
-                    className="form-control"
+                    className="form-control py-2"
                     type="password"
                     placeholder="Password"
                   />

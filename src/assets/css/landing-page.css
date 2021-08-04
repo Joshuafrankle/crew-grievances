@@ -1,7 +1,7 @@
 .glass {
   display: flex;
-  min-height: 80vh;
-  width: 80vw;
+  height: 37rem;
+  width: 80rem;
   background: linear-gradient(
     to right bottom,
     rgba(23, 25, 35, 0.7),
@@ -44,9 +44,8 @@
 }
 
 .input-section {
-  width: 100%;
+  width: 300px;
   text-align: center;
-  padding: 0 30% 0 30%;
 }
 .input-section > button {
   margin-top: 15%;
@@ -90,8 +89,11 @@
   }
   .rights {
     font-size: 90%;
-    margin-top: 30%;
+    margin-top: 100px;
     margin-bottom: 5%;
+  }
+  .input-section {
+    width: 200px;
   }
 }
 

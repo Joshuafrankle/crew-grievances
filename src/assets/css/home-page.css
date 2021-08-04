@@ -49,7 +49,10 @@
 }
 
 .home-logout-btn {
-  background-color: #16cab5 !important;
+  font-weight: 300 !important;
+  border: 1px solid #15e6ca !important;
+  color: #fafafa !important;
+  background-color: #1a1d2500 !important;
 }
 
 .home-img {
