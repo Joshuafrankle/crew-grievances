@@ -12,8 +12,10 @@ export default function GrievanceList({ theData }) {
   function handleLogout() {
     const grievanceLogoutBtn = document.getElementById("grievance_logout_btn");
     grievanceLogoutBtn.setAttribute("disabled", "true");
+
     const token = window.localStorage.getItem("token");
     const tokenValue = { token };
+
     fetch(`${endpoint}/api/logout`, {
       method: "POST",
       headers: {
@@ -35,6 +37,7 @@ export default function GrievanceList({ theData }) {
         setError(true);
       });
   }
+
   return (
     <>
       {error ? (
@@ -62,21 +65,23 @@ export default function GrievanceList({ theData }) {
               </div>
             </div>
             {theData.map((grievance, id) => {
-              <FadeIn key={id}>
-                <div className="card mb-3">
-                  <div className="card-body">
-                    <h5>
-                      <span className="badge" style={{ marginRight: "10px" }}>
-                        {grievance[1]}
-                      </span>
-                      <span className="badge">{grievance[2]}</span>
-                    </h5>
-                    <p className="card-text font-weight-bold mt-3">
-                      {grievance[3]}
-                    </p>
+              return (
+                <FadeIn key={id}>
+                  <div className="card mb-3">
+                    <div className="card-body">
+                      <h5>
+                        <span className="badge" style={{ marginRight: "10px" }}>
+                          {grievance[1]}
+                        </span>
+                        <span className="badge">{grievance[2]}</span>
+                      </h5>
+                      <p className="card-text font-weight-bold mt-3">
+                        {grievance[3]}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </FadeIn>;
+                </FadeIn>
+              );
             })}
           </div>
         </FadeIn>
