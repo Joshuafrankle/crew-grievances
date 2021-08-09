@@ -22,6 +22,15 @@ export default function Loader() {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    fetch("https://type.fit/api/quotes").then((res) => {
+      res.json().then((res) => {
+        let item = res[Math.floor(Math.random() * res.length)];
+        setQuotes(item);
+      });
+    });
+  }, []);
+
+  useEffect(() => {
     const timer = setInterval(() => {
       setProgress((oldProgress) => {
         if (oldProgress === 100) {
@@ -31,19 +40,9 @@ export default function Loader() {
         return Math.min(oldProgress + diff, 100);
       });
     }, 500);
-
     return () => {
       clearInterval(timer);
     };
-  }, []);
-
-  useEffect(() => {
-    fetch("https://type.fit/api/quotes").then((res) => {
-      res.json().then((res) => {
-        let item = res[Math.floor(Math.random() * res.length)];
-        setQuotes(item);
-      });
-    });
   }, []);
 
   return (
