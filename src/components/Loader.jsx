@@ -51,14 +51,12 @@ export default function Loader() {
         className="d-flex align-items-center justify-content-center px-5"
         style={{ height: "100vh" }}
       >
-        <div>
+        <div style={{ width: "95vw" }}>
           <div className="text-center mb-5">
             <h4 className="mb-2 loader-quote fst-italic">{quotes.text}</h4>
             <p className="fw-light">- {quotes.author}</p>
           </div>
-          <div className="px-5" style={{ width: "100vw" }}>
-            <BorderLinearProgress variant="determinate" value={progress} />
-          </div>
+          <BorderLinearProgress variant="determinate" value={progress} />
         </div>
       </div>
     </>
