@@ -27,6 +27,9 @@ export default function HomeRoute(props) {
             setError(true);
           } else if (data.status === "false") {
             setUser("false");
+          } else if (data.status === "expired") {
+            window.localStorage.removeItem("token");
+            setUser("false");
           } else if (data.status === "success") {
             setUser(`${data.role}`);
           }
