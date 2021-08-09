@@ -27,9 +27,6 @@ export default function HomeRoute(props) {
             setError(true);
           } else if (data.status === "false") {
             setUser("false");
-          } else if (data.status === "expired") {
-            window.localStorage.removeItem("token");
-            setUser("false");
           } else if (data.status === "success") {
             setUser(`${data.role}`);
           }
@@ -51,7 +48,7 @@ export default function HomeRoute(props) {
         <Problem />
       ) : user === "crew" ? (
         <Redirect to={{ pathname: "/home" }} />
-      ) : user === "admin" ? (
+      ) : user === "VPO" || "VPE" || "HR" ? (
         <Redirect to={{ pathname: "/grievancelist" }} />
       ) : (
         <Component />
