@@ -92,3 +92,13 @@ textarea {
   background-color: #25c0b1;
   color: #000000;
 }
+
+.loader-quote {
+  font-size: 30px;
+}
+
+@media (max-width: 600px) {
+  .loader-quote {
+    font-size: 18px;
+  }
+}

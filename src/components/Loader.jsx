@@ -54,7 +54,7 @@ export default function Loader() {
       >
         <div>
           <div className="text-center mb-5">
-            <h4 className="mb-2 fst-italic">{quotes.text}</h4>
+            <h4 className="mb-2 loader-quote fst-italic">{quotes.text}</h4>
             <p className="fw-light">- {quotes.author}</p>
           </div>
           <div className="px-5" style={{ width: "100vw" }}>
