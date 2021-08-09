@@ -39,7 +39,7 @@ export default function Loader() {
   return (
     <>
       <div
-        className="d-flex align-items-center justify-content-center p-5"
+        className="d-flex align-items-center justify-content-center px-5"
         style={{ height: "100vh" }}
       >
         <BorderLinearProgress variant="determinate" value={progress} />
