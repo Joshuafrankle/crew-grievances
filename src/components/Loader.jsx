@@ -18,6 +18,7 @@ const BorderLinearProgress = withStyles(() => ({
 }))(LinearProgress);
 
 export default function Loader() {
+  const [quotes, setQuotes] = useState({});
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -36,13 +37,30 @@ export default function Loader() {
     };
   }, []);
 
+  useEffect(() => {
+    fetch("https://type.fit/api/quotes").then((res) => {
+      res.json().then((res) => {
+        let item = res[Math.floor(Math.random() * res.length)];
+        setQuotes(item);
+      });
+    });
+  }, []);
+
   return (
     <>
       <div
         className="d-flex align-items-center justify-content-center px-5"
         style={{ height: "100vh" }}
       >
-        <BorderLinearProgress variant="determinate" value={progress} />
+        <div>
+          <div className="text-center mb-5">
+            <h4 className="mb-2 fst-italic">{quotes.text}</h4>
+            <p className="fw-light">- {quotes.author}</p>
+          </div>
+          <div className="px-5" style={{ width: "100vw" }}>
+            <BorderLinearProgress variant="determinate" value={progress} />
+          </div>
+        </div>
       </div>
     </>
   );
