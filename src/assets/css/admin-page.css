@@ -1,0 +1,53 @@
+.admin-main {
+  margin: 50px;
+}
+
+.admin-head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.admin-img {
+  height: 6rem;
+  width: 6rem;
+  margin-bottom: 20px;
+  margin: 0 20px 0 20px;
+}
+
+.admin-pattarai-text {
+  margin-left: 6px;
+  font-family: Montserrat;
+  font-weight: 300;
+  letter-spacing: 15px;
+}
+
+.admin-grievance-text {
+  font-family: Montserrat;
+  font-weight: 800;
+  font-size: 3em;
+}
+
+.admin-logout-btn {
+  margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+  .admin-img {
+    height: 4rem;
+    width: 4rem;
+  }
+  .admin-main {
+    margin: 15px;
+  }
+  .admin-grievance-text {
+    font-size: 1.5em;
+  }
+  .admin-pattarai-text {
+    font-size: 11px;
+    margin-left: 2px;
+    letter-spacing: 7px;
+  }
+  .admin-logout-btn {
+    font-size: 10px;
+  }
+}

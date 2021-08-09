@@ -3,6 +3,7 @@
 @import url("./landing-page.css");
 @import url("./home-page.css");
 @import url("./error-page.css");
+@import url("./admin-page.css");
 
 * {
   padding: 0;
@@ -81,6 +82,7 @@ textarea {
 }
 
 .card {
+  width: 100%;
   color: #fafafa;
   background-color: #181a22;
   border-color: #4e9992;
