@@ -48,7 +48,11 @@ export default function LoginPage() {
             window.localStorage.setItem("token", data.token);
             if (data.role === "crew") {
               history.push("/home");
-            } else if (data.role === "admin") {
+            } else if (
+              data.role === "VPO" ||
+              data.role === "VPE" ||
+              data.role === "HR"
+            ) {
               history.push("/grievancelist");
             }
           }

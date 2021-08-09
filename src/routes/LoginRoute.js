@@ -45,7 +45,6 @@ export default function HomeRoute(props) {
 
   return (
     <>
-      {console.log(user)}
       {loading ? (
         <Loader />
       ) : error ? (
