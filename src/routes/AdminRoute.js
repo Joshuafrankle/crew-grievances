@@ -33,7 +33,11 @@ export default function HomeRoute(props) {
             window.localStorage.removeItem("token");
             history.push("/");
           } else if (data.status === "success") {
-            if (data.role === "admin") {
+            if (
+              data.role === "HR" ||
+              data.role === "VPE" ||
+              data.role === "VPO"
+            ) {
               setIsAdmin(true);
             }
           }

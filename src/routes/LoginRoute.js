@@ -45,13 +45,14 @@ export default function HomeRoute(props) {
 
   return (
     <>
+      {console.log(user)}
       {loading ? (
         <Loader />
       ) : error ? (
         <Problem />
       ) : user === "crew" ? (
         <Redirect to={{ pathname: "/home" }} />
-      ) : user === "VPO" || "VPE" || "HR" ? (
+      ) : user === "HR" || user === "VPO" || user === "VPE" ? (
         <Redirect to={{ pathname: "/grievancelist" }} />
       ) : (
         <Component />
