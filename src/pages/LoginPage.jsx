@@ -2,7 +2,7 @@ import { useState } from "react";
 import Problem from "../components/Problem";
 import { useHistory } from "react-router-dom";
 import FadeIn from "../components/FadeIn";
-import Logo from "../assets/images/logo1.png";
+import Logo from "../assets/images/pattarai-shine.gif";
 import { endpoint } from "../components/Storage";
 
 export default function LoginPage() {
