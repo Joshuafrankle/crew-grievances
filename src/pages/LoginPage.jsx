@@ -94,6 +94,12 @@ export default function LoginPage() {
                     type="password"
                     placeholder="Password"
                   />
+                  <p
+                    className="d-none pt-3 my-0 invalid-message text-start"
+                    id="invalid_user"
+                  >
+                    Invalid Email or Password
+                  </p>
                   <button
                     type="button"
                     id="login_btn"
@@ -102,9 +108,6 @@ export default function LoginPage() {
                   >
                     Login
                   </button>
-                  <p className="d-none pt-3 invalid-message" id="invalid_user">
-                    Invalid Email or Password
-                  </p>
                 </div>
                 <p className="text-muted rights">
                   © {current_year} Pattarai | All Rights Reserved
