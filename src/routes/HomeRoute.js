@@ -33,7 +33,9 @@ export default function HomeRoute(props) {
           } else if (data.status === "success") {
             setUser(`${data.role}`);
           }
-          setLoading(false);
+          setTimeout(() => {
+            setLoading(false);
+          }, 3000);
         })
         .catch(() => {
           setError(true);

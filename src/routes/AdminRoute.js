@@ -41,7 +41,9 @@ export default function HomeRoute(props) {
               setIsAdmin(true);
             }
           }
-          setLoading(false);
+          setTimeout(() => {
+            setLoading(false);
+          }, 3000);
         })
         .catch(() => {
           setError(true);
