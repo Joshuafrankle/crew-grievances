@@ -1,8 +1,8 @@
 import Problem from "../components/Problem";
 import Loader from "../components/Loader";
 import { useSWRPost } from "../components/DataFetch";
-import { Redirect } from "react-router-dom";
 import { endpoint } from "../components/Storage";
+import { Redirect } from "react-router-dom";
 
 export default function HomeRoute(props) {
   const Component = props.component;
@@ -19,9 +19,9 @@ export default function HomeRoute(props) {
 
   return (
     <>
-      {user === "crew" ? (
+      {user.role === "crew" ? (
         <Redirect to={{ pathname: "/home" }} />
-      ) : user === "HR" || user === "VPO" || user === "VPE" ? (
+      ) : user.role === "HR" || user.role === "VPO" || user.role === "VPE" ? (
         <Redirect to={{ pathname: "/grievancelist" }} />
       ) : (
         <Component />
