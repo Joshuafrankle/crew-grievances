@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
-import { Redirect } from "react-router-dom";
 import Problem from "../components/Problem";
 import Loader from "../components/Loader";
 import { endpoint } from "../components/Storage";
+import { Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
 export default function HomeRoute(props) {
