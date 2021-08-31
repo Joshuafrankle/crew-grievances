@@ -1,5 +1,6 @@
 import Problem from "../components/Problem";
 import Loader from "../components/Loader";
+import { useSWRPost } from "../components/DataFetch";
 import { endpoint } from "../components/Storage";
 import { Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
@@ -8,61 +9,26 @@ export default function HomeRoute(props) {
   const Component = props.component;
   const history = useHistory();
   const token = window.localStorage.getItem("token");
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
 
-  useEffect(() => {
-    const tokenValue = { token };
-    fetch(`${endpoint}/api/check`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(tokenValue),
-    }).then((res) => {
-      res
-        .json()
-        .then((data) => {
-          if (data.status === "failure") {
-            setError(true);
-          } else if (data.status === "false") {
-            history.push("/");
-          } else if (data.status === "expired") {
-            window.localStorage.removeItem("token");
-            history.push("/");
-          } else if (data.status === "success") {
-            if (
-              data.role === "HR" ||
-              data.role === "VPE" ||
-              data.role === "VPO"
-            ) {
-              setIsAdmin(true);
-            }
-          }
-          setTimeout(() => {
-            setLoading(false);
-          }, 3000);
-        })
-        .catch(() => {
-          setError(true);
-          setLoading(false);
-        });
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const {
+    data: user,
+    isLoading,
+    isError,
+  } = useSWRPost(`${endpoint}/api/check`, token);
 
-  return (
-    <>
-      {loading ? (
-        <Loader />
-      ) : error ? (
-        <Problem />
-      ) : isAdmin ? (
-        <Component />
-      ) : (
-        <Redirect to={{ pathname: "/" }} />
-      )}
-    </>
-  );
+  if (isError) return <Problem />;
+  if (isLoading) return <Loader />;
+  if (user) {
+    if (user.status === "failure") return <Problem />;
+  }
+
+  if (user) {
+    if (user.role === "HR" || user.role === "VPE" || user.role === "VPO") {
+      var isAdmin = true;
+    } else {
+      history.push("/");
+    }
+  }
+
+  return <>{isAdmin ? <Component /> : <Redirect to={{ pathname: "/" }} />}</>;
 }
