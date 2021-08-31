@@ -16,8 +16,8 @@ export default function HomeRoute(props) {
 
   if (isError) return <Problem />;
   if (isLoading) return <Loader />;
-  if (user && user.status === "failure") {
-    return <Problem />;
+  if (user) {
+    if (user.status === "failure") return <Problem />;
   }
 
   return (
