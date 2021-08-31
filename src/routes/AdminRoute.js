@@ -3,11 +3,9 @@ import Loader from "../components/Loader";
 import { useSWRPost } from "../components/DataFetch";
 import { endpoint } from "../components/Storage";
 import { Redirect } from "react-router-dom";
-import { useHistory } from "react-router-dom";
 
 export default function HomeRoute(props) {
   const Component = props.component;
-  const history = useHistory();
   const token = window.localStorage.getItem("token");
 
   const {
@@ -18,17 +16,18 @@ export default function HomeRoute(props) {
 
   if (isError) return <Problem />;
   if (isLoading) return <Loader />;
-  if (user) {
-    if (user.status === "failure") return <Problem />;
-  }
 
   if (user) {
-    if (user.role === "HR" || user.role === "VPE" || user.role === "VPO") {
-      var isAdmin = true;
+    if (user.status === "failure") {
+      return <Problem />;
+    } else if (
+      user.role === "HR" ||
+      user.role === "VPE" ||
+      user.role === "VPO"
+    ) {
+      return <Component />;
     } else {
-      history.push("/");
+      return <Redirect to={{ pathname: "/" }} />;
     }
   }
-
-  return <>{isAdmin ? <Component /> : <Redirect to={{ pathname: "/" }} />}</>;
 }
