@@ -14,8 +14,11 @@ export default function HomeRoute(props) {
     isError,
   } = useSWRPost(`${endpoint}/api/check`, token);
 
-  if (isError || user.status === "failure") return <Problem />;
+  if (isError) return <Problem />;
   if (isLoading) return <Loader />;
+  if (user && user.status === "failure") {
+    return <Problem />;
+  }
 
   return (
     <>
