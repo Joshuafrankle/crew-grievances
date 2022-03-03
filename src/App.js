@@ -18,9 +18,9 @@ export default function App() {
   return (
     <Router>
       <Switch>
-        <LoginRoute exact path="/" component={LoginPage} />
-        <HomeRoute exact path="/home" component={Home} />
-        <AdminRoute exact path="/grievancelist" component={DisplayGrievances} />
+        <Route exact path="/" component={LoginPage} />
+        <Route exact path="/home" component={Home} />
+        <Route exact path="/grievancelist" component={DisplayGrievances} />
         <Route exact path="/404" component={Error404} />
         <Redirect to="/404" />
       </Switch>
