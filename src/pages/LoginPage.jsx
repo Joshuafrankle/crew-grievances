@@ -1,17 +1,17 @@
 import { useState, useRef } from "react";
-import Problem from "../components/Problem";
 import { useHistory } from "react-router-dom";
+import Problem from "../components/Problem";
 import FadeIn from "../components/FadeIn";
 import Logo from "../assets/images/pattarai-shine.gif";
-import { endpoint } from "../components/Storage";
+import { axiosPost } from "../components/DataFetch";
 
 export default function LoginPage() {
   const history = useHistory();
+  const buttonRef = useRef();
   const [user, setUser] = useState({
     userName: "",
     password: "",
   });
-  const buttonRef = useRef();
   const [error, setError] = useState({
     serverError: false,
     userError: false,
@@ -20,6 +20,11 @@ export default function LoginPage() {
   async function handleLogin() {
     buttonRef.current.disabled = true;
     buttonRef.innerHTML = `<div class="spinner-border p-2 spinner-border-sm" role="status" aria-hidden="true"><span class="visually-hidden">Loading...</span></div>`;
+    try{
+      const {data} = await axiosPost('/users', user)
+    }catch(err){
+      setError({...error, serverError: true})
+    }
   }
 
   return (
