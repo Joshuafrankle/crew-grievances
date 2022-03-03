@@ -1,29 +1,34 @@
-import axios from "axios";
-import useSWR from "swr";
+import axios from 'axios';
 
-const endpoint = "https://pattarai-grievances.herokuapp.com"; // http://localhost:5000
+const endpoint = 'http://127.0.0.1:5000/api';
 
-// const axiosGet = (url) => axios.get(url).then((res) => res.data);
-// const axiosPost = (url) => axios.post(url).then((res) => res.data);
-
-export function useSWRGet(url) {
-  const { data, error } = useSWR(`${endpoint}${url}`, (url) =>
-    axios.get(url).then((res) => res.data)
-  );
-  return {
-    data: data,
-    isLoading: !error && !data,
-    isError: error,
-  };
+export function axiosGet(url) {
+  return axios.request({
+    method: 'GET',
+    url: `${endpoint}${url}`,
+  });
 }
 
-export function useSWRPost(url, reqData) {
-  const { data, error } = useSWR(`${endpoint}${url}`, (url) =>
-    axios.post(url, { token: reqData }).then((res) => res.data)
-  );
-  return {
+export function axiosPost(url, data={}) {
+  return axios.request({
+    method: 'POST',
+    url: `${endpoint}${url}`,
     data: data,
-    isLoading: !error && !data,
-    isError: error,
-  };
+  });
+}
+
+export function axiosPatch(url, data={}) {
+  return axios.request({
+    method: 'PATCH',
+    url: `${endpoint}${url}`,
+    data: data,
+  });
+}
+
+export function axiosDelete(url, data={}) {
+  return axios.request({
+    method: 'DELETE',
+    url: `${endpoint}${url}`,
+    data: data,
+  });
 }
