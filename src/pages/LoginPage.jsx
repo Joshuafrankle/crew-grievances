@@ -20,10 +20,10 @@ export default function LoginPage() {
   async function handleLogin() {
     buttonRef.current.disabled = true;
     buttonRef.innerHTML = `<div class="spinner-border p-2 spinner-border-sm" role="status" aria-hidden="true"><span class="visually-hidden">Loading...</span></div>`;
-    try{
-      const {data} = await axiosPost('/users', user)
-    }catch(err){
-      setError({...error, serverError: true})
+    try {
+      const { data } = await axiosPost("/users", user);
+    } catch (err) {
+      setError({ ...error, serverError: true });
     }
   }
 
