@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import Problem from "../components/Problem";
 import FadeIn from "../components/FadeIn";
 import Logo from "../assets/images/pattarai-shine.gif";
-import { axiosPost } from "../components/DataFetch";
+import { axiosRequest } from "../components/DataFetch";
 
 export default function LoginPage() {
   const history = useHistory();
@@ -21,7 +21,7 @@ export default function LoginPage() {
     buttonRef.current.disabled = true;
     buttonRef.innerHTML = `<div class="spinner-border p-2 spinner-border-sm" role="status" aria-hidden="true"><span class="visually-hidden">Loading...</span></div>`;
     try{
-      const {data} = await axiosPost('/users', user)
+      const {data} = await axiosRequest('/users', "POST" ,user)
     }catch(err){
       setError({...error, serverError: true})
     }
