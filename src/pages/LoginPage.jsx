@@ -17,11 +17,12 @@ export default function LoginPage() {
     userError: false,
   });
 
-  function handleLogin() {
+  async function handleLogin() {
     buttonRef.current.disabled = true;
-    buttonRef.innerHTML = `<div class="spinner-border p-2 spinner-border-sm" role="status" aria-hidden="true"><span class="visually-hidden">Loading...</span></div>`;
+    buttonRef.current.innerHTML = `<div class="spinner-border p-2 spinner-border-sm" role="status" aria-hidden="true"><span class="visually-hidden">Loading...</span></div>`;
     try{
-      const {data} = axiosRequest('/users', "POST" ,user)
+      const {data} = await axiosRequest('/', "POST" ,user)
+      console.log(data)
     }catch(err){
       setError({...error, serverError: true})
     }
@@ -42,7 +43,7 @@ export default function LoginPage() {
               </div>
               <div className="login-section">
                 <div className="text-title">
-                  <p className="mb-0 pattarai-text">PATTARAI'S</p>
+                  <p className="mb-0 pattarai-text"></p>
                   <h1 className="grievance-text">Grievance portal</h1>
                 </div>
                 <div className="input-section">
@@ -77,7 +78,7 @@ export default function LoginPage() {
                   </button>
                 </div>
                 <p className="text-muted rights">
-                  © {new Date().getFullYear()} Pattarai | All Rights Reserved
+                  © {new Date().getFullYear()}| All Rights Reserved
                 </p>
               </div>
             </div>

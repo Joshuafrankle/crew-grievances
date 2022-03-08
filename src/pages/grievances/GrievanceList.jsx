@@ -2,7 +2,7 @@
 import FadeIn from "../../components/FadeIn";
 import { useHistory } from "react-router-dom";
 import Problem from "../../components/Problem";
-import { endpoint } from "../../components/Storage";
+import {axiosRequest } from "../../components/DataFetch";
 import { useState } from "react";
 
 export default function GrievanceList({ theData }) {
@@ -16,26 +16,26 @@ export default function GrievanceList({ theData }) {
     const token = window.localStorage.getItem("token");
     const tokenValue = { token };
 
-    fetch(`${endpoint}/api/logout`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(tokenValue),
-    })
-      .then((res) => {
-        res.json().then((data) => {
-          if (data.status === "failure") {
-            setError(true);
-          } else if (data.status === "success") {
-            window.localStorage.removeItem("token");
-            history.push("/");
-          }
-        });
-      })
-      .catch(() => {
-        setError(true);
-      });
+    // fetch(`${endpoint}/api/logout`, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(tokenValue),
+    // })
+    //   .then((res) => {
+    //     res.json().then((data) => {
+    //       if (data.status === "failure") {
+    //         setError(true);
+    //       } else if (data.status === "success") {
+    //         window.localStorage.removeItem("token");
+    //         history.push("/");
+    //       }
+    //     });
+    //   })
+    //   .catch(() => {
+    //     setError(true);
+    //   });
   }
 
   return (
