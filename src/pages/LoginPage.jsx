@@ -17,11 +17,11 @@ export default function LoginPage() {
     userError: false,
   });
 
-  async function handleLogin() {
+  function handleLogin() {
     buttonRef.current.disabled = true;
     buttonRef.innerHTML = `<div class="spinner-border p-2 spinner-border-sm" role="status" aria-hidden="true"><span class="visually-hidden">Loading...</span></div>`;
     try{
-      const {data} = await axiosRequest('/users', "POST" ,user)
+      const {data} = axiosRequest('/users', "POST" ,user)
     }catch(err){
       setError({...error, serverError: true})
     }
