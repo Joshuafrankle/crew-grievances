@@ -21,7 +21,7 @@ export default function LoginPage() {
     buttonRef.current.disabled = true;
     buttonRef.current.innerHTML = `<div class="spinner-border p-2 spinner-border-sm" role="status" aria-hidden="true"><span class="visually-hidden">Loading...</span></div>`;
     try{
-      const {data} = await axiosRequest('/', "POST" ,user)
+      const {data} = await axiosRequest('/')
       console.log(data)
     }catch(err){
       setError({...error, serverError: true})
