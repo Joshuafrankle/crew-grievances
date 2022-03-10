@@ -12,7 +12,7 @@ export default function LoginRoute({ component: Component }) {
   async function handleLogin() {
     try {
       const { data } = await axiosRequest("/login", "POST");
-      if(data.success){
+      if (data.success) {
         setUser(data.user);
       }
     } catch {
@@ -29,13 +29,13 @@ export default function LoginRoute({ component: Component }) {
     return <Loader />;
   } else if (err) {
     return <Problem />;
-  }else if(user === "user"){
+  } else if (user === "user") {
     <Redirect to={{ pathname: "/home" }} />;
   } else if (user === "admin") {
     <Redirect to={{ pathname: "/grievancelist" }} />;
   } else if (user === "superAdmin") {
     <Redirect to={{ pathname: "/user-manage" }} />;
-  }else {
-    <Component/>
+  } else {
+    return <Component />;
   }
 }
