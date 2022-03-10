@@ -1,6 +1,6 @@
-import axios from 'axios';
+import axios from "axios";
 
-const endpoint = 'https://jsonplaceholder.typicode.com/users';
+const endpoint = "http://localhost:5000/api";
 
 export function axiosRequest(url = "/", method = "GET", data = {}) {
   const token = localStorage.getItem("token") ?? "null";
