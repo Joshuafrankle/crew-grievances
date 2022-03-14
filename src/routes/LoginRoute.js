@@ -15,8 +15,10 @@ export default function LoginRoute({ component: Component }) {
       if (data.success) {
         setUser(data.user);
       }
-    } catch {
-      setErr(true);
+    } catch (err) {
+      if (err.response.status === 500) {
+        setErr(true);
+      }
     }
     setLoading(false);
   }
