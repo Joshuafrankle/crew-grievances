@@ -5,15 +5,15 @@ import Problem from "../components/Problem";
 import Loader from "../components/Loader";
 
 export default function LoginRoute({ component: Component }) {
-  const [loading, setLoading] = useState(true);
   const [err, setErr] = useState(false);
-  const [user, setUser] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [isAuthorized, setIsAuthorized] = useState(false);
 
   async function handleLogin() {
     try {
       const { data } = await axiosRequest("/login", "POST");
       if (data.success) {
-        setUser(data.user);
+        setUser(true);
       }
     } catch (err) {
       if (err.response.status === 500) {
