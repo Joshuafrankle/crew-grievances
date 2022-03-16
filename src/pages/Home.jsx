@@ -2,7 +2,7 @@ import { useState } from "react";
 import Problem from "../components/Problem";
 import Logo from "../assets/images/logo.png";
 import FadeIn from "../components/FadeIn";
-import { endpoint } from "../components/Storage";
+import { axiosRequest } from "../components/DataFetch";
 import ThankyouPage from "./ThankyouPage";
 import { useHistory } from "react-router-dom";
 
@@ -29,26 +29,26 @@ export default function Home() {
 
     if (grievanceValue.length >= 3) {
       const submitData = { committeeValue, projectValue, grievanceValue };
-      fetch(`${endpoint}/api/submit`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(submitData),
-      }).then((res) => {
-        res
-          .json()
-          .then((data) => {
-            if (data.status === "failure") {
-              setError(true);
-            } else if (data.status === "success") {
-              setThankyouPage(true);
-            }
-          })
-          .catch(() => {
-            setError(true);
-          });
-      });
+      // fetch(`${endpoint}/api/submit`, {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(submitData),
+      // }).then((res) => {
+      //   res
+      //     .json()
+      //     .then((data) => {
+      //       if (data.status === "failure") {
+      //         setError(true);
+      //       } else if (data.status === "success") {
+      //         setThankyouPage(true);
+      //       }
+      //     })
+      //     .catch(() => {
+      //       setError(true);
+      //     });
+      // });
     } else {
       grievanceText.setAttribute("is-invalid", true);
       errorText.classList.remove("d-none");
@@ -65,7 +65,7 @@ export default function Home() {
     homeLogoutBtn.setAttribute("disabled", "true");
     const token = window.localStorage.getItem("token");
     const tokenValue = { token };
-    fetch(`${endpoint}/api/logout`, {
+    fetch(`/api/logout`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

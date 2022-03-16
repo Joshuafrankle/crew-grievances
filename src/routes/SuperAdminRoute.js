@@ -16,18 +16,17 @@
 
 //   if (isError) return <Problem />;
 //   if (isLoading) return <Loader />;
-
 //   if (user) {
-//     if (user.status === "failure") {
-//       return <Problem />;
-//     } else if (
-//       user.role === "HR" ||
-//       user.role === "VPE" ||
-//       user.role === "VPO"
-//     ) {
-//       return <Component />;
-//     } else {
-//       return <Redirect to={{ pathname: "/" }} />;
-//     }
+//     if (user.status === "failure") return <Problem />;
 //   }
+
+//   return (
+//     <>
+//       {user.role === "crew" || user.role === "admin" ? (
+//         <Component />
+//       ) : (
+//         <Redirect to={{ pathname: "/" }} />
+//       )}
+//     </>
+//   );
 // }
