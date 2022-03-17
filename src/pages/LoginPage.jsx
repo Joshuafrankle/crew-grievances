@@ -14,17 +14,23 @@ export default function LoginPage() {
   });
   const [error, setError] = useState({
     serverError: false,
-    userError: false,
+    userError: "",
   });
 
   async function handleLogin() {
+    setError({ ...error, userError: "" });
     buttonRef.current.disabled = true;
     buttonRef.current.innerHTML = `<div class="spinner-border p-2 spinner-border-sm" role="status" aria-hidden="true"><span class="visually-hidden">Loading...</span></div>`;
-    try{
-      const {data} = await axiosRequest('/')
-      console.log(data)
-    }catch(err){
-      setError({...error, serverError: true})
+    let res = null;
+    try {
+      res = await axiosRequest("/");
+      console.log(res);
+    } catch (err) {
+      if (err.response.status === 5000) {
+        setError({ ...error, serverError: true });
+      } else {
+        setError({ ...error, userError: res.data });
+      }
     }
   }
 
@@ -63,11 +69,11 @@ export default function LoginPage() {
                       setUser({ ...user, password: e.target.value })
                     }
                   />
-                  {error.userError ? (
+                  {error.userError && (
                     <p className="d-none pt-3 my-0 invalid-message text-start">
-                      Invalid Email or Password
+                      {error.userError}
                     </p>
-                  ) : null}
+                  )}
                   <button
                     ref={buttonRef}
                     type="button"
