@@ -152,7 +152,6 @@ export default function Home() {
                 </p>
                 <div className="home-button">
                   <button
-                  ref={}
                     type="button"
                     className="btn"
                     id="home_btn"
