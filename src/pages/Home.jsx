@@ -8,6 +8,7 @@ import { useHistory } from "react-router-dom";
 
 export default function Home() {
   const history = useHistory();
+  const buttonRef = useRef();
   const [error, setError] = useState(false);
   const [thankyouPage, setThankyouPage] = useState(false);
 
@@ -151,6 +152,7 @@ export default function Home() {
                 </p>
                 <div className="home-button">
                   <button
+                  ref={}
                     type="button"
                     className="btn"
                     id="home_btn"
@@ -159,7 +161,7 @@ export default function Home() {
                     Submit
                   </button>
                   <button
-                    id="home_logout_btn"
+                    ref={buttonRef}
                     type="button"
                     className="btn home-logout-btn"
                     onClick={handleLogout}
