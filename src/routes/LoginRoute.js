@@ -23,21 +23,19 @@ export default function LoginRoute({ component: Component }) {
     setLoading(false);
   }
 
-  useEffect(() => {
-    handleLogin();
-  }, []);
+  useEffect(() => handleLogin(), []);
 
   if (loading) {
     return <Loader />;
   } else if (err) {
     return <Problem />;
-  } else if (user === "user") {
-    <Redirect to={{ pathname: "/home" }} />;
-  } else if (user === "admin") {
-    <Redirect to={{ pathname: "/grievancelist" }} />;
-  } else if (user === "superAdmin") {
-    <Redirect to={{ pathname: "/user-manage" }} />;
-  } else {
+  } else if (!user) {
     return <Component />;
+  } else if (user === "user") {
+    return <Redirect to={{ pathname: "/home" }} />;
+  } else if (user === "admin") {
+    return <Redirect to={{ pathname: "/grievancelist" }} />;
+  } else if (user === "superAdmin") {
+    return <Redirect to={{ pathname: "/user-manage" }} />;
   }
 }
