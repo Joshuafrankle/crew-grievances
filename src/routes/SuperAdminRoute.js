@@ -1,32 +1,37 @@
-// import Problem from "../components/Problem";
-// import Loader from "../components/Loader";
-// import { useSWRPost } from "../components/DataFetch";
-// import { endpoint } from "../components/Storage";
-// import { Redirect } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Redirect } from "react-router-dom";
+import { axiosRequest } from "components/DataFetch";
+import Problem from "components/Problem";
+import Loader from "components/Loader";
 
-// export default function HomeRoute(props) {
-//   const Component = props.component;
-//   const token = window.localStorage.getItem("token");
+export default function LoginRoute({ component: Component }) {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+  const [user, setUser] = useState("");
 
-//   const {
-//     data: user,
-//     isLoading,
-//     isError,
-//   } = useSWRPost(`${endpoint}/api/check`, token);
+  async function handleLogin() {
+    try {
+      const { data } = await axiosRequest("/login", "POST");
+      setUser(data.user);
+    } catch (err) {
+      if (err.response.status === 500) {
+        setError(true);
+      }
+    }
+    setLoading(false);
+  }
 
-//   if (isError) return <Problem />;
-//   if (isLoading) return <Loader />;
-//   if (user) {
-//     if (user.status === "failure") return <Problem />;
-//   }
+  useEffect(() => handleLogin(), []);
 
-//   return (
-//     <>
-//       {user.role === "crew" || user.role === "admin" ? (
-//         <Component />
-//       ) : (
-//         <Redirect to={{ pathname: "/" }} />
-//       )}
-//     </>
-//   );
-// }
+  if (loading) {
+    return <Loader />;
+  } else if (error) {
+    return <Problem />;
+  } else if (!user) {
+    return <Redirect to={{ pathname: "/" }} />;
+  } else if (user === "superAdmin") {
+    return <Component />;
+  } else {
+    return <Redirect to={{ pathname: "/" }} />;
+  }
+}
