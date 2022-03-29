@@ -24,7 +24,8 @@ export default function LoginPage() {
     let res = null;
     try {
       res = await axiosRequest("/auth/login");
-      console.log(res);
+      localStorage.setItem("token", res.token);
+      history.push("/home");
     } catch (err) {
       if (err.response.status === 5000) {
         setError({ ...error, serverError: true });
@@ -36,63 +37,61 @@ export default function LoginPage() {
     buttonRef.current.innerHTML = `Login`;
   }
 
-  return (
-    <>
-      {error.serverError ? (
-        <Problem />
-      ) : (
-        <FadeIn>
-          <div className="login-circle1"></div>
-          <div className="login-circle2"></div>
-          <section className="main">
-            <div className="glass m-2 m-md-5 m-lg-0">
-              <div className="logo-section">
-                <img src={Logo} className="login-img" alt="" />
-              </div>
-              <div className="login-section">
-                <div className="text-title">
-                  <p className="mb-0 pattarai-text"></p>
-                  <h1 className="grievance-text">Grievance portal</h1>
-                </div>
-                <div className="input-section">
-                  <input
-                    className="form-control py-2"
-                    type="email"
-                    placeholder="Email"
-                    onChange={(e) =>
-                      setUser({ ...user, userName: e.target.value })
-                    }
-                  />
-                  <input
-                    className="form-control py-2"
-                    type="password"
-                    placeholder="Password"
-                    onChange={(e) =>
-                      setUser({ ...user, password: e.target.value })
-                    }
-                  />
-                  {error.userError && (
-                    <p className="d-none pt-3 my-0 invalid-message text-start">
-                      {error.userError}
-                    </p>
-                  )}
-                  <button
-                    ref={buttonRef}
-                    type="button"
-                    className="btn"
-                    onClick={handleLogin}
-                  >
-                    Login
-                  </button>
-                </div>
-                <p className="text-muted rights">
-                  © {new Date().getFullYear()}| All Rights Reserved
-                </p>
-              </div>
+  if (error.serverError) {
+    return <Problem />;
+  } else {
+    return (
+      <FadeIn>
+        <div className="login-circle1"></div>
+        <div className="login-circle2"></div>
+        <section className="main">
+          <div className="glass m-2 m-md-5 m-lg-0">
+            <div className="logo-section">
+              <img src={Logo} className="login-img" alt="" />
             </div>
-          </section>
-        </FadeIn>
-      )}
-    </>
-  );
+            <div className="login-section">
+              <div className="text-title">
+                <p className="mb-0 pattarai-text"></p>
+                <h1 className="grievance-text">Grievance portal</h1>
+              </div>
+              <div className="input-section">
+                <input
+                  className="form-control py-2"
+                  type="email"
+                  placeholder="Email"
+                  onChange={(e) =>
+                    setUser({ ...user, userName: e.target.value })
+                  }
+                />
+                <input
+                  className="form-control py-2"
+                  type="password"
+                  placeholder="Password"
+                  onChange={(e) =>
+                    setUser({ ...user, password: e.target.value })
+                  }
+                />
+                {error.userError && (
+                  <p className="d-none pt-3 my-0 invalid-message text-start">
+                    {error.userError}
+                  </p>
+                )}
+                <button
+                  ref={buttonRef}
+                  type="button"
+                  className="btn"
+                  onClick={handleLogin}
+                >
+                  Login
+                </button>
+              </div>
+              <p className="text-muted rights">
+                © {new Date().getFullYear()}| All Rights Reserved
+              </p>
+            </div>
+          </div>
+        </section>
+      </FadeIn>
+    );
+  }
 }
