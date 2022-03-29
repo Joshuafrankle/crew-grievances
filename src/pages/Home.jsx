@@ -4,18 +4,37 @@ import Problem from "components/Problem";
 import FadeIn from "components/FadeIn";
 import { axiosRequest } from "components/DataFetch";
 import Logo from "assets/images/logo.png";
+import {
+  TextField,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+} from "@mui/material";
 
 export default function Home() {
   const history = useHistory();
   const buttonRef = useRef();
-  const [error, setError] = useState(false);
 
-  function getValues() {
+  const [error, setError] = useState({
+    serverError: false,
+    userError: "",
+  });
+  const [userGrievance, setUserGrievance] = useState({
+    grievanceTitle: "",
+    severity: "",
+    grievance: "",
+  });
+
+  function handleSubmit() {
     buttonRef.current.disabled = true;
     buttonRef.current.innerHTML = `<div class="spinner-border p-2 spinner-border-sm" role="status" aria-hidden="true"><span class="visually-hidden">Loading...</span></div>`;
   }
 
-  function handleLogout() {}
+  function handleLogout() {
+    localStorage.removeItem("token");
+    history.push("/");
+  }
 
   return (
     <>
@@ -27,7 +46,7 @@ export default function Home() {
           <div>
             <div className="home-head">
               <div>
-                <p className="home-pattarai-text mb-0">PATTARAI'S</p>
+                {/* <p className="home-pattarai-text mb-0">PATTARAI'S</p> */}
                 <p className="home-grievance-text">Grievance Portal</p>
               </div>
               <div>
@@ -36,51 +55,67 @@ export default function Home() {
             </div>
             <div className="home-glass">
               <h2 className="mt-1">
-                Choose the Project/Committee that you have grievances on
+                Choose the Organization that you have grievances on
               </h2>
               <div className="dropdown-section">
                 <div className="dropdown1">
-                  <p className="mb-2">Committee</p>
-                  <select className="form-select" id="committee_dropdown">
-                    <option selected>None</option>
-                    <option value="Human Resources">Human Resources</option>
-                    <option value="Business Dev">Business Dev</option>
-                    <option value="Events">Events</option>
-                    <option value="Innovation & Media">
-                      Innovation & Media
-                    </option>
-                  </select>
+                  <TextField
+                    fullWidth
+                    id="filled-basic"
+                    label="Subject"
+                    variant="filled"
+                    onChange={(e) => {
+                      setUserGrievance({
+                        ...userGrievance,
+                        grievanceTitle: e.target.value,
+                      });
+                    }}
+                  />
                 </div>
                 <div className="dropdown2">
-                  <p className="mb-2">Project</p>
-                  <select className="form-select" id="project_dropdown">
-                    <option selected>None</option>
-                    <option value="Project Cortex">Project Cortex</option>
-                    <option value="Open Cloud">Open Cloud</option>
-                    <option value="Workshop Hub">Workshop Hub</option>
-                    <option value="Website Revamp">Website Revamp</option>
-                    <option value="Pager">Pager</option>
-                  </select>
+                  <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">
+                      Severity
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={userGrievance.severity}
+                      label="Severity"
+                      onChange={(e) => {
+                        setUserGrievance({
+                          ...userGrievance,
+                          severity: e.target.value,
+                        });
+                      }}
+                    >
+                      <MenuItem value={`enhancement`}>Enhancement</MenuItem>
+                      <MenuItem value={`complainant`}>Complainant</MenuItem>
+                    </Select>
+                  </FormControl>
                 </div>
               </div>
-              <textarea
-                className="form-control"
-                placeholder="Your Grievance"
-                id="grievance_text"
-              ></textarea>
-              <p
-                id="error_text"
-                className="d-none mt-3 ml-1 mb-0 invalid-message"
-              >
-                Your text is too short
-              </p>
+              <TextField
+                fullWidth
+                id="filled-multiline-static"
+                label="Your Grievance"
+                multiline
+                rows={4}
+                variant="filled"
+                onChange={(e) => {
+                  setUserGrievance({
+                    ...userGrievance,
+                    grievance: e.target.value,
+                  });
+                }}
+              />
+              {error.userError && (
+                <p className="d-none mt-3 ml-1 mb-0 invalid-message">
+                  {error.userError}
+                </p>
+              )}
               <div className="home-button">
-                <button
-                  type="button"
-                  className="btn"
-                  id="home_btn"
-                  onClick={getValues}
-                >
+                <button type="button" className="btn" onClick={handleSubmit}>
                   Submit
                 </button>
                 <button
