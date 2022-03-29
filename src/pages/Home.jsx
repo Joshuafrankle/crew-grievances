@@ -32,7 +32,7 @@ export default function Home() {
     buttonRef.current.innerHTML = `<div class="spinner-border p-2 spinner-border-sm" role="status" aria-hidden="true"><span class="visually-hidden">Loading...</span></div>`;
     let res = null;
     try {
-      res = await axiosRequest("/users/post-grievance");
+      res = await axiosRequest("/users/post-grievance", "POST", userGrievance);
       console.log(res);
     } catch (err) {
       if (err.response.status === 5000) {
