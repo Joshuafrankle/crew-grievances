@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import Loader from "../../components/Loader";
 import GrievanceList from "./GrievanceList";
 import Problem from "../../components/Problem";
-import { axiosRequest } from "../../components/DataFetch";
-import { useHistory } from "react-router-dom";
+import { axiosRequest } from "../../components/DataFetch"; 
 
 export default function DisplayGrievances() {
   const history = useHistory();

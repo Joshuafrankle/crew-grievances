@@ -1,21 +1,6 @@
 import { useState, useEffect } from "react";
-import LinearProgress from "@material-ui/core/LinearProgress";
-import { withStyles } from "@material-ui/core/styles";
-
-const BorderLinearProgress = withStyles(() => ({
-  root: {
-    width: "100%",
-    height: 5,
-    borderRadius: 5,
-  },
-  colorPrimary: {
-    backgroundColor: "#2e2e2e",
-  },
-  bar: {
-    borderRadius: 5,
-    backgroundColor: "#15e6ca",
-  },
-}))(LinearProgress);
+import LinearProgress from "@mui/material/LinearProgress";
+import FadeIn from "./FadeIn";
 
 export default function Loader() {
   const [quotes, setQuotes] = useState({});
@@ -53,11 +38,13 @@ export default function Loader() {
         style={{ height: "100vh" }}
       >
         <div style={{ width: "95vw" }}>
-          <div className="text-center mb-5">
-            <h4 className="mb-2 loader-quote fst-italic">{quotes.text}</h4>
-            <p className="fw-light">- {quotes.author}</p>
-          </div>
-          <BorderLinearProgress variant="determinate" value={progress} />
+          <FadeIn>
+            <div className="text-center mb-5">
+              <h4 className="mb-2 loader-quote fst-italic">{quotes.text}</h4>
+              <p className="fw-light">- {quotes.author}</p>
+            </div>
+          </FadeIn>
+          <LinearProgress variant="determinate" value={progress} />
         </div>
       </div>
     </>

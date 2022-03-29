@@ -23,7 +23,7 @@ export default function LoginPage() {
     buttonRef.current.innerHTML = `<div class="spinner-border p-2 spinner-border-sm" role="status" aria-hidden="true"><span class="visually-hidden">Loading...</span></div>`;
     let res = null;
     try {
-      res = await axiosRequest("/");
+      res = await axiosRequest("/auth/login");
       console.log(res);
     } catch (err) {
       if (err.response.status === 5000) {
