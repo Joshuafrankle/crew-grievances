@@ -32,6 +32,8 @@ export default function LoginPage() {
         setError({ ...error, userError: res.data });
       }
     }
+    buttonRef.current.disabled = false;
+    buttonRef.current.innerHTML = `Login`;
   }
 
   return (

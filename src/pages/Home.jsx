@@ -41,6 +41,8 @@ export default function Home() {
         setError({ ...error, userError: res.data });
       }
     }
+    buttonRef.current.disabled = false;
+    buttonRef.current.innerHTML = `Submit`;
   }
 
   function handleLogout() {
