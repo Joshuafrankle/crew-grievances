@@ -26,9 +26,21 @@ export default function Home() {
     grievance: "",
   });
 
-  function handleSubmit() {
+  async function handleSubmit() {
+    setError({ ...error, userError: "" });
     buttonRef.current.disabled = true;
     buttonRef.current.innerHTML = `<div class="spinner-border p-2 spinner-border-sm" role="status" aria-hidden="true"><span class="visually-hidden">Loading...</span></div>`;
+    let res = null;
+    try {
+      res = await axiosRequest("/users/post-grievance");
+      console.log(res);
+    } catch (err) {
+      if (err.response.status === 5000) {
+        setError({ ...error, serverError: true });
+      } else {
+        setError({ ...error, userError: res.data });
+      }
+    }
   }
 
   function handleLogout() {
@@ -36,8 +48,10 @@ export default function Home() {
     history.push("/");
   }
 
-  return (
-    <>
+  if (error.serverError) {
+    return <Problem />;
+  } else {
+    return (
       <FadeIn>
         <div className="home-circle1"></div>
         <div className="home-circle2"></div>
@@ -131,6 +145,6 @@ export default function Home() {
           </div>
         </section>
       </FadeIn>
-    </>
-  );
+    );
+  }
 }
