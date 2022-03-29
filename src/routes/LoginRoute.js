@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
-import { axiosRequest } from "../components/DataFetch";
-import Problem from "../components/Problem";
-import Loader from "../components/Loader";
+import { axiosRequest } from "components/DataFetch";
+import Problem from "components/Problem";
+import Loader from "components/Loader";
 
 export default function LoginRoute({ component: Component }) {
   const [loading, setLoading] = useState(true);
-  const [err, setErr] = useState(false);
+  const [error, setError] = useState(false);
   const [user, setUser] = useState("");
 
   async function handleLogin() {
@@ -17,7 +17,7 @@ export default function LoginRoute({ component: Component }) {
       }
     } catch (err) {
       if (err.response.status === 500) {
-        setErr(true);
+        setError(true);
       }
     }
     setLoading(false);
@@ -27,7 +27,7 @@ export default function LoginRoute({ component: Component }) {
 
   if (loading) {
     return <Loader />;
-  } else if (err) {
+  } else if (error) {
     return <Problem />;
   } else if (!user) {
     return <Component />;
