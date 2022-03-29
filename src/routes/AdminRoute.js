@@ -11,7 +11,7 @@ export default function LoginRoute({ component: Component }) {
 
   async function handleLogin() {
     try {
-      const { data } = await axiosRequest("/login", "POST");
+      const { data } = await axiosRequest("/auth");
       setUser(data.user);
     } catch (err) {
       if (err.response.status === 500) {
