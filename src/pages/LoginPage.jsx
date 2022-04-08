@@ -28,11 +28,11 @@ export default function LoginPage() {
         const { data } = await axiosRequest("/auth/login", "POST", user);
         localStorage.setItem("token", data.token);
         history.push("/home");
-      } catch (err) {
-        if (err.response.status === 5000) {
+      } catch ({ response }) {
+        if (response.status === 5000) {
           setError({ ...error, serverError: true });
         } else {
-          setError({ ...error, userError: err.response.data.message });
+          setError({ ...error, userError: response.data.message });
         }
       }
     }
