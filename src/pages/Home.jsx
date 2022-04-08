@@ -147,11 +147,15 @@ export default function Home() {
                 </p>
               )}
               <div className="home-button">
-                <button type="button" className="btn" onClick={handleSubmit}>
+                <button
+                  ref={buttonRef}
+                  type="button"
+                  className="btn"
+                  onClick={handleSubmit}
+                >
                   Submit
                 </button>
                 <button
-                  ref={buttonRef}
                   type="button"
                   className="btn home-logout-btn"
                   onClick={handleLogout}
