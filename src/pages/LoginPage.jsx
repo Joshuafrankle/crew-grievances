@@ -25,7 +25,7 @@ export default function LoginPage() {
       setError({ ...error, userError: "Please fill all the fields" });
     } else {
       try {
-        let { data } = await axiosRequest("/auth/login", "POST", user);
+        const { data } = await axiosRequest("/auth/login", "POST", user);
         localStorage.setItem("token", data.token);
         history.push("/home");
       } catch (err) {
