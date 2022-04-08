@@ -21,7 +21,7 @@ export default function LoginPage() {
     setError({ ...error, userError: "" });
     buttonRef.current.disabled = true;
     buttonRef.current.innerHTML = `<div class="spinner-border p-2 spinner-border-sm" role="status" aria-hidden="true"><span class="visually-hidden">Loading...</span></div>`;
-    if (user.userName === "" || user.password === "") {
+    if (user.userName.trim() === "" || user.password.trim() === "") {
       setError({ ...error, userError: "Please fill all the fields" });
     } else {
       try {

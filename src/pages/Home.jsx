@@ -30,15 +30,31 @@ export default function Home() {
     setError({ ...error, userError: "" });
     buttonRef.current.disabled = true;
     buttonRef.current.innerHTML = `<div class="spinner-border p-2 spinner-border-sm" role="status" aria-hidden="true"><span class="visually-hidden">Loading...</span></div>`;
-    let res = null;
-    try {
-      res = await axiosRequest("/users/post-grievance", "POST", userGrievance);
-      console.log(res);
-    } catch (err) {
-      if (err.response.status === 5000) {
-        setError({ ...error, serverError: true });
-      } else {
-        setError({ ...error, userError: res.data });
+    if (
+      userGrievance.grievanceTitle.trim() === "" ||
+      userGrievance.grievance.trim() === "" ||
+      userGrievance.severity.trim() === ""
+    ) {
+      setError({ ...error, userError: "Please fill all the fields" });
+    } else if (userGrievance.grievance.trim().length < 100) {
+      setError({
+        ...error,
+        userError: "Grievance should be more than 100 characters",
+      });
+    } else {
+      try {
+        const { data } = await axiosRequest(
+          "/users/post-grievance",
+          "POST",
+          userGrievance
+        );
+        console.log(data);
+      } catch ({ response }) {
+        if (response.status === 5000) {
+          setError({ ...error, serverError: true });
+        } else {
+          setError({ ...error, userError: response.data.message });
+        }
       }
     }
     buttonRef.current.disabled = false;
@@ -126,7 +142,7 @@ export default function Home() {
                 }}
               />
               {error.userError && (
-                <p className="d-none mt-3 ml-1 mb-0 invalid-message">
+                <p className="mt-3 ml-1 mb-0 invalid-message">
                   {error.userError}
                 </p>
               )}
