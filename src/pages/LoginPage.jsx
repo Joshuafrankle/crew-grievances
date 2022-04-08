@@ -21,20 +21,23 @@ export default function LoginPage() {
     setError({ ...error, userError: "" });
     buttonRef.current.disabled = true;
     buttonRef.current.innerHTML = `<div class="spinner-border p-2 spinner-border-sm" role="status" aria-hidden="true"><span class="visually-hidden">Loading...</span></div>`;
-    let res = null;
-    try {
-      res = await axiosRequest("/auth/login");
-      localStorage.setItem("token", res.token);
-      history.push("/home");
-    } catch (err) {
-      if (err.response.status === 5000) {
-        setError({ ...error, serverError: true });
-      } else {
-        setError({ ...error, userError: res.data });
+    if (user.userName === "" || user.password === "") {
+      setError({ ...error, userError: "Please fill all the fields" });
+    } else {
+      try {
+        let { data } = await axiosRequest("/auth/login", "POST", user);
+        localStorage.setItem("token", data.token);
+        history.push("/home");
+      } catch (err) {
+        if (err.response.status === 5000) {
+          setError({ ...error, serverError: true });
+        } else {
+          setError({ ...error, userError: err.response.data.message });
+        }
       }
     }
-    buttonRef.current.disabled = false;
     buttonRef.current.innerHTML = `Login`;
+    buttonRef.current.disabled = false;
   }
 
   if (error.serverError) {
@@ -72,7 +75,7 @@ export default function LoginPage() {
                   }
                 />
                 {error.userError && (
-                  <p className="d-none pt-3 my-0 invalid-message text-start">
+                  <p className="pt-3 my-0 invalid-message text-start">
                     {error.userError}
                   </p>
                 )}
@@ -86,7 +89,7 @@ export default function LoginPage() {
                 </button>
               </div>
               <p className="text-muted rights">
-                © {new Date().getFullYear()}| All Rights Reserved
+                © {new Date().getFullYear()} | All Rights Reserved
               </p>
             </div>
           </div>

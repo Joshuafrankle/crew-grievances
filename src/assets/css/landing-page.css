@@ -47,9 +47,6 @@
   width: 300px;
   text-align: center;
 }
-.input-section > button {
-  margin-top: 15%;
-}
 .input-section > * {
   width: 100%;
   margin-top: 5%;
