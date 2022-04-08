@@ -14,7 +14,7 @@ export default function GetGrievances() {
   async function getGrievances() {
     try {
       const { data } = await axiosRequest("/admin");
-      setGrievanceList(data);
+      setGrievanceList(data.grievanceList);
     } catch ({ response }) {
       if (response.status === 5000) {
         setError(true);
