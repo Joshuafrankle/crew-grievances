@@ -8,6 +8,7 @@ import { axiosRequest } from "components/DataFetch";
 export default function DisplayGrievances({ grievances }) {
   const history = useHistory();
   const [error, setError] = useState(false);
+  const [grievanceId, setGrievanceId] = useState(null);
 
   function handleLogout() {
     localStorage.removeItem("token");
@@ -36,7 +37,10 @@ export default function DisplayGrievances({ grievances }) {
               </button>
             </div>
           </div>
-          <GrievanceCard grievances={grievances} />
+          <GrievanceCard
+            grievances={grievances}
+            setGrievanceId={setGrievanceId}
+          />
         </div>
       </FadeIn>
     );
