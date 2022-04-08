@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import FadeIn from "components/FadeIn";
 import Problem from "components/Problem";
+import GrievanceCard from "components/GrievanceCard";
 import { axiosRequest } from "components/DataFetch";
 
 export default function DisplayGrievances({ grievances }) {
@@ -24,9 +25,6 @@ export default function DisplayGrievances({ grievances }) {
               <p className="admin-pattarai-text mb-0">PATTARAI'S</p>
               <p className="admin-grievance-text">Grievance Portal</p>
             </div>
-            {/* <div>
-        <img className="admin-img" src={Logo} alt="Pattarai" />
-      </div> */}
             <div>
               <button
                 id="grievance_logout_btn"
@@ -38,27 +36,7 @@ export default function DisplayGrievances({ grievances }) {
               </button>
             </div>
           </div>
-          {grievances.map((grievance, index) => {
-            return (
-              <div key={`${grievance}-${index}`}>
-                <FadeIn>
-                  <div className="card mb-3">
-                    <div className="card-body">
-                      <h5>
-                        <span className="badge" style={{ marginRight: "10px" }}>
-                          {grievance[1]}
-                        </span>
-                        <span className="badge">{grievance[2]}</span>
-                      </h5>
-                      <p className="card-text font-weight-bold mt-3">
-                        {grievance[3]}
-                      </p>
-                    </div>
-                  </div>
-                </FadeIn>
-              </div>
-            );
-          })}
+          <GrievanceCard grievances={grievances} />
         </div>
       </FadeIn>
     );
