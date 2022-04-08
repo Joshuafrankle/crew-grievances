@@ -4,7 +4,7 @@ import { axiosRequest } from "components/DataFetch";
 import Problem from "components/Problem";
 import Loader from "components/Loader";
 
-export default function LoginRoute({ component: Component }) {
+export default function AdminRoute({ component: Component }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [user, setUser] = useState("");
