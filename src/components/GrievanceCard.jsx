@@ -1,7 +1,7 @@
 import React from "react";
 import FadeIn from "./FadeIn";
 
-export default function GrievanceCard({ grievances, setGrievanceId }) {
+export default function GrievanceCard({ grievances, setId }) {
   return (
     <>
       <div className="row">
@@ -25,14 +25,24 @@ export default function GrievanceCard({ grievances, setGrievanceId }) {
                   <button
                     type="button"
                     className="btn me-3"
-                    onClick={() => setGrievanceId(grievance.grievanceId)}
+                    onClick={() =>
+                      setId({
+                        deleteId: null,
+                        resolveId: grievance.grievanceId,
+                      })
+                    }
                   >
                     Resolve
                   </button>
                   <button
                     type="button"
                     className="btn"
-                    onClick={() => setGrievanceId(grievance.grievanceId)}
+                    onClick={() =>
+                      setId({
+                        deleteId: grievance.grievanceId,
+                        resolveId: null,
+                      })
+                    }
                   >
                     Delete
                   </button>
