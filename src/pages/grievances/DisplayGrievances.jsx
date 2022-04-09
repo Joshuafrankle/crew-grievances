@@ -21,7 +21,6 @@ export default function DisplayGrievances() {
           </div>
           <div>
             <button
-              id="grievance_logout_btn"
               type="button"
               className="btn admin-logout-btn"
               onClick={handleLogout}

@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { axiosRequest } from "components/DataFetch";
 import Problem from "components/Problem";
 import Loader from "components/Loader";
-import { axiosRequest } from "components/DataFetch";
 import Popup from "components/Popup";
-import GrievanceCard from "pages/grievances/GrievanceCard";
+import GrievanceCard from "./GrievanceCard";
+import ResolveForm from "./ResolveForm";
 
 export default function GetGrievances() {
   const history = useHistory();
@@ -52,7 +53,11 @@ export default function GetGrievances() {
           openModal={openPopup}
           setOpenModal={setOpenPopup}
         >
-          {id.deleteId ? <h1>Delete</h1> : <h1>Resolve</h1>}
+          {id.deleteId ? (
+            <h1>Delete</h1>
+          ) : (
+            <ResolveForm id={id.resolveId} setError={setError} />
+          )}
         </Popup>
       </>
     );
