@@ -42,7 +42,11 @@ export default function GetGrievances() {
   } else {
     return (
       <>
-        <GrievanceCard grievances={grievanceList} setId={setId} />
+        <GrievanceCard
+          grievances={grievanceList}
+          setId={setId}
+          setOpenPopup={setOpenPopup}
+        />
         <Popup
           title={id.deleteId ? "Are you sure wanna delete?" : "Member Form"}
           openModal={openPopup}
