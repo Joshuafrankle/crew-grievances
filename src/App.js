@@ -12,7 +12,7 @@ import SuperAdminRoute from "routes/SuperAdminRoute";
 import LoginPage from "pages/LoginPage";
 import Home from "pages/Home";
 import UserManagement from "pages/UserManagement";
-import GetGrievances from "pages/grievances/GetGrievances";
+import DisplayGrievances from "pages/grievances/DisplayGrievances";
 import Error404 from "pages/Error404";
 
 export default function App() {
@@ -21,7 +21,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={LoginPage} />
         <Route exact path="/home" component={Home} />
-        <Route exact path="/grievance-list" component={GetGrievances} />
+        <Route exact path="/grievance-list" component={DisplayGrievances} />
         <Route exact path="/user-manage" component={UserManagement} />
         <Route exact path="/404" component={Error404} />
         <Redirect to="/404" />
