@@ -1,18 +1,20 @@
 import { useState, useEffect } from "react";
 import LinearProgress from "@mui/material/LinearProgress";
+import axios from "axios";
 import FadeIn from "./FadeIn";
 
 export default function Loader() {
   const [quotes, setQuotes] = useState({});
   const [progress, setProgress] = useState(0);
 
-  function getQuotes() {
-    fetch("https://type.fit/api/quotes").then((res) => {
-      res.json().then((res) => {
-        let item = res[Math.floor(Math.random() * res.length)];
-        setQuotes(item);
-      });
-    });
+  async function getQuotes() {
+    try {
+      const { data } = await axios.get("/https://type.fit/api/quotes");
+      const item = data[Math.floor(Math.random() * data.length)];
+      setQuotes(item);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   useEffect(() => {
