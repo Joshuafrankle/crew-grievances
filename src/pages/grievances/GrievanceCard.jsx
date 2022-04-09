@@ -1,5 +1,5 @@
 import React from "react";
-import FadeIn from "./FadeIn";
+import FadeIn from "components/FadeIn";
 
 export default function GrievanceCard({ grievances, setId, setOpenPopup }) {
   return (

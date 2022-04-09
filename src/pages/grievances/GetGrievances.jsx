@@ -4,7 +4,7 @@ import Problem from "components/Problem";
 import Loader from "components/Loader";
 import { axiosRequest } from "components/DataFetch";
 import Popup from "components/Popup";
-import GrievanceCard from "components/GrievanceCard";
+import GrievanceCard from "pages/grievances/GrievanceCard";
 
 export default function GetGrievances() {
   const history = useHistory();
