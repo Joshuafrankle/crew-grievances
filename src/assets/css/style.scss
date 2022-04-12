@@ -30,7 +30,7 @@ h3,
 h4,
 h5,
 p {
-  color: #ffffff;
+  color: #f1f1f1;
 }
 
 .invalid-message {
@@ -79,6 +79,13 @@ body {
   background-color: #15e6ca;
   font-family: "Poppins";
   font-weight: 500;
+}
+
+.btn-outline {
+  font-weight: 300 !important;
+  border: 1px solid #15e6ca !important;
+  color: #fafafa !important;
+  background-color: #1a1d2500 !important;
 }
 
 .card {

@@ -12,10 +12,18 @@ export default function DeleteForm({ id, setError, setOpenModal }) {
   }
   return (
     <>
-      <button type="button" className="btn" onClick={handleDelete}>
+      <button
+        type="button"
+        className="btn btn-outline me-3"
+        onClick={handleDelete}
+      >
         Yes
       </button>
-      <button type="button" className="btn" onClick={() => setOpenModal(false)}>
+      <button
+        type="button"
+        className="btn btn-outline"
+        onClick={() => setOpenModal(false)}
+      >
         No
       </button>
     </>
