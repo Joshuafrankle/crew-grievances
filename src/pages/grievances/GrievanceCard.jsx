@@ -1,5 +1,7 @@
 import React from "react";
 import FadeIn from "components/FadeIn";
+import { MdDelete, MdDone } from "react-icons/md";
+import Button from "@mui/material/Button";
 
 export default function GrievanceCard({ grievances, setId, setOpenPopup }) {
   return (
@@ -22,32 +24,33 @@ export default function GrievanceCard({ grievances, setId, setOpenPopup }) {
                   <p className="card-text font-weight-bold mt-3">
                     {grievance.grievance}
                   </p>
-                  <button
-                    type="button"
-                    className="btn me-3"
-                    onClick={() => {
-                      setId({
-                        deleteId: null,
-                        resolveId: grievance.grievanceId,
-                      });
-                      setOpenPopup(true);
-                    }}
-                  >
-                    Resolve
-                  </button>
-                  <button
-                    type="button"
-                    className="btn"
-                    onClick={() => {
-                      setId({
-                        deleteId: grievance.grievanceId,
-                        resolveId: null,
-                      });
-                      setOpenPopup(true);
-                    }}
-                  >
-                    Delete
-                  </button>
+                  <div className="d-flex justify-content-end">
+                    <Button
+                      sx={{ marginRight: "10px" }}
+                      variant="outlined"
+                      onClick={() => {
+                        setId({
+                          deleteId: null,
+                          resolveId: grievance.grievanceId,
+                        });
+                        setOpenPopup(true);
+                      }}
+                    >
+                      <MdDone style={{ height: "20px", width: "auto" }} />
+                    </Button>
+                    <Button
+                      variant="outlined"
+                      onClick={() => {
+                        setId({
+                          deleteId: grievance.grievanceId,
+                          resolveId: null,
+                        });
+                        setOpenPopup(true);
+                      }}
+                    >
+                      <MdDelete style={{ height: "20px", width: "auto" }} />
+                    </Button>
+                  </div>
                 </div>
               </div>
             </FadeIn>
