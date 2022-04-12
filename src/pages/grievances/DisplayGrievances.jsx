@@ -16,20 +16,22 @@ export default function DisplayGrievances() {
   const [error, setError] = useState(false);
   const [grievanceList, setGrievanceList] = useState([]);
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const { data } = await axiosRequest("/admin");
-        setGrievanceList(data.grievanceList);
-      } catch ({ response }) {
-        if (response.status === 5000) {
-          setError(true);
-        } else {
-          history.push("/");
-        }
+  async function getGrievances() {
+    try {
+      const { data } = await axiosRequest("/admin");
+      setGrievanceList(data.grievanceList);
+    } catch ({ response }) {
+      if (response.status === 5000) {
+        setError(true);
+      } else {
+        history.push("/");
       }
-      setLoading(false);
-    })();
+    }
+    setLoading(false);
+  }
+
+  useEffect(() => {
+    getGrievances();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
