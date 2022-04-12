@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { axiosRequest } from "components/DataFetch";
 import { TextField, Button } from "@mui/material";
 
-export default function ResolveForm({ id, setError }) {
+export default function ResolveForm({ id, setError, setOpenModal }) {
   const [resolveDetails, setResolveDetails] = useState({
     grievanceId: id,
     resolvedUser: "",
@@ -32,7 +32,8 @@ export default function ResolveForm({ id, setError }) {
 
     if (noofErrors === 0) {
       try {
-        await axiosRequest(`/admin/resolve`, "POST", resolveDetails);
+        await axiosRequest(`/admin/resolve`, "PATCH", resolveDetails);
+        setOpenModal(false);
       } catch (error) {
         setError(true);
       }
