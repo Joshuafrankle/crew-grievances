@@ -66,7 +66,7 @@ export default function DisplayGrievances() {
               </div>
             </div>
             {loading ? (
-              <Loader />
+              <Loader height="70vh" />
             ) : (
               <GrievanceCard
                 grievances={grievanceList}

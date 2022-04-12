@@ -26,7 +26,7 @@ export default function LoginRoute({ component: Component }) {
   useEffect(() => handleLogin(), []);
 
   if (loading) {
-    return <Loader />;
+    return <Loader showQuotes={true} />;
   } else if (error) {
     return <Problem />;
   } else if (!user) {
