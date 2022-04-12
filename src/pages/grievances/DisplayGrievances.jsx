@@ -21,11 +21,7 @@ export default function DisplayGrievances() {
       const { data } = await axiosRequest("/admin");
       setGrievanceList(data.grievanceList);
     } catch ({ response }) {
-      if (response.status === 5000) {
-        setError(true);
-      } else {
-        history.push("/");
-      }
+      setError(true);
     }
     setLoading(false);
   }
