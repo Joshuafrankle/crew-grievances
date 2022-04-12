@@ -10,7 +10,7 @@ export default function GrievanceCard({ grievances, setId, setOpenPopup }) {
             className="col-lg-6 col-xl-4"
             key={`${grievance.grievanceTitle}-${index}`}
           >
-            <FadeIn>
+            <FadeIn duration={index + 2.5}>
               <div className="card mb-3">
                 <div className="card-body">
                   <h5>
