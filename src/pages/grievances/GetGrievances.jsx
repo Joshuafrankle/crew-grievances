@@ -55,9 +55,17 @@ export default function GetGrievances() {
           setOpenModal={setOpenPopup}
         >
           {id.deleteId ? (
-            <DeleteForm id={id.deleteId} setError={setError} />
+            <DeleteForm
+              id={id.deleteId}
+              setError={setError}
+              setOpenModal={setOpenPopup}
+            />
           ) : (
-            <ResolveForm id={id.resolveId} setError={setError} />
+            <ResolveForm
+              id={id.resolveId}
+              setError={setError}
+              setOpenModal={setOpenPopup}
+            />
           )}
         </Popup>
       </>
