@@ -28,7 +28,6 @@ export default function DisplayGrievances() {
 
   useEffect(() => {
     getGrievances();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const [id, setId] = useState({
