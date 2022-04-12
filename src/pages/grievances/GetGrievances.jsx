@@ -6,6 +6,7 @@ import Loader from "components/Loader";
 import Popup from "components/Popup";
 import GrievanceCard from "./GrievanceCard";
 import ResolveForm from "./ResolveForm";
+import DeleteForm from "./DeleteForm";
 
 export default function GetGrievances() {
   const history = useHistory();
@@ -54,7 +55,7 @@ export default function GetGrievances() {
           setOpenModal={setOpenPopup}
         >
           {id.deleteId ? (
-            <h1>Delete</h1>
+            <DeleteForm id={id.deleteId} setError={setError} />
           ) : (
             <ResolveForm id={id.resolveId} setError={setError} />
           )}
