@@ -29,7 +29,9 @@ export default function LoginPage() {
         localStorage.setItem("token", data.token);
         history.push("/home");
       } catch ({ response }) {
-        if (response.status === 5000) {
+        if (!response) {
+          setError({ ...error, userError: "Check network connectivity" });
+        } else if (response.status >= 5000) {
           setError({ ...error, serverError: true });
         } else {
           setError({ ...error, userError: response.data.message });
