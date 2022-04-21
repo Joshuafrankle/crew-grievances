@@ -50,7 +50,7 @@ export default function Home() {
         );
         console.log(data);
       } catch ({ response }) {
-        if (response.status === 5000) {
+        if (response.status >= 5000) {
           setError({ ...error, serverError: true });
         } else {
           setError({ ...error, userError: response.data.message });
