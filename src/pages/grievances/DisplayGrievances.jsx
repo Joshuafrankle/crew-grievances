@@ -20,7 +20,7 @@ export default function DisplayGrievances() {
     try {
       const { data } = await axiosRequest("/admin");
       setGrievanceList(data.grievanceList);
-    } catch ({ response }) {
+    } catch (err) {
       setError(true);
     }
     setLoading(false);
