@@ -23,6 +23,8 @@ export default function LoginPage() {
     buttonRef.current.innerHTML = `<div class="spinner-border p-2 spinner-border-sm" role="status" aria-hidden="true"><span class="visually-hidden">Loading...</span></div>`;
     if (user.userName.trim() === "" || user.password.trim() === "") {
       setError({ ...error, userError: "Please fill all the fields" });
+      buttonRef.current.innerHTML = `Login`;
+      buttonRef.current.disabled = false;
     } else {
       try {
         const { data } = await axiosRequest("/auth/login", "POST", user);
@@ -31,15 +33,15 @@ export default function LoginPage() {
       } catch ({ response }) {
         if (!response) {
           setError({ ...error, userError: "Check network connectivity" });
-        } else if (response.status >= 5000) {
+        } else if (response.status >= 500) {
           setError({ ...error, serverError: true });
         } else {
           setError({ ...error, userError: response.data.message });
         }
+        buttonRef.current.innerHTML = `Login`;
+        buttonRef.current.disabled = false;
       }
     }
-    buttonRef.current.innerHTML = `Login`;
-    buttonRef.current.disabled = false;
   }
 
   if (error.serverError) {
