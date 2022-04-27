@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import Problem from "components/Problem";
 import FadeIn from "components/FadeIn";
 import { axiosRequest } from "components/DataFetch";
-import Logo from "assets/images/logo.png";
+// import Logo from "assets/images/logo.png";
 import {
   TextField,
   FormControl,
@@ -50,7 +50,7 @@ export default function Home() {
         );
         console.log(data);
       } catch ({ response }) {
-        if (response.status >= 5000) {
+        if (response.status >= 500) {
           setError({ ...error, serverError: true });
         } else {
           setError({ ...error, userError: response.data.message });
@@ -91,6 +91,7 @@ export default function Home() {
                 <div className="dropdown1">
                   <TextField
                     fullWidth
+                    focused
                     id="filled-basic"
                     label="Subject"
                     variant="filled"
@@ -126,6 +127,8 @@ export default function Home() {
                 </div>
               </div>
               <TextField
+                focused
+                sx={{ mt: 2 }}
                 fullWidth
                 id="filled-multiline-static"
                 label="Your Grievance"

@@ -1,7 +1,5 @@
 import { useState, useRef } from "react";
-import { useHistory } from "react-router-dom";
 import Problem from "components/Problem";
-import FadeIn from "components/FadeIn";
 import Logo from "assets/images/pattarai-shine.gif";
 import { axiosRequest } from "components/DataFetch";
 
@@ -23,6 +21,8 @@ export default function LoginPage() {
     buttonRef.current.innerHTML = `<div class="spinner-border p-2 spinner-border-sm" role="status" aria-hidden="true"><span class="visually-hidden">Loading...</span></div>`;
     if (user.userName.trim() === "" || user.password.trim() === "") {
       setError({ ...error, userError: "Please fill all the fields" });
+      buttonRef.current.innerHTML = `Login`;
+      buttonRef.current.disabled = false;
     } else {
       try {
         const { data } = await axiosRequest("/auth/login", "POST", user);
@@ -36,10 +36,10 @@ export default function LoginPage() {
         } else {
           setError({ ...error, userError: response.data.message });
         }
+        buttonRef.current.innerHTML = `Login`;
+        buttonRef.current.disabled = false;
       }
     }
-    buttonRef.current.innerHTML = `Login`;
-    buttonRef.current.disabled = false;
   }
 
   if (error.serverError) {
