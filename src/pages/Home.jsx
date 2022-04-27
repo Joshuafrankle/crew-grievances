@@ -81,9 +81,7 @@ export default function Home() {
                 {/* <p className="home-pattarai-text mb-0">PATTARAI'S</p> */}
                 <p className="home-grievance-text">Grievance Portal</p>
               </div>
-              <div>
-                <img className="home-img" src={Logo} alt="" />
-              </div>
+              <div>{/* <img className="home-img" src={Logo} alt="" /> */}</div>
             </div>
             <div className="home-glass">
               <h2 className="mt-1">
