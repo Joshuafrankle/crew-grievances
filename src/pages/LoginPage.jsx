@@ -31,7 +31,7 @@ export default function LoginPage() {
       } catch ({ response }) {
         if (!response) {
           setError({ ...error, userError: "Check network connectivity" });
-        } else if (response.status >= 5000) {
+        } else if (response.status >= 500) {
           setError({ ...error, serverError: true });
         } else {
           setError({ ...error, userError: response.data.message });
