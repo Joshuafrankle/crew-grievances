@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function useFetch(url, method = "GET", axiosData = {}) {
+export default function useFetch(endpoint, method = "GET", axiosData = {}) {
   const token = localStorage.getItem("token") ?? "null";
   const controller = new AbortController();
   const [loading, setLoading] = useState(true);
@@ -11,7 +11,7 @@ export default function useFetch(url, method = "GET", axiosData = {}) {
   async function fetchData() {
     try {
       const res = await axios.request({
-        url: `${process.env.REACT_APP_ENDPOINT}${url}`,
+        url: `${process.env.REACT_APP_ENDPOINT}${endpoint}`,
         method: method,
         headers: {
           Authorization: `Bearer ${token}`,
