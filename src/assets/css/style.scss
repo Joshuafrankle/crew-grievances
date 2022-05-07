@@ -96,6 +96,18 @@ body {
   font-size: 30px;
 }
 
+@media (min-width: 767px){
+  .w-md-100{
+    width: 100% !important;
+  }
+  .w-md-50{
+    width: 50% !important;
+  }
+  .w-md-75{
+    width: 75% !important;
+  }
+}
+
 @media (max-width: 600px) {
   .loader-quote {
     font-size: 18px;
