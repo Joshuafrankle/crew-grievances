@@ -1,7 +1,9 @@
 import { useState, useRef } from "react";
+import { useHistory } from "react-router-dom";
 import Problem from "components/Problem";
 import Logo from "assets/images/pattarai-shine.gif";
 import { axiosRequest } from "components/DataFetch";
+import FadeIn from "components/FadeIn";
 
 export default function LoginPage() {
   const history = useHistory();
