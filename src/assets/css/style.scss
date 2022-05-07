@@ -9,6 +9,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  color: #ffffff;
 }
 
 /* Custom Scrollbar */
@@ -23,15 +24,6 @@ html::-webkit-scrollbar-thumb {
   border-radius: 10px;
 }
 /* Custom Scrollbar */
-
-h1,
-h2,
-h3,
-h4,
-h5,
-p {
-  color: #f1f1f1;
-}
 
 .invalid-message {
   color: #ff5a3d;
@@ -98,10 +90,6 @@ body {
 .badge {
   background-color: #25c0b1;
   color: #000000;
-}
-
-.MuiInputBase-input{
-  color: #ffffff !important;
 }
 
 .loader-quote {
