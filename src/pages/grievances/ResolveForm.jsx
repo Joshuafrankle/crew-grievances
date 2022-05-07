@@ -28,7 +28,6 @@ export default function ResolveForm({ id, setError, setOpenModal }) {
         err[`${key}Error`] = "";
       }
     });
-    setErrors(err);
 
     if (noofErrors === 0) {
       try {
@@ -37,12 +36,15 @@ export default function ResolveForm({ id, setError, setOpenModal }) {
       } catch (error) {
         setError(true);
       }
+    } else {
+      setErrors(err);
     }
   }
 
   return (
     <>
       <TextField
+        focused
         error={errors.resolvedUserError ? true : false}
         sx={{ mb: 4 }}
         id="outlined-basic"
@@ -56,6 +58,7 @@ export default function ResolveForm({ id, setError, setOpenModal }) {
       />
       <br />
       <TextField
+        focused
         error={errors.resolvedByError ? true : false}
         sx={{ mb: 4 }}
         id="outlined-multiline-static"
