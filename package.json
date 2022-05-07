@@ -6,7 +6,7 @@
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
     "@mui/material": "^5.5.1",
-    "@mui/x-data-grid": "^5.7.0",
+    "@mui/x-data-grid": "^5.10.0",
     "@sentry/react": "^6.18.2",
     "@sentry/tracing": "^6.18.2",
     "@testing-library/jest-dom": "^5.14.1",
