@@ -16,7 +16,7 @@ export default function UserManagement() {
   return (
     <>
       <h1>UserManagement</h1>
-      <div style={{ height: 400, width: "100%" }}>
+      <div style={{ height: 400 }} className="w-100 w-md-50">
         <div style={{ display: "flex", height: "100%" }}>
           <div style={{ flexGrow: 1 }}>
             <DataGrid rows={rows} columns={columns} />
