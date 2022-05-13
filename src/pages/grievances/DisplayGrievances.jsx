@@ -49,7 +49,7 @@ export default function DisplayGrievances() {
           <div className="admin-main">
             <div className="admin-head">
               <div>
-                <p className="admin-pattarai-text mb-0">PATTARAI'S</p>
+                {/* <p className="admin-pattarai-text mb-0">PATTARAI'S</p> */}
                 <p className="admin-grievance-text">Grievance Portal</p>
               </div>
               <div>
