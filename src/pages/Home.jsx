@@ -88,21 +88,6 @@ export default function Home() {
                 Choose the Organization that you have grievances on
               </h2>
               <div className="dropdown-section">
-                <div className="dropdown1">
-                  <TextField
-                    fullWidth
-                    focused
-                    id="filled-basic"
-                    label="Subject"
-                    variant="filled"
-                    onChange={(e) => {
-                      setUserGrievance({
-                        ...userGrievance,
-                        grievanceTitle: e.target.value,
-                      });
-                    }}
-                  />
-                </div>
                 <div className="dropdown2">
                   <FormControl fullWidth>
                     <InputLabel id="demo-simple-select-label">
