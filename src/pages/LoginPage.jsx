@@ -9,7 +9,7 @@ export default function LoginPage() {
   const history = useHistory();
   const buttonRef = useRef();
   const [user, setUser] = useState({
-    userName: "",
+    email: "",
     password: "",
   });
   const [error, setError] = useState({
@@ -21,7 +21,7 @@ export default function LoginPage() {
     setError({ ...error, userError: "" });
     buttonRef.current.disabled = true;
     buttonRef.current.innerHTML = `<div class="spinner-border p-2 spinner-border-sm" role="status" aria-hidden="true"><span class="visually-hidden">Loading...</span></div>`;
-    if (user.userName.trim() === "" || user.password.trim() === "") {
+    if (user.email.trim() === "" || user.password.trim() === "") {
       setError({ ...error, userError: "Please fill all the fields" });
       buttonRef.current.innerHTML = `Login`;
       buttonRef.current.disabled = false;
@@ -66,9 +66,7 @@ export default function LoginPage() {
                   className="form-control py-2"
                   type="email"
                   placeholder="Email"
-                  onChange={(e) =>
-                    setUser({ ...user, userName: e.target.value })
-                  }
+                  onChange={(e) => setUser({ ...user, email: e.target.value })}
                 />
                 <input
                   className="form-control py-2"

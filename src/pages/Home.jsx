@@ -94,6 +94,7 @@ export default function Home() {
                       Severity
                     </InputLabel>
                     <Select
+                      focused
                       labelId="demo-simple-select-label"
                       id="demo-simple-select"
                       value={userGrievance.severity}
@@ -105,8 +106,38 @@ export default function Home() {
                         });
                       }}
                     >
-                      <MenuItem value={`enhancement`}>Enhancement</MenuItem>
-                      <MenuItem value={`complainant`}>Complainant</MenuItem>
+                      <MenuItem
+                        value={`enhancement`}
+                        style={{
+                          backgroundColor: "grey",
+                        }}
+                      >
+                        Enhancement
+                      </MenuItem>
+                      <MenuItem
+                        value={`complainant`}
+                        style={{
+                          backgroundColor: "grey",
+                        }}
+                      >
+                        Complainant
+                      </MenuItem>
+                      <MenuItem
+                        value={`complainant`}
+                        style={{
+                          backgroundColor: "grey",
+                        }}
+                      >
+                        Harassment
+                      </MenuItem>
+                      <MenuItem
+                        value={`complainant`}
+                        style={{
+                          backgroundColor: "grey",
+                        }}
+                      >
+                        Theft
+                      </MenuItem>
                     </Select>
                   </FormControl>
                 </div>

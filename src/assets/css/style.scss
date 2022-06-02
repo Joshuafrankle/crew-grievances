@@ -9,7 +9,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 /* Custom Scrollbar */
@@ -96,14 +96,14 @@ body {
   font-size: 30px;
 }
 
-@media (min-width: 767px){
-  .w-md-100{
+@media (min-width: 767px) {
+  .w-md-100 {
     width: 100% !important;
   }
-  .w-md-50{
+  .w-md-50 {
     width: 50% !important;
   }
-  .w-md-75{
+  .w-md-75 {
     width: 75% !important;
   }
 }
