@@ -10,6 +10,7 @@
   margin: 0;
   box-sizing: border-box;
   color: #ffffff;
+  font-family: Montserrat;
 }
 
 /* Custom Scrollbar */
@@ -97,6 +98,10 @@ body {
   color: #fafafa !important;
   background-color: #181a22 !important;
   border-color: #4e9992 !important;
+}
+
+.mt-10{
+  margin-top: 10rem;
 }
 
 .loader-quote {

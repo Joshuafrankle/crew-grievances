@@ -1,34 +1,58 @@
-import React from "react";
-import { DataGrid } from "@mui/x-data-grid";
+import React, { useState, useEffect } from "react";
+import { FiTrash } from "react-icons/fi";
+import { axiosRequest } from "components/DataFetch";
 
 export default function UserManagement() {
-  const rows = [
-    { id: 1, col1: "Admin1", col2: "Enhancement" },
-    { id: 2, col1: "Admin2", col2: "Complainant" },
-    { id: 3, col1: "Admin3", col2: "Harassment" },
-  ];
+  const [adminList, setAdminList] = useState([]);
 
-  const columns = [
-    { field: "col1", headerName: "Name", width: 150 },
-    { field: "col2", headerName: "Assigned", width: 150 },
-  ];
+  async function getAdmin() {
+    const { data } = await axiosRequest("/sadmin");
+    setAdminList(data.users);
+  }
+  function handleAdd() {}
+  function handleDelete() {}
+
+  useEffect(() => {
+    getAdmin();
+  }, []);
 
   return (
     <>
       <div
-        className="d-flex flex-column align-items-center justify-content-center"
+        className="d-flex flex-column align-items-center mt-10"
         style={{
           height: "100vh",
         }}
       >
-        <h1>UserManagement</h1>
-        <div style={{ height: 400 }} className="w-100 w-md-50 mt-3">
-          <div style={{ display: "flex", height: "100%" }}>
-            <div style={{ flexGrow: 1 }}>
-              <DataGrid rows={rows} columns={columns} />
+        <h1>UserManagement 🚧</h1>
+        <button
+          style={{
+            color: "#000",
+          }}
+          type="button"
+          className="btn mt-3"
+          onClick={handleAdd}
+        >
+          Add Admin
+        </button>
+        {adminList.map((admin) => (
+          <div className="w-50 mt-5 d-flex justify-content-between align-items-center">
+            <p>{admin.email}</p>
+            <p>{admin.role}</p>
+            <div className="">
+              <button
+                style={{
+                  color: "red",
+                }}
+                type="button"
+                className="btn mx-3"
+                onClick={handleDelete}
+              >
+                <FiTrash />
+              </button>
             </div>
           </div>
-        </div>
+        ))}
       </div>
     </>
   );
