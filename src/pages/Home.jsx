@@ -31,7 +31,6 @@ export default function Home() {
     buttonRef.current.disabled = true;
     buttonRef.current.innerHTML = `<div class="spinner-border p-2 spinner-border-sm" role="status" aria-hidden="true"><span class="visually-hidden">Loading...</span></div>`;
     if (
-      userGrievance.grievanceTitle.trim() === "" ||
       userGrievance.grievance.trim() === "" ||
       userGrievance.severity.trim() === ""
     ) {

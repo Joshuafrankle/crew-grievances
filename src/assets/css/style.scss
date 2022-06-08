@@ -9,7 +9,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  color: #ffffff !important;
+  color: #ffffff;
 }
 
 /* Custom Scrollbar */
@@ -90,6 +90,13 @@ body {
 .badge {
   background-color: #25c0b1;
   color: #000000;
+}
+
+.css-eow0m4-MuiInputBase-root-MuiFilledInput-root,
+.css-1k6el59-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+  color: #fafafa !important;
+  background-color: #181a22 !important;
+  border-color: #4e9992 !important;
 }
 
 .loader-quote {
