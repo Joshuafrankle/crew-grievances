@@ -28,12 +28,14 @@ export default function LoginPage() {
     } else {
       try {
         const { data } = await axiosRequest("/auth/login", "POST", user);
-        console.log("Hello", data);
         localStorage.setItem("token", data.token);
+        console.log(data.role);
         if (data.role === "user") {
           history.push("/home");
         } else if (data.role === "admin") {
           history.push("/grievance-list");
+        } else if (data.role === "superAdmin") {
+          history.push("/user-manage");
         }
       } catch ({ response }) {
         if (!response) {

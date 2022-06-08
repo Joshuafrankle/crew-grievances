@@ -17,7 +17,6 @@ export default function UserManagement() {
 
   async function getAdmin() {
     const { data } = await axiosRequest("/sadmin");
-    console.log(data);
     setAdminList(data.users);
   }
 
