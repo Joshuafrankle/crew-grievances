@@ -28,8 +28,13 @@ export default function LoginPage() {
     } else {
       try {
         const { data } = await axiosRequest("/auth/login", "POST", user);
+        console.log("Hello", data);
         localStorage.setItem("token", data.token);
-        history.push("/home");
+        if (data.role === "user") {
+          history.push("/home");
+        } else if (data.role === "admin") {
+          history.push("/grievance-list");
+        }
       } catch ({ response }) {
         if (!response) {
           setError({ ...error, userError: "Check network connectivity" });
@@ -66,6 +71,9 @@ export default function LoginPage() {
                   className="form-control py-2"
                   type="email"
                   placeholder="Email"
+                  style={{
+                    color: "black",
+                  }}
                   onChange={(e) => setUser({ ...user, email: e.target.value })}
                 />
                 <input
