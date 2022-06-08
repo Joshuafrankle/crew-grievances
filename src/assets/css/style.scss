@@ -10,7 +10,8 @@
   margin: 0;
   box-sizing: border-box;
   color: #ffffff;
-  font-family: Montserrat;
+  font-family: Montserrat !important;
+  // font-weight: 600 !important;
 }
 
 /* Custom Scrollbar */
@@ -94,13 +95,15 @@ body {
 }
 
 .css-eow0m4-MuiInputBase-root-MuiFilledInput-root,
-.css-1k6el59-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+.css-1k6el59-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root,
+.css-5wxfqx-MuiInputBase-root-MuiOutlinedInput-root,
+.css-1h2nobw-MuiInputBase-root-MuiOutlinedInput-root {
   color: #fafafa !important;
   background-color: #181a22 !important;
   border-color: #4e9992 !important;
 }
 
-.mt-10{
+.mt-10 {
   margin-top: 10rem;
 }
 
