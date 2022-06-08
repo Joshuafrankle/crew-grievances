@@ -1,16 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { FiTrash } from "react-icons/fi";
 import { axiosRequest } from "components/DataFetch";
+import Popup from "components/Popup";
+import DeleteForm from "./grievances/DeleteForm";
+import ResolveForm from "./AddMember";
 
 export default function UserManagement() {
+  const [id, setId] = useState({
+    resolveId: null,
+    deleteId: null,
+  });
+
+  const [openPopup, setOpenPopup] = useState(false);
   const [adminList, setAdminList] = useState([]);
+  const [error, setError] = useState(false);
 
   async function getAdmin() {
     const { data } = await axiosRequest("/sadmin");
+    console.log(data);
     setAdminList(data.users);
   }
-  function handleAdd() {}
-  function handleDelete() {}
+
+  async function handleAdd() {
+    const { data } = await axiosRequest("/sadmin");
+  }
 
   useEffect(() => {
     getAdmin();
@@ -31,7 +44,13 @@ export default function UserManagement() {
           }}
           type="button"
           className="btn mt-3"
-          onClick={handleAdd}
+          onClick={() => {
+            setId({
+              deleteId: null,
+              resolveId: 1,
+            });
+            setOpenPopup(true);
+          }}
         >
           Add Admin
         </button>
@@ -46,7 +65,13 @@ export default function UserManagement() {
                 }}
                 type="button"
                 className="btn mx-3"
-                onClick={handleDelete}
+                onClick={() => {
+                  setId({
+                    deleteId: admin.userId,
+                    resolveId: null,
+                  });
+                  setOpenPopup(true);
+                }}
               >
                 <FiTrash />
               </button>
@@ -54,6 +79,26 @@ export default function UserManagement() {
           </div>
         ))}
       </div>
+
+      <Popup
+        title={id.deleteId ? "Are you sure wanna delete?" : "Member Form"}
+        openModal={openPopup}
+        setOpenModal={setOpenPopup}
+      >
+        {id.deleteId ? (
+          <DeleteForm
+            id={id.deleteId}
+            setError={setError}
+            setOpenModal={setOpenPopup}
+          />
+        ) : (
+          <ResolveForm
+            id={id.resolveId}
+            setError={setError}
+            setOpenModal={setOpenPopup}
+          />
+        )}
+      </Popup>
     </>
   );
 }
