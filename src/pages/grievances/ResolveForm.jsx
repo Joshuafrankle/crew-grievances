@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import UseFetch from "hooks/UseFetch";
+import DataFetch from "components/DataFetch";
 import { TextField, Button } from "@mui/material";
 
 export default function ResolveForm({ id, setError, setOpenModal }) {
@@ -31,7 +31,7 @@ export default function ResolveForm({ id, setError, setOpenModal }) {
 
     if (noofErrors === 0) {
       try {
-        await UseFetch(`/admin/resolve`, "PATCH", resolveDetails);
+        await DataFetch(`/admin/resolve`, "PATCH", resolveDetails);
         setOpenModal(false);
       } catch (error) {
         setError(true);

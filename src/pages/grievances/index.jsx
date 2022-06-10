@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import UseFetch from "hooks/UseFetch";
+import DataFetch from "components/DataFetch";
 import Problem from "components/Problem";
 import Loader from "components/Loader";
 import FadeIn from "components/FadeIn";
@@ -18,7 +18,7 @@ export default function DisplayGrievances() {
 
   async function getGrievances() {
     try {
-      const { data } = await UseFetch("/admin");
+      const { data } = await DataFetch("/admin");
       setGrievanceList(data.grievanceList);
     } catch (err) {
       setError(true);
