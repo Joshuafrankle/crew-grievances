@@ -1,37 +1,42 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
+import axios, { Method } from "axios";
 
-export default function useFetch(endpoint, method = "GET", axiosData = {}) {
-  const token = localStorage.getItem("token") ?? "null";
+export default function useFetch(
+  endpoint: string,
+  method: Method = "GET",
+  axiosData = {}
+) {
   const controller = new AbortController();
+  const token = localStorage.getItem("token") ?? "null";
   const [loading, setLoading] = useState(true);
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
+  const [data, setData] = useState<any>(null);
+  const [error, setError] = useState<string | null>(null);
 
   async function fetchData() {
     try {
-      const res = await axios.request({
-        url: `${process.env.REACT_APP_ENDPOINT}${endpoint}`,
+      const res = await axios({
+        url: `${process.env.REACT_APP_BACKEND_URL}${endpoint}`,
         method: method,
         headers: {
           Authorization: `Bearer ${token}`,
+          signal: controller.signal,
         },
-        signal: controller.signal,
         data: axiosData,
       });
-      setData(res.data);
-    } catch (err) {
+      setData(res.data.data ? res.data.data : res.data);
+    } catch (err: any) {
       if (err.name === "AbortError") {
         return;
       } else if (!err.response) {
-        setError("Check network connectivity");
+        setError("No server response");
       } else if (err.response.status >= 500) {
         setError("Internal server error");
       } else {
         setError(err.message);
       }
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   }
 
   useEffect(() => {
