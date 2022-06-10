@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import LoginPage from "pages/LoginPage";
 import Home from "pages/Home";
 import UserManagement from "pages/UserManagement";
-import DisplayGrievances from "pages/grievances/DisplayGrievances";
+import DisplayGrievances from "pages/grievances";
 import Error404 from "pages/Error404";
 import PrivateRoute from "routes/PrivateRoute";
 
