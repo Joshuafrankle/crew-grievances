@@ -21,9 +21,9 @@ export default function useParallelFetch(requests: IRequestArgs[]) {
         method: request.method ? request.method : "GET",
         headers: {
           Authorization: `Bearer ${token}`,
-          signal: controller.signal,
         },
         data: request.data ? request.data : {},
+        signal: controller.signal,
       })
     );
 

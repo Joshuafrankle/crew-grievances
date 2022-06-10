@@ -19,9 +19,9 @@ export default function useFetch(
         method: method,
         headers: {
           Authorization: `Bearer ${token}`,
-          signal: controller.signal,
         },
         data: axiosData,
+        signal: controller.signal,
       });
       setData(res.data.data ? res.data.data : res.data);
     } catch (err: any) {
