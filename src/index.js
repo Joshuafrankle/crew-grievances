@@ -5,11 +5,14 @@ import { theme } from "components/MUITheme";
 import { ThemeProvider } from "@mui/material/styles";
 import "assets/css/style.scss";
 import App from "./App";
+import { AuthProvider } from "hooks/useAuth";
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <App />
+      <AuthProvider>
+        <App />
+      </AuthProvider>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")
