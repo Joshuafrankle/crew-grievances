@@ -1,8 +1,8 @@
 import { useState, useRef } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Problem from "components/Problem";
 import FadeIn from "components/FadeIn";
-import { axiosRequest } from "components/DataFetch";
+import UseFetch from "hooks/UseFetch";
 // import Logo from "assets/images/logo.png";
 import {
   TextField,
@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 
 export default function Home() {
-  const history = useHistory();
+  const navigate = useNavigate();
   const buttonRef = useRef();
 
   const [error, setError] = useState({
@@ -42,7 +42,7 @@ export default function Home() {
       });
     } else {
       try {
-        const { data } = await axiosRequest(
+        const { data } = await UseFetch(
           "/users/post-grievance",
           "POST",
           userGrievance
@@ -62,7 +62,7 @@ export default function Home() {
 
   function handleLogout() {
     localStorage.removeItem("token");
-    history.push("/");
+    navigate("/");
   }
 
   if (error.serverError) {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
-import { axiosRequest } from "components/DataFetch";
+import { useNavigate } from "react-router-dom";
+import UseFetch from "hooks/UseFetch";
 import Problem from "components/Problem";
 import Loader from "components/Loader";
 import FadeIn from "components/FadeIn";
@@ -10,7 +10,7 @@ import ResolveForm from "./ResolveForm";
 import DeleteForm from "./DeleteForm";
 
 export default function DisplayGrievances() {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [openPopup, setOpenPopup] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -18,7 +18,7 @@ export default function DisplayGrievances() {
 
   async function getGrievances() {
     try {
-      const { data } = await axiosRequest("/admin");
+      const { data } = await UseFetch("/admin");
       setGrievanceList(data.grievanceList);
     } catch (err) {
       setError(true);
@@ -37,7 +37,7 @@ export default function DisplayGrievances() {
 
   function handleLogout() {
     localStorage.removeItem("token");
-    history.push("/");
+    navigate("/");
   }
 
   if (error) {

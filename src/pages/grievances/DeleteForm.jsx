@@ -1,10 +1,10 @@
 import React from "react";
-import { axiosRequest } from "components/DataFetch";
+import UseFetch from "hooks/UseFetch";
 
 export default function DeleteForm({ id, setError, setOpenModal }) {
   async function handleDelete() {
     try {
-      await axiosRequest(`/admin/delete`, "PATCH", { grievanceId: id });
+      await UseFetch(`/admin/delete`, "PATCH", { grievanceId: id });
       setOpenModal(false);
     } catch ({ response }) {
       setError(true);

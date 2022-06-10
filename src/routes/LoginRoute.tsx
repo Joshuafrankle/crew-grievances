@@ -1,12 +1,12 @@
 import React from "react";
 import { useLocation, Navigate, Outlet } from "react-router-dom";
-import useFetch from "hooks/useFetch";
+import UseFetch from "hooks/UseFetch";
 import useAuth from "hooks/useAuth";
 import Loader from "components/Loader";
 import Problem from "components/Problem";
 
 export default function LoginRoute() {
-  const { data, loading, error } = useFetch("/auth");
+  const { data, loading, error } = UseFetch("/auth");
   const location = useLocation();
   const { setRole } = useAuth();
 

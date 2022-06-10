@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "hooks/useAuth";
-import DataFetch from "components/DataFetch";
+import UseFetch from "hooks/UseFetch";
 import Problem from "components/Problem";
 import FadeIn from "components/FadeIn";
 import Logo from "assets/images/pattarai-shine.gif";
@@ -29,7 +29,7 @@ export default function LoginPage() {
       buttonRef.current.innerHTML = `Login`;
       buttonRef.current.disabled = false;
     } else {
-      const { data, error: err } = DataFetch("/login", "post", user);
+      const { data, error: err } = UseFetch("/login", "post", user);
       if (err) {
         setError({ ...error, userError: err });
         buttonRef.current.innerHTML = `Login`;

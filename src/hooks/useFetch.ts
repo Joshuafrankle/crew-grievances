@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios, { Method } from "axios";
 
-export default function useFetch(
+export default function UseFetch(
   endpoint: string,
   method: Method = "GET",
   axiosData = {}
