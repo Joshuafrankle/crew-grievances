@@ -1,13 +1,16 @@
 import { useState, useRef } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import useAuth from "hooks/useAuth";
+import DataFetch from "components/DataFetch";
 import Problem from "components/Problem";
-import Logo from "assets/images/pattarai-shine.gif";
-import { axiosRequest } from "components/DataFetch";
 import FadeIn from "components/FadeIn";
+import Logo from "assets/images/pattarai-shine.gif";
 
 export default function LoginPage() {
-  const history = useHistory();
+  const navigate = useNavigate();
+  const { setRole } = useAuth();
   const buttonRef = useRef();
+
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -18,7 +21,7 @@ export default function LoginPage() {
   });
 
   async function handleLogin() {
-    setError({ ...error, userError: "" });
+    setError({ serverError: false, userError: "" });
     buttonRef.current.disabled = true;
     buttonRef.current.innerHTML = `<div class="spinner-border p-2 spinner-border-sm" role="status" aria-hidden="true"><span class="visually-hidden">Loading...</span></div>`;
     if (user.email.trim() === "" || user.password.trim() === "") {
@@ -26,27 +29,15 @@ export default function LoginPage() {
       buttonRef.current.innerHTML = `Login`;
       buttonRef.current.disabled = false;
     } else {
-      try {
-        const { data } = await axiosRequest("/auth/login", "POST", user);
-        localStorage.setItem("token", data.token);
-        console.log(data.role);
-        if (data.role === "user") {
-          history.push("/home");
-        } else if (data.role === "admin") {
-          history.push("/grievance-list");
-        } else if (data.role === "superAdmin") {
-          history.push("/user-manage");
-        }
-      } catch ({ response }) {
-        if (!response) {
-          setError({ ...error, userError: "Check network connectivity" });
-        } else if (response.status >= 500) {
-          setError({ ...error, serverError: true });
-        } else {
-          setError({ ...error, userError: response.data.message });
-        }
+      const { data, error: err } = DataFetch("/login", "post", user);
+      if (err) {
+        setError({ ...error, userError: err });
         buttonRef.current.innerHTML = `Login`;
         buttonRef.current.disabled = false;
+      } else if (data) {
+        setRole(data.role);
+        localStorage.setItem("token", data.token);
+        navigate("/home");
       }
     }
   }
