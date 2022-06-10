@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios, { Method } from "axios";
 
-export default function UseFetch(
+export default function useFetch(
   endpoint: string,
   method: Method = "GET",
   axiosData = {}
@@ -9,12 +9,12 @@ export default function UseFetch(
   const controller = new AbortController();
   const token = localStorage.getItem("token") ?? "null";
   const [loading, setLoading] = useState(true);
-  const [data, setData] = useState<any>(null);
+  const [data, setData] = useState<any>({});
   const [error, setError] = useState<string>("");
 
   async function fetchData() {
     try {
-      const res = await axios({
+      const res = await axios.request({
         url: `${process.env.REACT_APP_BACKEND_URL}${endpoint}`,
         method: method,
         headers: {
