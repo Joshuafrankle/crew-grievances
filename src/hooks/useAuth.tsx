@@ -2,7 +2,7 @@ import React, { createContext, useState, useContext } from "react";
 
 const AuthContext = createContext({});
 
-export const AuthProvider = ({ children }) => {
+export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [role, setRole] = useState("null");
 
   return (
