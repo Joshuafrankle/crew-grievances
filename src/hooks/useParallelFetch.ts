@@ -12,7 +12,7 @@ export default function useParallelFetch(requests: IRequestArgs[]) {
   const token = localStorage.getItem("token") ?? "null";
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<any>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string>("");
 
   async function fetchData() {
     const promises = requests.map((request: IRequestArgs) =>
