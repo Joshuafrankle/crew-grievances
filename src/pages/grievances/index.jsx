@@ -11,7 +11,7 @@ import ResolveForm from "./ResolveForm";
 import DeleteForm from "./DeleteForm";
 
 export default function DisplayGrievances() {
-  const { data: grievanceList, loading, error } = useFetch("/admin");
+  const { data, loading, error } = useFetch("/admin");
   const { setRole } = useAuth();
   const navigate = useNavigate();
   const [openPopup, setOpenPopup] = useState(false);
@@ -60,7 +60,7 @@ export default function DisplayGrievances() {
               <Loader height="70vh" />
             ) : (
               <GrievanceCard
-                grievances={grievanceList}
+                grievances={data.grievanceList}
                 setId={setId}
                 setOpenPopup={setOpenPopup}
               />
