@@ -5,6 +5,13 @@
 @import url("./error-page.css");
 @import url("./admin-page.css");
 
+$theme-colors: (
+  "info": tomato,
+  "danger": teal,
+);
+
+@import "~bootstrap/scss/bootstrap";
+
 * {
   padding: 0;
   margin: 0;
