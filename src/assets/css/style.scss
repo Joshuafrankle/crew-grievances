@@ -6,8 +6,8 @@
 @import url("./admin-page.css");
 
 $theme-colors: (
-  "info": tomato,
-  "danger": teal,
+  "primary": #15e6ca,
+  "danger": #ff5a3d,
 );
 
 @import "~bootstrap/scss/bootstrap";
@@ -64,15 +64,15 @@ body {
   border-radius: 50%;
 }
 
-// .form-select,
-// .form-control,
-// input,
-// option,
-// textarea {
-//   color: #f0f0f0 !important;
-//   background-color: #0f1118 !important;
-//   border-color: #4e9992;
-// }
+.form-select,
+.form-control,
+input,
+option,
+textarea {
+  color: #f0f0f0 !important;
+  background-color: #0f1118 !important;
+  border-color: #4e9992;
+}
 
 .btn {
   color: #000000;
@@ -98,15 +98,6 @@ body {
 .badge {
   background-color: #25c0b1;
   color: #000000;
-}
-
-.css-eow0m4-MuiInputBase-root-MuiFilledInput-root,
-.css-1k6el59-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root,
-.css-5wxfqx-MuiInputBase-root-MuiOutlinedInput-root,
-.css-1h2nobw-MuiInputBase-root-MuiOutlinedInput-root {
-  color: #fafafa !important;
-  background-color: #181a22 !important;
-  border-color: #4e9992 !important;
 }
 
 .mt-10 {
