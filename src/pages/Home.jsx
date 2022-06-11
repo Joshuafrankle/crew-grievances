@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import useAuth from "hooks/useAuth";
 import Problem from "components/Problem";
 import FadeIn from "components/FadeIn";
 import fetchData from "components/fetchData";
@@ -13,6 +14,7 @@ import {
 } from "@mui/material";
 
 export default function Home() {
+  const { setRole } = useAuth();
   const navigate = useNavigate();
   const buttonRef = useRef();
 
@@ -61,6 +63,7 @@ export default function Home() {
   }
 
   function handleLogout() {
+    setRole("null");
     localStorage.removeItem("token");
     navigate("/");
   }
