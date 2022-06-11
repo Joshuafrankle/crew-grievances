@@ -1,7 +1,7 @@
 import React from "react";
 import axios, { Method } from "axios";
 
-export default async function DataFetch(
+export default async function fetchData(
   endpoint: string,
   method: Method = "GET",
   axiosData = {}
@@ -16,7 +16,6 @@ export default async function DataFetch(
       },
       data: axiosData,
     });
-    console.log("Res", res);
     return [res.data.data ? res.data.data : res.data, null];
   } catch (err: any) {
     let error = "";

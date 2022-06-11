@@ -1,10 +1,10 @@
 import React from "react";
-import DataFetch from "components/DataFetch";
+import fetchData from "components/fetchData";
 
 export default function DeleteForm({ id, setError, setOpenModal }) {
   async function handleDelete() {
     try {
-      await DataFetch(`/admin/delete`, "PATCH", { grievanceId: id });
+      await fetchData(`/admin/delete`, "PATCH", { grievanceId: id });
       setOpenModal(false);
     } catch ({ response }) {
       setError(true);

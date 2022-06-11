@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FiTrash } from "react-icons/fi";
-import DataFetch from "components/DataFetch";
+import fetchData from "components/fetchData";
 import Popup from "components/Popup";
 import DeleteForm from "./grievances/DeleteForm";
 import ResolveForm from "./AddMember";
@@ -16,12 +16,12 @@ export default function UserManagement() {
   const [error, setError] = useState(false);
 
   async function getAdmin() {
-    const { data } = await DataFetch("/sadmin");
+    const { data } = await fetchData("/sadmin");
     setAdminList(data.users);
   }
 
   async function handleAdd() {
-    const { data } = await DataFetch("/sadmin");
+    const { data } = await fetchData("/sadmin");
   }
 
   useEffect(() => {

@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Problem from "components/Problem";
 import FadeIn from "components/FadeIn";
-import DataFetch from "components/DataFetch";
+import fetchData from "components/fetchData";
 // import Logo from "assets/images/logo.png";
 import {
   TextField,
@@ -42,7 +42,7 @@ export default function Home() {
       });
     } else {
       try {
-        const { data } = await DataFetch(
+        const { data } = await fetchData(
           "/users/post-grievance",
           "POST",
           userGrievance

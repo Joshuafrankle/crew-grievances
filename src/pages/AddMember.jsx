@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import DataFetch from "components/DataFetch";
+import fetchData from "components/fetchData";
 import { TextField, Button } from "@mui/material";
 
 export default function AddMember({ id, setError, setOpenModal }) {
@@ -31,7 +31,7 @@ export default function AddMember({ id, setError, setOpenModal }) {
 
     if (noofErrors === 0) {
       try {
-        await DataFetch(`/admin/resolve`, "PATCH", resolveDetails);
+        await fetchData(`/admin/resolve`, "PATCH", resolveDetails);
         setOpenModal(false);
       } catch (error) {
         setError(true);
