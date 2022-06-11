@@ -13,7 +13,10 @@ export default function LoginRoute() {
   if (role === "null") {
     if (loading) {
       return <Loader />;
-    } else if (error === "Internal server error") {
+    } else if (
+      error === "Internal server error" ||
+      error === "No server response"
+    ) {
       return <Problem />;
     } else if (!data.role) {
       return <Outlet />;
