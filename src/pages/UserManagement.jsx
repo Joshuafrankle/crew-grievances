@@ -49,7 +49,7 @@ export default function UserManagement() {
             Add Admin
           </button>
 
-          <table class="table table-hover mt-5">
+          <table className="table table-hover mt-5">
             <thead>
               <tr>
                 <th scope="col">#</th>
