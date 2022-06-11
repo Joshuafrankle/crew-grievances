@@ -29,16 +29,13 @@ export default function UserManagement() {
     return (
       <>
         <div
-          className="d-flex flex-column align-items-center mt-10"
+          className="d-flex flex-column align-items-center mt-10 mx-5"
           style={{
             height: "100vh",
           }}
         >
           <h1>UserManagement 🚧</h1>
           <button
-            style={{
-              color: "#000",
-            }}
             type="button"
             className="btn mt-3"
             onClick={() => {
@@ -51,30 +48,41 @@ export default function UserManagement() {
           >
             Add Admin
           </button>
-          {data.users.map((admin) => (
-            <div className="w-50 mt-5 d-flex justify-content-between align-items-center">
-              <p>{admin.email}</p>
-              <p>{admin.role}</p>
-              <div className="">
-                <button
-                  style={{
-                    color: "red",
-                  }}
-                  type="button"
-                  className="btn mx-3"
-                  onClick={() => {
-                    setId({
-                      deleteId: admin.userId,
-                      resolveId: null,
-                    });
-                    setOpenPopup(true);
-                  }}
-                >
-                  <FiTrash />
-                </button>
-              </div>
-            </div>
-          ))}
+
+          <table class="table table-hover mt-5">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Email</th>
+                <th scope="col">Role</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.users.map((admin, index) => (
+                <tr key={`${admin.email}-${index}`}>
+                  <th scope="row">{index + 1}</th>
+                  <td>{admin.email}</td>
+                  <td>{admin.role}</td>
+                  <td>
+                    <button
+                      type="button"
+                      className="btn mx-3"
+                      onClick={() => {
+                        setId({
+                          deleteId: admin.userId,
+                          resolveId: null,
+                        });
+                        setOpenPopup(true);
+                      }}
+                    >
+                      <FiTrash />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
 
         <Popup
