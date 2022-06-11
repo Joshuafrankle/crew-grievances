@@ -28,6 +28,6 @@ export default async function fetchData(
     } else {
       error = err.message;
     }
-    return [{}, error];
+    return [null, error];
   }
 }
