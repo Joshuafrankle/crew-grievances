@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import fetchData from "components/fetchData";
+import useFetch from "hooks/useFetch";
+import useAuth from "hooks/useAuth";
 import Problem from "components/Problem";
 import Loader from "components/Loader";
 import FadeIn from "components/FadeIn";
@@ -10,25 +11,11 @@ import ResolveForm from "./ResolveForm";
 import DeleteForm from "./DeleteForm";
 
 export default function DisplayGrievances() {
+  const { data: grievanceList, loading, error } = useFetch("/admin");
+  const { setRole } = useAuth();
   const navigate = useNavigate();
   const [openPopup, setOpenPopup] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
-  const [grievanceList, setGrievanceList] = useState([]);
-
-  async function getGrievances() {
-    try {
-      const { data } = await fetchData("/admin");
-      setGrievanceList(data.grievanceList);
-    } catch (err) {
-      setError(true);
-    }
-    setLoading(false);
-  }
-
-  useEffect(() => {
-    getGrievances();
-  }, []);
+  const [err, setErr] = useState(false);
 
   const [id, setId] = useState({
     resolveId: null,
@@ -36,11 +23,18 @@ export default function DisplayGrievances() {
   });
 
   function handleLogout() {
+    setRole("null");
     localStorage.removeItem("token");
     navigate("/");
   }
 
-  if (error) {
+  if (loading) {
+    return <Loader />;
+  } else if (
+    err ||
+    error === "Internal Server Error" ||
+    error === "No server response"
+  ) {
     return <Problem />;
   } else {
     return (
@@ -82,13 +76,13 @@ export default function DisplayGrievances() {
           {id.deleteId ? (
             <DeleteForm
               id={id.deleteId}
-              setError={setError}
+              setError={setErr}
               setOpenModal={setOpenPopup}
             />
           ) : (
             <ResolveForm
               id={id.resolveId}
-              setError={setError}
+              setError={setErr}
               setOpenModal={setOpenPopup}
             />
           )}
