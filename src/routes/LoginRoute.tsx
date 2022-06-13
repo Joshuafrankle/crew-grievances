@@ -7,8 +7,8 @@ import Problem from "components/Problem";
 
 export default function LoginRoute() {
   const { data, loading, error } = useFetch("/auth");
-  const location = useLocation();
   const { role, setRole } = useAuth();
+  const location = useLocation();
 
   if (role === "null") {
     if (loading) {

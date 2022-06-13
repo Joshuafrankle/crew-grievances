@@ -1,18 +1,16 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import App from "./App";
-import { theme } from "components/MUITheme";
-import { ThemeProvider } from "@mui/material/styles";
 import "assets/css/style.scss";
 import { AuthProvider } from "hooks/useAuth";
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
+root.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <AuthProvider>
-        <App />
-      </AuthProvider>
-    </ThemeProvider>
-  </React.StrictMode>,
-  document.getElementById("root")
+    <AuthProvider>
+      <App />
+    </AuthProvider>
+  </React.StrictMode>
 );
