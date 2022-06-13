@@ -1,4 +1,3 @@
-import React from "react";
 import axios, { Method } from "axios";
 
 export default async function fetchData(
