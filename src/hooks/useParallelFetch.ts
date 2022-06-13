@@ -33,15 +33,16 @@ export default function useParallelFetch(requests: IRequestArgs[]) {
     } catch (err: any) {
       if (err.name === "AbortError") {
         return;
-      } else if (!err.response) {
-        setError("No server response");
-      } else if (err.response.status >= 500) {
-        setError("Internal server error");
       } else {
-        setError(err.message);
+        if (!err.response) {
+          setError("No server response");
+        } else if (err.response.status >= 500) {
+          setError("Internal server error");
+        } else {
+          setError(err.message);
+        }
+        setLoading(false);
       }
-    } finally {
-      setLoading(false);
     }
   }
 
