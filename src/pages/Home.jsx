@@ -96,7 +96,6 @@ export default function Home() {
                       Severity
                     </InputLabel>
                     <Select
-                      focused
                       labelId="demo-simple-select-label"
                       id="demo-simple-select"
                       value={userGrievance.severity}
