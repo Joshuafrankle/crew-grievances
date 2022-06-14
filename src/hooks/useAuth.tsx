@@ -2,11 +2,11 @@ import React, { createContext, useState, useContext } from "react";
 
 const AuthContext = createContext({
   role: "",
-  setRole: (role: string) => {},
+  setRole: (_role: string) => {},
 });
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [role, setRole] = useState("null");
+  const [role, setRole] = useState("");
 
   return (
     <AuthContext.Provider value={{ role, setRole }}>

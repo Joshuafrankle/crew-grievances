@@ -10,7 +10,7 @@ export default function LoginRoute() {
   const { role, setRole } = useAuth();
   const location = useLocation();
 
-  if (role === "null") {
+  if (!role) {
     if (loading) {
       return <Loader />;
     } else if (

@@ -63,7 +63,7 @@ export default function Home() {
   }
 
   function handleLogout() {
-    setRole("null");
+    setRole("");
     localStorage.removeItem("token");
     navigate("/");
   }
