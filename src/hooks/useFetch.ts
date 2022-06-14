@@ -22,6 +22,10 @@ export default function useFetch(
         },
         data: axiosData,
         signal: controller.signal,
+        timeout: 10000,
+        onUploadProgress: (progressEvent) => {
+          console.log(progressEvent);
+        },
       });
       setData(res.data.data ? res.data.data : res.data);
       setLoading(false);
