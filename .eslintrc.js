@@ -1,12 +1,18 @@
 module.exports = {
-  root: true,
   env: {
     browser: true,
-    amd: true,
-    node: true,
-    es6: true,
+    es2021: true,
   },
-  extends: ['eslint:recommended', 'plugin:prettier/recommended', 'next', 'next/core-web-vitals'],
+  extends: ['eslint:recommended', 'plugin:react/recommended', 'airbnb'],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+  },
+  plugins: ['react', '@typescript-eslint'],
   rules: {
     'prettier/prettier': 'error',
     'react/react-in-jsx-scope': 'off',
@@ -14,4 +20,4 @@ module.exports = {
     'no-unused-vars': 0,
     'react/no-unescaped-entities': 0,
   },
-}
+};
