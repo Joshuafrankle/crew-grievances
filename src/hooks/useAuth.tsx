@@ -1,17 +1,15 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useContext } from 'react';
 
 const AuthContext = createContext({
-  role: "",
+  role: '',
   setRole: (_role: string) => {},
 });
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [role, setRole] = useState("");
+  const [role, setRole] = useState('');
 
   return (
-    <AuthContext.Provider value={{ role, setRole }}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={{ role, setRole }}>{children}</AuthContext.Provider>
   );
 };
 
@@ -19,7 +17,7 @@ const useAuth = () => {
   const context = useContext(AuthContext);
 
   if (!context) {
-    throw new Error("useAuth must be used within a AuthProvider");
+    throw new Error('useAuth must be used within a AuthProvider');
   }
 
   return context;

@@ -1,5 +1,5 @@
-import { Dialog, DialogTitle, DialogContent, IconButton } from "@mui/material";
-import { MdOutlineCancel } from "react-icons/md";
+import { Dialog, DialogTitle, DialogContent, IconButton } from '@mui/material';
+import { MdOutlineCancel } from 'react-icons/md';
 
 export default function Popup({ title, openModal, setOpenModal, children }) {
   return (
@@ -9,10 +9,7 @@ export default function Popup({ title, openModal, setOpenModal, children }) {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle
-          id="alert-dialog-title"
-          sx={{ backgroundColor: "#0f1118" }}
-        >
+        <DialogTitle id="alert-dialog-title" sx={{ backgroundColor: '#0f1118' }}>
           <div className="d-flex justify-content-between align-items-center">
             <h2>{title}</h2>
             <IconButton
@@ -25,7 +22,7 @@ export default function Popup({ title, openModal, setOpenModal, children }) {
             </IconButton>
           </div>
         </DialogTitle>
-        <DialogContent sx={{ backgroundColor: "#0f1118" }}>
+        <DialogContent sx={{ backgroundColor: '#0f1118' }}>
           <div className="mt-2">{children}</div>
         </DialogContent>
       </Dialog>

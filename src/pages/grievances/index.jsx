@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import useFetch from "hooks/useFetch";
-import useAuth from "hooks/useAuth";
-import Problem from "components/Problem";
-import Loader from "components/Loader";
-import FadeIn from "components/FadeIn";
-import Popup from "components/Popup";
-import GrievanceCard from "./GrievanceCard";
-import ResolveForm from "./ResolveForm";
-import DeleteForm from "./DeleteForm";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import useFetch from 'hooks/useFetch';
+import useAuth from 'hooks/useAuth';
+import Problem from 'components/Problem';
+import Loader from 'components/Loader';
+import FadeIn from 'components/FadeIn';
+import Popup from 'components/Popup';
+import GrievanceCard from './GrievanceCard';
+import ResolveForm from './ResolveForm';
+import DeleteForm from './DeleteForm';
 
 export default function DisplayGrievances() {
-  const { data, loading, error } = useFetch("/admin");
+  const { data, loading, error } = useFetch('/admin');
   const { setRole } = useAuth();
   const navigate = useNavigate();
   const [openPopup, setOpenPopup] = useState(false);
@@ -23,18 +23,14 @@ export default function DisplayGrievances() {
   });
 
   function handleLogout() {
-    setRole("");
-    localStorage.removeItem("token");
-    navigate("/");
+    setRole('');
+    localStorage.removeItem('token');
+    navigate('/');
   }
 
   if (loading) {
     return <Loader />;
-  } else if (
-    err ||
-    error === "Internal Server Error" ||
-    error === "No server response"
-  ) {
+  } else if (err || error === 'Internal Server Error' || error === 'No server response') {
     return <Problem />;
   } else {
     return (
@@ -43,7 +39,7 @@ export default function DisplayGrievances() {
           type="button"
           className="btn mt-3"
           onClick={() => {
-            navigate("/user-manage");
+            navigate('/user-manage');
           }}
         >
           Go to Home
@@ -78,16 +74,12 @@ export default function DisplayGrievances() {
         </FadeIn>
 
         <Popup
-          title={id.deleteId ? "Are you sure wanna delete?" : "Member Form"}
+          title={id.deleteId ? 'Are you sure wanna delete?' : 'Member Form'}
           openModal={openPopup}
           setOpenModal={setOpenPopup}
         >
           {id.deleteId ? (
-            <DeleteForm
-              id={id.deleteId}
-              setError={setErr}
-              setOpenModal={setOpenPopup}
-            />
+            <DeleteForm id={id.deleteId} setError={setErr} setOpenModal={setOpenPopup} />
           ) : (
             <ResolveForm
               id={id.resolveId}

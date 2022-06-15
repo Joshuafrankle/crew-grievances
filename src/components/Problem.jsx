@@ -1,4 +1,4 @@
-import Tick from "../assets/images/server.png";
+import Tick from '../assets/images/server.png';
 
 export default function Problem() {
   return (

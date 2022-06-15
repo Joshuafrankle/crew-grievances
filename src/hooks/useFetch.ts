@@ -1,17 +1,17 @@
-import { useState, useEffect, useRef } from "react";
-import axios, { Method } from "axios";
+import { useState, useEffect, useRef } from 'react';
+import axios, { Method } from 'axios';
 
 export default function useFetch(
   endpoint: string,
-  method: Method = "GET",
+  method: Method = 'GET',
   axiosData = {}
 ) {
   const controller = new AbortController();
-  const token = localStorage.getItem("token") ?? "null";
+  const token = localStorage.getItem('token') ?? 'null';
   const isMounted = useRef(true); // In production, change this to false
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<any>({});
-  const [error, setError] = useState<string>("");
+  const [error, setError] = useState<string>('');
   const [reload, setReload] = useState(false);
   const refresh = () => setReload(!reload);
 
@@ -27,16 +27,16 @@ export default function useFetch(
         signal: controller.signal,
       });
       setData(res.data.data ? res.data.data : res.data);
-      setError("");
+      setError('');
       setLoading(false);
     } catch (err: any) {
-      if (err.name === "AbortError") {
+      if (err.name === 'AbortError') {
         return;
       } else {
         if (!err.response) {
-          setError("No server response");
+          setError('No server response');
         } else if (err.response.status >= 500) {
-          setError("Internal server error");
+          setError('Internal server error');
         } else {
           setError(err.message);
         }

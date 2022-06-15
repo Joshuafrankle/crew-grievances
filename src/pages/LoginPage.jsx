@@ -1,10 +1,10 @@
-import { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
-import useAuth from "hooks/useAuth";
-import fetchData from "hooks/fetchData";
-import Problem from "components/Problem";
-import FadeIn from "components/FadeIn";
-import Logo from "assets/images/pattarai-shine.gif";
+import { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import useAuth from 'hooks/useAuth';
+import fetchData from 'hooks/fetchData';
+import Problem from 'components/Problem';
+import FadeIn from 'components/FadeIn';
+import Logo from 'assets/images/pattarai-shine.gif';
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -12,32 +12,32 @@ export default function LoginPage() {
   const buttonRef = useRef();
 
   const [user, setUser] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
   const [error, setError] = useState({
     serverError: false,
-    userError: "",
+    userError: '',
   });
 
   async function handleLogin() {
-    setError({ serverError: false, userError: "" });
+    setError({ serverError: false, userError: '' });
     buttonRef.current.disabled = true;
     buttonRef.current.innerHTML = `<div class="spinner-border p-2 spinner-border-sm" role="status" aria-hidden="true"><span class="visually-hidden">Loading...</span></div>`;
-    if (user.email.trim() === "" || user.password.trim() === "") {
-      setError({ ...error, userError: "Please fill all the fields" });
+    if (user.email.trim() === '' || user.password.trim() === '') {
+      setError({ ...error, userError: 'Please fill all the fields' });
       buttonRef.current.innerHTML = `Login`;
       buttonRef.current.disabled = false;
     } else {
-      const [data, err] = await fetchData("/auth/login", "post", user);
+      const [data, err] = await fetchData('/auth/login', 'post', user);
       if (err) {
         setError({ ...error, userError: err });
         buttonRef.current.innerHTML = `Login`;
         buttonRef.current.disabled = false;
       } else {
         setRole(data.role);
-        localStorage.setItem("token", data.token);
-        navigate("/home");
+        localStorage.setItem('token', data.token);
+        navigate('/home');
       }
     }
   }
@@ -65,7 +65,7 @@ export default function LoginPage() {
                   type="email"
                   placeholder="Email"
                   style={{
-                    color: "black",
+                    color: 'black',
                   }}
                   onChange={(e) => setUser({ ...user, email: e.target.value })}
                 />
@@ -73,9 +73,7 @@ export default function LoginPage() {
                   className="form-control py-2"
                   type="password"
                   placeholder="Password"
-                  onChange={(e) =>
-                    setUser({ ...user, password: e.target.value })
-                  }
+                  onChange={(e) => setUser({ ...user, password: e.target.value })}
                 />
                 {error.userError && (
                   <p className="pt-3 my-0 invalid-message text-start">

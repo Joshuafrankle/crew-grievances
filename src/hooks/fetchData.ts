@@ -1,11 +1,11 @@
-import axios, { Method } from "axios";
+import axios, { Method } from 'axios';
 
 export default async function fetchData(
   endpoint: string,
-  method: Method = "GET",
+  method: Method = 'GET',
   axiosData = {}
 ) {
-  const token = localStorage.getItem("token") ?? "null";
+  const token = localStorage.getItem('token') ?? 'null';
   try {
     const res = await axios.request({
       url: `${process.env.REACT_APP_BACKEND_URL}${endpoint}`,
@@ -17,13 +17,13 @@ export default async function fetchData(
     });
     return [res.data.data ? res.data.data : res.data, null];
   } catch (err: any) {
-    let error = "";
-    if (err.name === "AbortError") {
+    let error = '';
+    if (err.name === 'AbortError') {
       return;
     } else if (!err.response) {
-      error = "No server response";
+      error = 'No server response';
     } else if (err.response.status >= 500) {
-      error = "Internal server error";
+      error = 'Internal server error';
     } else {
       error = err.message;
     }

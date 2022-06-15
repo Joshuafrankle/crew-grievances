@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import fetchData from "hooks/fetchData";
-import { TextField, Button } from "@mui/material";
+import React, { useState } from 'react';
+import fetchData from 'hooks/fetchData';
+import { TextField, Button } from '@mui/material';
 
 export default function AddMember({ id, setError, setOpenModal }) {
   const [resolveDetails, setResolveDetails] = useState({
     grievanceId: id,
-    resolvedUser: "",
-    resolvedBy: "",
+    resolvedUser: '',
+    resolvedBy: '',
   });
   const [errors, setErrors] = useState({
-    resolvedUserError: "",
-    resolvedByError: "",
+    resolvedUserError: '',
+    resolvedByError: '',
   });
 
   async function handleResolve() {
@@ -18,20 +18,20 @@ export default function AddMember({ id, setError, setOpenModal }) {
     let err = { ...errors };
 
     Object.entries(resolveDetails).forEach(([key, value]) => {
-      if (typeof value === "string" && value.trim() === "") {
-        err[`${key}Error`] = "This field is required";
+      if (typeof value === 'string' && value.trim() === '') {
+        err[`${key}Error`] = 'This field is required';
         noofErrors++;
-      } else if (key === "resolvedBy" && value.trim().length < 100) {
-        err[`${key}Error`] = "It would be nice if you can give us more details";
+      } else if (key === 'resolvedBy' && value.trim().length < 100) {
+        err[`${key}Error`] = 'It would be nice if you can give us more details';
         noofErrors++;
       } else {
-        err[`${key}Error`] = "";
+        err[`${key}Error`] = '';
       }
     });
 
     if (noofErrors === 0) {
       try {
-        await fetchData(`/admin/resolve`, "PATCH", resolveDetails);
+        await fetchData(`/admin/resolve`, 'PATCH', resolveDetails);
         setOpenModal(false);
       } catch (error) {
         setError(true);

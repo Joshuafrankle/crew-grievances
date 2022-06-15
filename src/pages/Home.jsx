@@ -1,17 +1,11 @@
-import { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
-import useAuth from "hooks/useAuth";
-import Problem from "components/Problem";
-import FadeIn from "components/FadeIn";
-import fetchData from "hooks/fetchData";
+import { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import useAuth from 'hooks/useAuth';
+import Problem from 'components/Problem';
+import FadeIn from 'components/FadeIn';
+import fetchData from 'hooks/fetchData';
 // import Logo from "assets/images/logo.png";
-import {
-  TextField,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-} from "@mui/material";
+import { TextField, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 
 export default function Home() {
   const { setRole } = useAuth();
@@ -20,35 +14,28 @@ export default function Home() {
 
   const [error, setError] = useState({
     serverError: false,
-    userError: "",
+    userError: '',
   });
   const [userGrievance, setUserGrievance] = useState({
-    grievanceTitle: "",
-    severity: "",
-    grievance: "",
+    grievanceTitle: '',
+    severity: '',
+    grievance: '',
   });
 
   async function handleSubmit() {
-    setError({ ...error, userError: "" });
+    setError({ ...error, userError: '' });
     buttonRef.current.disabled = true;
     buttonRef.current.innerHTML = `<div class="spinner-border p-2 spinner-border-sm" role="status" aria-hidden="true"><span class="visually-hidden">Loading...</span></div>`;
-    if (
-      userGrievance.grievance.trim() === "" ||
-      userGrievance.severity.trim() === ""
-    ) {
-      setError({ ...error, userError: "Please fill all the fields" });
+    if (userGrievance.grievance.trim() === '' || userGrievance.severity.trim() === '') {
+      setError({ ...error, userError: 'Please fill all the fields' });
     } else if (userGrievance.grievance.trim().length < 100) {
       setError({
         ...error,
-        userError: "Grievance should be more than 100 characters",
+        userError: 'Grievance should be more than 100 characters',
       });
     } else {
       try {
-        const { data } = await fetchData(
-          "/users/post-grievance",
-          "POST",
-          userGrievance
-        );
+        const { data } = await fetchData('/users/post-grievance', 'POST', userGrievance);
         console.log(data);
       } catch ({ response }) {
         if (response.status >= 500) {
@@ -63,9 +50,9 @@ export default function Home() {
   }
 
   function handleLogout() {
-    setRole("");
-    localStorage.removeItem("token");
-    navigate("/");
+    setRole('');
+    localStorage.removeItem('token');
+    navigate('/');
   }
 
   if (error.serverError) {
@@ -92,9 +79,7 @@ export default function Home() {
               <div className="dropdown-section">
                 <div className="dropdown2">
                   <FormControl fullWidth>
-                    <InputLabel id="demo-simple-select-label">
-                      Severity
-                    </InputLabel>
+                    <InputLabel id="demo-simple-select-label">Severity</InputLabel>
                     <Select
                       labelId="demo-simple-select-label"
                       id="demo-simple-select"
@@ -110,7 +95,7 @@ export default function Home() {
                       <MenuItem
                         value={`enhancement`}
                         style={{
-                          backgroundColor: "grey",
+                          backgroundColor: 'grey',
                         }}
                       >
                         Enhancement
@@ -118,7 +103,7 @@ export default function Home() {
                       <MenuItem
                         value={`complainant`}
                         style={{
-                          backgroundColor: "grey",
+                          backgroundColor: 'grey',
                         }}
                       >
                         Complainant
@@ -126,7 +111,7 @@ export default function Home() {
                       <MenuItem
                         value={`complainant`}
                         style={{
-                          backgroundColor: "grey",
+                          backgroundColor: 'grey',
                         }}
                       >
                         Harassment
@@ -134,7 +119,7 @@ export default function Home() {
                       <MenuItem
                         value={`complainant`}
                         style={{
-                          backgroundColor: "grey",
+                          backgroundColor: 'grey',
                         }}
                       >
                         Theft
@@ -160,9 +145,7 @@ export default function Home() {
                 }}
               />
               {error.userError && (
-                <p className="mt-3 ml-1 mb-0 invalid-message">
-                  {error.userError}
-                </p>
+                <p className="mt-3 ml-1 mb-0 invalid-message">{error.userError}</p>
               )}
               <div className="home-button">
                 <button

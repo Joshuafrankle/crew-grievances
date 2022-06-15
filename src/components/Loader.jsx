@@ -1,15 +1,15 @@
-import { useState, useEffect } from "react";
-import LinearProgress from "@mui/material/LinearProgress";
-import axios from "axios";
-import FadeIn from "./FadeIn";
+import { useState, useEffect } from 'react';
+import LinearProgress from '@mui/material/LinearProgress';
+import axios from 'axios';
+import FadeIn from './FadeIn';
 
-export default function Loader({ height = "100vh", showQuotes = false }) {
+export default function Loader({ height = '100vh', showQuotes = false }) {
   const [quotes, setQuotes] = useState({});
   const [progress, setProgress] = useState(0);
 
   async function getQuotes() {
     try {
-      const { data } = await axios.get("https://type.fit/api/quotes");
+      const { data } = await axios.get('https://type.fit/api/quotes');
       const item = data[Math.floor(Math.random() * data.length)];
       setQuotes(item);
     } catch (error) {
@@ -40,7 +40,7 @@ export default function Loader({ height = "100vh", showQuotes = false }) {
         className="d-flex align-items-center justify-content-center px-md-5"
         style={{ height: height }}
       >
-        <div style={{ width: "100vw" }}>
+        <div style={{ width: '100vw' }}>
           {showQuotes && (
             <FadeIn>
               <div className="text-center mb-5">

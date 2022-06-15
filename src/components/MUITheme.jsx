@@ -1,4 +1,4 @@
-import { createTheme } from "@mui/material/styles";
+import { createTheme } from '@mui/material/styles';
 
 export const theme = createTheme({
   breakpoints: {
@@ -12,12 +12,12 @@ export const theme = createTheme({
   },
   palette: {
     primary: {
-      main: "#4e9992",
-      contrastText: "#fffff",
+      main: '#4e9992',
+      contrastText: '#fffff',
     },
     secondary: {
-      main: "#f83245",
-      contrastText: "#ffffff",
+      main: '#f83245',
+      contrastText: '#ffffff',
     },
   },
 });

@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import useFetch from "hooks/useFetch";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import useFetch from 'hooks/useFetch';
 // import fetchData from "components/fetchData";
-import Loader from "components/Loader";
-import Problem from "components/Problem";
-import Popup from "components/Popup";
-import DeleteForm from "./grievances/DeleteForm";
-import ResolveForm from "./AddMember";
-import { FiTrash } from "react-icons/fi";
+import Loader from 'components/Loader';
+import Problem from 'components/Problem';
+import Popup from 'components/Popup';
+import DeleteForm from './grievances/DeleteForm';
+import ResolveForm from './AddMember';
+import { FiTrash } from 'react-icons/fi';
 
 export default function UserManagement() {
-  const { data, loading, error } = useFetch("/sadmin");
+  const { data, loading, error } = useFetch('/sadmin');
   const navigate = useNavigate();
   const [openPopup, setOpenPopup] = useState(false);
   const [err, setErr] = useState(false);
@@ -33,7 +33,7 @@ export default function UserManagement() {
         <div
           className="d-flex flex-column align-items-center mt-10 mx-5"
           style={{
-            height: "100vh",
+            height: '100vh',
           }}
         >
           <h1>UserManagement 🚧</h1>
@@ -54,7 +54,7 @@ export default function UserManagement() {
             type="button"
             className="btn mt-3"
             onClick={() => {
-              navigate("/home");
+              navigate('/home');
             }}
           >
             Go to Home
@@ -97,16 +97,12 @@ export default function UserManagement() {
         </div>
 
         <Popup
-          title={id.deleteId ? "Are you sure wanna delete?" : "Member Form"}
+          title={id.deleteId ? 'Are you sure wanna delete?' : 'Member Form'}
           openModal={openPopup}
           setOpenModal={setOpenPopup}
         >
           {id.deleteId ? (
-            <DeleteForm
-              id={id.deleteId}
-              setError={setErr}
-              setOpenModal={setOpenPopup}
-            />
+            <DeleteForm id={id.deleteId} setError={setErr} setOpenModal={setOpenPopup} />
           ) : (
             <ResolveForm
               id={id.resolveId}
