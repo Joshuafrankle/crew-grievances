@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import useFetch from "hooks/useFetch";
-import fetchData from "components/fetchData";
+// import fetchData from "components/fetchData";
 import Loader from "components/Loader";
 import Problem from "components/Problem";
 import Popup from "components/Popup";
@@ -10,6 +11,7 @@ import { FiTrash } from "react-icons/fi";
 
 export default function UserManagement() {
   const { data, loading, error } = useFetch("/sadmin");
+  const navigate = useNavigate();
   const [openPopup, setOpenPopup] = useState(false);
   const [err, setErr] = useState(false);
   const [id, setId] = useState({
@@ -17,9 +19,9 @@ export default function UserManagement() {
     deleteId: null,
   });
 
-  async function handleAdd() {
-    const { data } = await fetchData("/sadmin");
-  }
+  // async function handleAdd() {
+  //   const { data } = await fetchData("/sadmin");
+  // }
 
   if (loading) {
     return <Loader />;
@@ -47,6 +49,15 @@ export default function UserManagement() {
             }}
           >
             Add Admin
+          </button>
+          <button
+            type="button"
+            className="btn mt-3"
+            onClick={() => {
+              navigate("/home");
+            }}
+          >
+            Go to Home
           </button>
 
           <table className="table table-hover mt-5">

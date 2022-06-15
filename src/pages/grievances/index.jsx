@@ -39,6 +39,15 @@ export default function DisplayGrievances() {
   } else {
     return (
       <>
+        <button
+          type="button"
+          className="btn mt-3"
+          onClick={() => {
+            navigate("/user-manage");
+          }}
+        >
+          Go to Home
+        </button>
         <FadeIn>
           <div className="admin-main">
             <div className="admin-head">
