@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "hooks/useAuth";
 import Problem from "components/Problem";
 import FadeIn from "components/FadeIn";
-import fetchData from "components/fetchData";
+import fetchData from "hooks/fetchData";
 // import Logo from "assets/images/logo.png";
 import {
   TextField,

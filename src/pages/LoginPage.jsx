@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "hooks/useAuth";
-import fetchData from "components/fetchData";
+import fetchData from "hooks/fetchData";
 import Problem from "components/Problem";
 import FadeIn from "components/FadeIn";
 import Logo from "assets/images/pattarai-shine.gif";

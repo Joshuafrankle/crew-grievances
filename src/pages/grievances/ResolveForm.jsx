@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import fetchData from "components/fetchData";
+import fetchData from "hooks/fetchData";
 import { TextField, Button } from "@mui/material";
 
 export default function ResolveForm({ id, setError, setOpenModal }) {

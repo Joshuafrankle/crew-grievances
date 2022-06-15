@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import fetchData from "components/fetchData";
+import fetchData from "hooks/fetchData";
 
 export default function DeleteForm({ id, setError, setOpenModal }) {
   const btnYes = useRef(null);
