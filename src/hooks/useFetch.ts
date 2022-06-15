@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios, { Method } from "axios";
 
 export default function useFetch(
@@ -8,6 +8,7 @@ export default function useFetch(
 ) {
   const controller = new AbortController();
   const token = localStorage.getItem("token") ?? "null";
+  const isMounted = useRef(true);
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<any>({});
   const [error, setError] = useState<string>("");
@@ -24,7 +25,6 @@ export default function useFetch(
         },
         data: axiosData,
         signal: controller.signal,
-        timeout: 10000,
       });
       setData(res.data.data ? res.data.data : res.data);
       setError("");
@@ -46,9 +46,13 @@ export default function useFetch(
   }
 
   useEffect(() => {
+    if (isMounted.current) {
+      isMounted.current = false;
+      return;
+    }
     fetchData();
     return () => controller.abort();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line
   }, [reload]);
 
   return { data, loading, error, refresh };
