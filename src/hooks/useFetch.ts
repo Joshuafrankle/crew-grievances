@@ -11,6 +11,8 @@ export default function useFetch(
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<any>({});
   const [error, setError] = useState<string>("");
+  const [reload, setReload] = useState(false);
+  const refresh = () => setReload(!reload);
 
   async function fetchData() {
     try {
@@ -50,7 +52,7 @@ export default function useFetch(
     fetchData();
     return () => controller.abort();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [reload]);
 
-  return { data, loading, error };
+  return { data, loading, error, refresh };
 }
