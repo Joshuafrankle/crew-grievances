@@ -22,7 +22,9 @@ export default function LoginRoute() {
       return <Outlet />;
     } else {
       setRole(data.role);
-      if (data.role === "admin") {
+      if (data.role === "user") {
+        return <Navigate to="/home" state={{ from: location }} replace />;
+      } else if (data.role === "admin") {
         return (
           <Navigate to="/grievance-list" state={{ from: location }} replace />
         );
@@ -31,14 +33,16 @@ export default function LoginRoute() {
           <Navigate to="/user-manage" state={{ from: location }} replace />
         );
       } else {
-        return <Navigate to="/home" state={{ from: location }} replace />;
+        return <Problem />;
       }
     }
+  } else if (data.role === "user") {
+    return <Navigate to="/home" state={{ from: location }} replace />;
   } else if (role === "admin") {
     return <Navigate to="/grievance-list" state={{ from: location }} replace />;
   } else if (role === "superAdmin") {
     return <Navigate to="/user-manage" state={{ from: location }} replace />;
   } else {
-    return <Navigate to="/home" state={{ from: location }} replace />;
+    return <Problem />;
   }
 }
