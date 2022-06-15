@@ -28,6 +28,7 @@ export default function useFetch(
         },
       });
       setData(res.data.data ? res.data.data : res.data);
+      setError("");
       setLoading(false);
     } catch (err: any) {
       if (err.name === "AbortError") {
