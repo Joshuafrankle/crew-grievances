@@ -19,29 +19,28 @@ export default function useFetch(
     try {
       const res = await axios.request({
         url: `${process.env.REACT_APP_BACKEND_URL}${endpoint}`,
-        method: method,
+        method,
         headers: {
           Authorization: `Bearer ${token}`,
         },
         data: axiosData,
         signal: controller.signal,
       });
-      setData(res.data.data ? res.data.data : res.data);
       setError('');
+      setData(res.data.data ? res.data.data : res.data);
       setLoading(false);
     } catch (err: any) {
       if (err.name === 'AbortError') {
         return;
-      } else {
-        if (!err.response) {
-          setError('No server response');
-        } else if (err.response.status >= 500) {
-          setError('Internal server error');
-        } else {
-          setError(err.message);
-        }
-        setLoading(false);
       }
+      if (!err.response) {
+        setError('No server response');
+      } else if (err.response.status >= 500) {
+        setError('Internal server error');
+      } else {
+        setError(err.message);
+      }
+      setLoading(false);
     }
   }
 
@@ -55,5 +54,10 @@ export default function useFetch(
     // eslint-disable-next-line
   }, [reload]);
 
-  return { data, loading, error, refresh };
+  return {
+    data,
+    loading,
+    error,
+    refresh,
+  };
 }

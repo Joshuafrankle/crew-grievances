@@ -5,13 +5,13 @@ const AuthContext = createContext({
   setRole: (_role: string) => {},
 });
 
-export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [role, setRole] = useState('');
 
   return (
     <AuthContext.Provider value={{ role, setRole }}>{children}</AuthContext.Provider>
   );
-};
+}
 
 const useAuth = () => {
   const context = useContext(AuthContext);

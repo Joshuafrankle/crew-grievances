@@ -49,7 +49,7 @@ export default function useParallelFetch(requests: IRequestArgs[]) {
   useEffect(() => {
     fetchData();
     return () => controller.abort();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line
   }, []);
 
   return { data, loading, error };
