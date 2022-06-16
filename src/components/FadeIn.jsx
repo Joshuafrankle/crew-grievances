@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 
 function FadeIn({ children, duration = 2.5 }) {
-  const easing = [0.6, -0.05, 0.01, 0.99]; //keyframes
+  const easing = [0.6, -0.05, 0.01, 0.99]; // keyframes
   const fadeIn = {
     initial: {
       opacity: 0,
