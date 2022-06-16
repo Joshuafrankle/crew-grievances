@@ -37,7 +37,13 @@ export default function LoginPage() {
       } else {
         setRole(data.role);
         localStorage.setItem('token', data.token);
-        navigate('/home');
+        if (data.role === 'user') {
+          navigate('/home');
+        } else if (data.role === 'admin') {
+          navigate('/grievance-list');
+        } else if (data.role === 'superAdmin') {
+          navigate('/user-manage');
+        }
       }
     }
   }
