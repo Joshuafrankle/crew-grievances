@@ -29,7 +29,7 @@ export default function LoginRoute() {
         return <Problem />;
       }
     }
-  } else if (data.role === 'user') {
+  } else if (role === 'user') {
     return <Navigate to="/home" state={{ from: location }} replace />;
   } else if (role === 'admin') {
     return <Navigate to="/grievance-list" state={{ from: location }} replace />;
