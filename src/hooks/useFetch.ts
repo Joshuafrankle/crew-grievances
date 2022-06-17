@@ -35,7 +35,7 @@ export default function useFetch(
       setData(resData);
       setLoading(false);
     } catch (err: any) {
-      if (err.name === 'AbortError') {
+      if (err.name === 'CanceledError') {
         return;
       }
       if (!err.response) {
