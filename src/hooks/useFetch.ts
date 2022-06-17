@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import useAuth from './useAuth';
 import axios, { Method } from 'axios';
 
 export default function useFetch(
@@ -13,6 +14,7 @@ export default function useFetch(
   const [data, setData] = useState<any>({});
   const [error, setError] = useState<string>('');
   const [reload, setReload] = useState(false);
+  const { setRole } = useAuth();
   const refresh = () => setReload(!reload);
 
   async function fetchData() {
@@ -26,8 +28,11 @@ export default function useFetch(
         data: axiosData,
         signal: controller.signal,
       });
-      setError('');
-      setData(res.data.data ? res.data.data : res.data);
+      const resData = res.data.data ? res.data.data : res.data;
+      if (resData.role) {
+        setRole(resData.role);
+      }
+      setData(resData);
       setLoading(false);
     } catch (err: any) {
       if (err.name === 'AbortError') {

@@ -1,11 +1,24 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, {
+  createContext,
+  useRef,
+  useContext,
+  MutableRefObject,
+  useState,
+} from 'react';
 
-const AuthContext = createContext({
+interface AuthContextProps {
+  // role: MutableRefObject<string>;
+  role: string;
+  setRole: (role: string) => void;
+}
+
+const AuthContext = createContext<AuthContextProps>({
   role: '',
-  setRole: (_role: string) => {},
+  setRole: () => {},
 });
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
+  // const role = useRef('');
   const [role, setRole] = useState('');
 
   return (
