@@ -37,7 +37,7 @@ export default function Loader({ height = '100vh', showQuotes = false }) {
   return (
     <>
       <div
-        className="d-flex align-items-center justify-content-center px-md-5"
+        className="d-flex align-items-center justify-content-center px-md-5 px-3"
         style={{ height: height }}
       >
         <div style={{ width: '100vw' }}>
