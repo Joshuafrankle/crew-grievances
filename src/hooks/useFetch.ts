@@ -12,7 +12,7 @@ export default function useFetch(
   const isMounted = useRef(false); // In production, change this to false
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<any>({});
-  const [error, setError] = useState<string>('');
+  const [error, setError] = useState('');
   const [reload, setReload] = useState(false);
   const { setRole } = useAuth();
   const refresh = () => setReload(!reload);
