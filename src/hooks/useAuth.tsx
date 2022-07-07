@@ -1,21 +1,25 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useMemo } from 'react';
 
 interface AuthContextProps {
   role: string;
+  // eslint-disable-next-line no-unused-vars
   setRole: (role: string) => void;
 }
 
-const AuthContext = createContext<AuthContextProps>({
-  role: '',
-  setRole: () => {},
-});
+const AuthContext = createContext({} as AuthContextProps);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [role, setRole] = useState('');
 
-  return (
-    <AuthContext.Provider value={{ role, setRole }}>{children}</AuthContext.Provider>
+  const value = useMemo(
+    () => ({
+      role,
+      setRole,
+    }),
+    [role]
   );
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
 const useAuth = () => {
