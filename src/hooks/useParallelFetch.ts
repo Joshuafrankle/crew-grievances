@@ -12,7 +12,7 @@ export default function useParallelFetch(requests: IRequestArgs[]) {
   const token = localStorage.getItem('token') ?? 'null';
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<any>(null);
-  const [error, setError] = useState<string>('');
+  const [error, setError] = useState('');
 
   async function fetchData() {
     const promises = requests.map((request: IRequestArgs) =>
@@ -31,18 +31,17 @@ export default function useParallelFetch(requests: IRequestArgs[]) {
       const res = await Promise.allSettled(promises);
       setData(res);
     } catch (err: any) {
-      if (err.name === 'AbortError') {
+      if (err.name === 'CanceledError') {
         return;
-      } else {
-        if (!err.response) {
-          setError('No server response');
-        } else if (err.response.status >= 500) {
-          setError('Internal server error');
-        } else {
-          setError(err.message);
-        }
-        setLoading(false);
       }
+      if (!err.response) {
+        setError('No server response');
+      } else if (err.response.status >= 500) {
+        setError('Internal server error');
+      } else {
+        setError(err.message);
+      }
+      setLoading(false);
     }
   }
 
