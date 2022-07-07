@@ -10,6 +10,18 @@ export default function LoginRoute() {
   const { role } = useAuth();
   const location = useLocation();
 
+  function handleLogin(role: string) {
+    if (role === 'user') {
+      return <Navigate to="/home" state={{ from: location }} replace />;
+    } else if (role === 'admin') {
+      return <Navigate to="/grievance-list" state={{ from: location }} replace />;
+    } else if (role === 'superAdmin') {
+      return <Navigate to="/user-manage" state={{ from: location }} replace />;
+    } else {
+      return <Problem />;
+    }
+  }
+
   if (!role) {
     if (loading) {
       return <Loader />;
@@ -17,22 +29,10 @@ export default function LoginRoute() {
       return <Problem />;
     } else if (!data.role) {
       return <Outlet />;
-    } else if (data.role === 'user') {
-      return <Navigate to="/home" state={{ from: location }} replace />;
-    } else if (data.role === 'admin') {
-      return <Navigate to="/grievance-list" state={{ from: location }} replace />;
-    } else if (data.role === 'superAdmin') {
-      return <Navigate to="/user-manage" state={{ from: location }} replace />;
     } else {
-      return <Problem />;
+      return handleLogin(data.role);
     }
-  } else if (role === 'user') {
-    return <Navigate to="/home" state={{ from: location }} replace />;
-  } else if (role === 'admin') {
-    return <Navigate to="/grievance-list" state={{ from: location }} replace />;
-  } else if (role === 'superAdmin') {
-    return <Navigate to="/user-manage" state={{ from: location }} replace />;
   } else {
-    return <Problem />;
+    return handleLogin(role);
   }
 }
