@@ -9,7 +9,7 @@ export default async function fetchData(
   try {
     const res = await axios.request({
       url: `${process.env.REACT_APP_BACKEND_URL}${endpoint}`,
-      method: method,
+      method,
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -18,14 +18,12 @@ export default async function fetchData(
     return [res.data.data ? res.data.data : res.data, null];
   } catch (err: any) {
     let error = '';
-    if (err.name === 'CanceledError') {
-      return;
-    } else if (!err.response) {
+    if (!err.response) {
       error = 'No server response';
     } else if (err.response.status >= 500) {
       error = 'Internal server error';
     } else {
-      error = err.response.data.message;
+      error = err.response.data.message ? err.response.data.message : err.message;
     }
     return [null, error];
   }
