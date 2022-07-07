@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import fetchData from 'hooks/fetchData';
+import fetchData from 'utils/fetchData';
 import { TextField, Button } from '@mui/material';
 
 export default function AddMember({ id, setError, setOpenModal }) {

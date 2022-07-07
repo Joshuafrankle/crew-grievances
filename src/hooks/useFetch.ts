@@ -9,7 +9,7 @@ export default function useFetch(
 ) {
   const controller = new AbortController();
   const token = localStorage.getItem('token') ?? 'null';
-  const isMounted = useRef(false); // In development mode: true. In production mode: false
+  const isMounted = useRef(true); // In development mode: true. In production mode: false
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<any>({});
   const [error, setError] = useState('');

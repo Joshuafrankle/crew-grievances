@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import useAuth from 'hooks/useAuth';
 import Problem from 'components/Problem';
 import FadeIn from 'components/FadeIn';
-import fetchData from 'hooks/fetchData';
+import fetchData from 'utils/fetchData';
 // import Logo from "assets/images/logo.png";
 import { TextField, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 
