@@ -10,12 +10,12 @@ export default function LoginRoute() {
   const { role } = useAuth();
   const location = useLocation();
 
-  function handleLogin(role: string) {
-    if (role === 'user') {
+  function handleLogin(rolee: string) {
+    if (rolee === 'user') {
       return <Navigate to="/home" state={{ from: location }} replace />;
-    } else if (role === 'admin') {
+    } else if (rolee === 'admin') {
       return <Navigate to="/grievance-list" state={{ from: location }} replace />;
-    } else if (role === 'superAdmin') {
+    } else if (rolee === 'superAdmin') {
       return <Navigate to="/user-manage" state={{ from: location }} replace />;
     } else {
       return <Problem />;
